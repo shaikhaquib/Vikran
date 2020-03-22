@@ -41,7 +41,7 @@
                 />
 
             <TextView
-                android:id="@+id/titem"
+                android:id="@+id/cConsumerNo"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -67,7 +67,7 @@
                 android:fontFamily="@font/roboto_medium" />
 
             <TextView
-                android:id="@+id/total"
+                android:id="@+id/cName"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -93,6 +93,7 @@
                 android:fontFamily="@font/roboto_medium" />
 
             <TextView
+                android:id="@+id/cDivision"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -117,6 +118,7 @@
                 android:fontFamily="@font/roboto_medium" />
 
             <TextView
+                android:id="@+id/cTaluka"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -142,6 +144,7 @@
                 android:fontFamily="@font/roboto_medium" />
 
             <TextView
+                android:id="@+id/cSubDivision"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -166,6 +169,7 @@
                 android:fontFamily="@font/roboto_medium" />
 
             <TextView
+                android:id="@+id/cSection"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -190,7 +194,7 @@
                 android:fontFamily="@font/roboto_medium" />
 
             <TextView
-                android:id="@+id/shipcost"
+                android:id="@+id/cVillage"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -216,7 +220,7 @@
                 android:fontFamily="@font/roboto_medium" />
 
             <TextView
-                android:id="@+id/stotal"
+                android:id="@+id/cVoltagelevel"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -241,6 +245,7 @@
                 android:fontFamily="@font/roboto_medium" />
 
             <TextView
+                android:id="@+id/cDTCCode"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -265,6 +270,7 @@
                 android:fontFamily="@font/roboto_medium" />
 
             <TextView
+                android:id="@+id/sanctionedLoad"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -279,7 +285,6 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginTop="24dp"
-          android:layout_marginLeft="8dp"
           android:layout_marginRight="8dp"
           android:orientation="horizontal"
           android:weightSum="10">
@@ -295,6 +300,7 @@
               android:fontFamily="@font/roboto_medium" />
 
           <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/edtSurveyPairing"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:layout_weight="5"
@@ -307,7 +313,6 @@
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="8dp"
           android:layout_marginRight="8dp"
           android:layout_marginTop="16dp"
           android:orientation="horizontal"
@@ -324,6 +329,7 @@
               android:fontFamily="@font/roboto_medium" />
 
           <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/edtHTline"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:layout_weight="5"
@@ -336,9 +342,9 @@
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="8dp"
           android:layout_marginRight="8dp"
-          android:layout_marginTop="16dp"          android:orientation="horizontal"
+          android:layout_marginTop="16dp"
+          android:orientation="horizontal"
           android:weightSum="10">
 
           <TextView
@@ -352,6 +358,7 @@
               android:fontFamily="@font/roboto_medium" />
 
           <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/edtRSJPole"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:layout_weight="6"
@@ -364,9 +371,9 @@
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="8dp"
           android:layout_marginRight="8dp"
-          android:layout_marginTop="16dp"          android:orientation="vertical"
+          android:layout_marginTop="16dp"
+          android:orientation="vertical"
           android:weightSum="10">
 
           <TextView
@@ -375,11 +382,12 @@
               android:layout_marginLeft="10dp"
               android:textSize="16sp"
               android:layout_weight="4"
-              android:text="RSJ Pole old Freezing"
+              android:text="Survey By"
               android:textColor="@android:color/black"
               android:fontFamily="@font/roboto_medium" />
 
           <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/edtSurveyBy"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:layout_weight="6"
@@ -395,7 +403,6 @@
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="8dp"
           android:layout_marginRight="8dp"
           android:layout_marginTop="16dp"
           android:orientation="horizontal"
@@ -412,6 +419,7 @@
               android:fontFamily="@font/roboto_medium" />
 
           <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/edtAproachRoad"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:layout_weight="5"
@@ -424,7 +432,6 @@
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="8dp"
           android:layout_marginRight="8dp"
           android:layout_marginTop="16dp"
           android:orientation="horizontal"
@@ -441,6 +448,7 @@
               android:fontFamily="@font/roboto_medium" />
 
           <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/edtSoilStrata"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:layout_weight="5"
@@ -453,7 +461,6 @@
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="8dp"
           android:layout_marginRight="8dp"
           android:layout_marginTop="16dp"
           android:orientation="horizontal"
@@ -470,6 +477,7 @@
               android:fontFamily="@font/roboto_medium" />
 
           <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/edtRow"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:layout_weight="5"
@@ -482,7 +490,6 @@
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginLeft="8dp"
           android:layout_marginRight="8dp"
           android:layout_marginTop="16dp"
           android:orientation="horizontal"
@@ -499,6 +506,7 @@
               android:fontFamily="@font/roboto_medium" />
 
           <com.google.android.material.textfield.TextInputEditText
+              android:id="@+id/edtTreeCutting"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:layout_weight="5"
@@ -510,13 +518,14 @@
       </LinearLayout>
 
       <com.google.android.material.button.MaterialButton
-          android:id="@+id/signIN"
+          android:id="@+id/logInDetails"
           android:layout_width="250dp"
           android:layout_gravity="center"
           android:layout_height="wrap_content"
           android:layout_marginTop="10dp"
           android:backgroundTint="@color/purple"
           android:text="Login"
+          android:textSize="20sp"
           android:textAllCaps="false"
           android:textColor="@android:color/white"
           android:textStyle="bold"
