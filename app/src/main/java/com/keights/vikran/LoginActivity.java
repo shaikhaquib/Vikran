@@ -4,16 +4,15 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.keights.vikran.Extras.Constants;
 import com.keights.vikran.Extras.Progress;
@@ -22,7 +21,6 @@ import com.keights.vikran.Network.RetrofitClient;
 import com.keights.vikran.Network.UserDatabase;
 import com.keights.vikran.ResponseModel.UserInfo;
 
-import java.util.List;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -39,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private UserDatabase userDatabase;
     SessionManager sessionManager;
     public static UserInfo USER = new UserInfo();
+    TextView appVersion;
 
 
     @Override
@@ -52,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         loginUserName = findViewById(R.id.loginUserName);
+        appVersion = findViewById(R.id.appVersion);
         loginPassword = findViewById(R.id.loginPassword);
         sessionManager = new SessionManager(this);
 
@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
             new GetUsersAsyncTask().execute();
 
 
-        findViewById(R.id.signIN).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.Reports).setOnClickListener(new View.OnClickListener() {
 
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
@@ -77,6 +77,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        try {
+            PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            String version = pInfo.versionName;
+            appVersion.setText("Version "+version);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
 
 

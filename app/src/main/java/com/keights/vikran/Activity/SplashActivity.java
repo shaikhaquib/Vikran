@@ -1,10 +1,13 @@
-package com.keights.vikran;
+package com.keights.vikran.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.keights.vikran.LoginActivity;
+import com.keights.vikran.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -21,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();
             }
         }, 1800 );

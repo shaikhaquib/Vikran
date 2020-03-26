@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.ConsumerList">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:titleTextAppearance="@style/toolbartext"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="Consumer List"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/toolbartext"
+            android:text="Division : "
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Satara"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            app:icon="@drawable/ic_arrow_drop_down"
+            app:iconGravity="end"
+            app:iconSize="32dp"
+            android:gravity="center"
+            android:textAppearance="@style/toolbartext"
+            android:backgroundTint="#FFA000"/>
+
+    </LinearLayout>
+
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/search_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="@dimen/spacing_large"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="8dp"
+        app:strokeColor="#0288D1"
+        app:strokeWidth="2dp"
+        app:layout_collapseMode="pin"
+        app:cardElevation="3dp">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/all"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="All"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@android:color/white"
+                    android:background="@color/blue_A700"
+                    />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/survey"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="Survey"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/pending"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="Pending"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/G1"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="G1"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/G2"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="G2"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/G3"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="G3"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/G4"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="G4"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/G5"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="G5"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/G6"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="G6"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/G7"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="G7"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/G8"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="G8"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/G9"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="G9"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/G10"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="G10"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/G11"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="G11"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/blue_A700"/>
+
+                <TextView
+                    android:id="@+id/G12"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:padding="8dp"
+                    android:text="G12"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/roboto_regular"/>
+
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <FrameLayout
+        android:id="@+id/frgHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

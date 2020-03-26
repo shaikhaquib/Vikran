@@ -10,10 +10,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Switch;
-import android.widget.Toolbar;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.keights.vikran.Activity.ConsumerList;
+import com.keights.vikran.Activity.MySurvey;
+import com.keights.vikran.Activity.NewSurveyActivity;
+import com.keights.vikran.Activity.Reports;
 import com.keights.vikran.Extras.Constants;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +30,25 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.new_Survey).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),NewSurveyActivity.class));
+                startActivity(new Intent(getApplicationContext(), NewSurveyActivity.class));
+            }
+        });
+        findViewById(R.id.MyServey).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MySurvey.class));
+            }
+        });
+        findViewById(R.id.Reports).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Reports.class));
+            }
+        });
+        findViewById(R.id.Consumerlist).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ConsumerList.class));
             }
         });
 

@@ -1,32 +1,29 @@
-package com.keights.vikran;
+package com.keights.vikran.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.keights.vikran.Extras.Constants;
 import com.keights.vikran.Extras.Progress;
+import com.keights.vikran.Fragment.Frg_DetailNewSurvey;
 import com.keights.vikran.Network.RetrofitClient;
+import com.keights.vikran.R;
 import com.keights.vikran.ResponseModel.ConsumerDetailsItem;
 import com.keights.vikran.ResponseModel.SearchConsumerResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 import static com.keights.vikran.LoginActivity.USER;
 

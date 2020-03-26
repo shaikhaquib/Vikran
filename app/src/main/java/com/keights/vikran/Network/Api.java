@@ -1,6 +1,7 @@
 package com.keights.vikran.Network;
 
 import com.keights.vikran.ResponseModel.AddSurveyDetailsResponse;
+import com.keights.vikran.ResponseModel.DaysFilterResponse;
 import com.keights.vikran.ResponseModel.SearchConsumerResponse;
 import com.keights.vikran.ResponseModel.UserInfo;
 
@@ -38,5 +39,11 @@ public interface Api {
                                                       @Field("remarks") String remarks,
                                                       @Field("live_location") String live_location
                                                     );
+    @FormUrlEncoded
+    @POST("days_filter")
+    Call<DaysFilterResponse> days_filter(@Field("reporting_id") String reporting_id ,
+                                         @Field("user_id") String user_id ,
+                                         @Field("division") String division,
+                                         @Field("filter_name") String filter_name);
 
 }

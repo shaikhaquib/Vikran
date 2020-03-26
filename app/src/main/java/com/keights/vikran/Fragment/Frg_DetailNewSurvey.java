@@ -1,4 +1,4 @@
-package com.keights.vikran;
+package com.keights.vikran.Fragment;
 
 
 import android.Manifest;
@@ -40,6 +40,7 @@ import com.google.android.material.textview.MaterialTextView;
 import com.keights.vikran.Extras.Constants;
 import com.keights.vikran.Extras.Progress;
 import com.keights.vikran.Network.RetrofitClient;
+import com.keights.vikran.R;
 import com.keights.vikran.ResponseModel.ConsumerDetailsItem;
 import com.keights.vikran.ResponseModel.AddSurveyDetailsResponse;
 

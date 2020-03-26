@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
+    android:fillViewport="true"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,6 +12,7 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
         android:padding="@dimen/spacing_large">
 
         <View
@@ -22,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="80dp"
-            android:src="@drawable/ic_vikran_app_login_logo_01" />
+            android:src="@drawable/ic_vikran_app_login_logo" />
 
         <View
             android:layout_width="0dp"
@@ -38,10 +40,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email or Mobile"
+            android:text="Email"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             android:textColor="@color/blue_grey_200" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@android:color/white"
+            app:passwordToggleTint="@color/blue_700"
+            app:boxStrokeColor="@color/blue_700"
+            android:theme="@style/EditText.Green" >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/loginUserName"
@@ -52,34 +62,48 @@
             android:inputType="text"
             android:maxLength="50"
             android:maxLines="1"
+            android:textCursorDrawable="@drawable/color_cursor"
             android:singleLine="true"
-            android:textColor="@color/blue_grey_800"
-            android:theme="@style/EditText.Green" />
+            android:textColor="@color/blue_grey_800"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="@dimen/spacing_mlarge" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Password"
+            android:paddingTop="4dp"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
             android:textColor="@color/blue_grey_200" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/loginPassword"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-4dp"
-            android:layout_marginRight="-4dp"
-            android:inputType="textPassword"
-            android:maxLength="50"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColor="@color/blue_grey_800"
-            android:theme="@style/EditText.Green" />
+            app:passwordToggleEnabled="true"
+            app:boxBackgroundColor="@android:color/white"
+            app:passwordToggleTint="@color/blue_700"
+            app:boxStrokeColor="@color/blue_700"
+            android:theme="@style/EditText.Green" >
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/loginPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-4dp"
+                android:layout_marginRight="-4dp"
+                android:inputType="textPassword"
+                android:maxLength="50"
+                android:maxLines="1"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:singleLine="true"
+                android:textColor="@color/blue_grey_800"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
 
         <View
@@ -87,7 +111,7 @@
             android:layout_height="@dimen/spacing_mxlarge" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/signIN"
+            android:id="@+id/Reports"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="10dp"
@@ -119,6 +143,7 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                 android:textColor="#4CAF50" />
             <TextView
+                android:id="@+id/appVersion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Version 0.1"
@@ -128,7 +153,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vikran Group Pvt Ltd 2020"
+                android:text="© Vikran Exim &amp; Engineering Pvt Ltd 2020"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                 android:textColor="@color/blue_grey_400" />
 
@@ -141,4 +166,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</ScrollView>

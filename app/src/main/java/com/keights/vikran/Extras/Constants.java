@@ -12,7 +12,6 @@ import androidx.room.Room;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.keights.vikran.LoginActivity;
 import com.keights.vikran.Network.UserDatabase;
-import com.keights.vikran.NewSurveyActivity;
 import com.keights.vikran.R;
 
 import java.text.ParseException;
