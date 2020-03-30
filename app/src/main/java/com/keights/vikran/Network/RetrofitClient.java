@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    public static final String BASE_URL = "http://portal.vikrangroup.com/";
+    public static final String BASE_URL = "https://vikrangroup.com/portal";
     private static RetrofitClient mInstance;
     private Retrofit retrofit;
 
