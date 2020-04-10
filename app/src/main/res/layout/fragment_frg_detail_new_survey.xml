@@ -202,7 +202,6 @@
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -275,6 +274,56 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:text="3"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="5"
+                android:text="Survey By"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <TextView
+                android:id="@+id/txtSurveyby"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="3"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="5"
+                android:text="Location"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <TextView
+                android:id="@+id/txtLocation"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="Location"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
         </LinearLayout>
@@ -383,6 +432,7 @@
               android:textSize="16sp"
               android:layout_weight="4"
               android:text="Survey By"
+              android:visibility="gone"
               android:textColor="@android:color/black"
               android:fontFamily="@font/roboto_medium" />
 
@@ -391,10 +441,13 @@
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:layout_weight="6"
+              android:visibility="gone"
               android:layout_marginLeft="10dp"
               android:layout_marginTop="6dp"
               android:gravity="center"
               android:padding="6dp"
+              android:editable="false"
+              android:focusable="false"
               android:background="@drawable/borderdark"
               android:textColor="@color/grey_60"
               android:fontFamily="@font/roboto_medium" />
@@ -404,7 +457,6 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginRight="8dp"
-          android:layout_marginTop="16dp"
           android:orientation="horizontal"
           android:weightSum="10">
 
@@ -524,7 +576,7 @@
           android:layout_height="wrap_content"
           android:layout_marginTop="10dp"
           android:backgroundTint="@color/purple"
-          android:text="Login"
+          android:text="Record Survey"
           android:textSize="20sp"
           android:textAllCaps="false"
           android:textColor="@android:color/white"
@@ -538,6 +590,7 @@
           android:id="@+id/txtCOnnection"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:visibility="gone"
           android:text="Go to Connection"
           android:textSize="16sp"
           android:textStyle="bold"

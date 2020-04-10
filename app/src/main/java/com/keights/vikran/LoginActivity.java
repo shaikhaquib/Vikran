@@ -10,10 +10,12 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.keights.vikran.Extras.Constants;
 import com.keights.vikran.Extras.Progress;
 import com.keights.vikran.Extras.SessionManager;
@@ -49,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         userDatabase = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, Constants.DATABASE_NAME).
                 fallbackToDestructiveMigration().build();
 
+        Log.d(TAG, "onCreate: "+FirebaseInstanceId.getInstance().getToken());
 
         loginUserName = findViewById(R.id.loginUserName);
         appVersion = findViewById(R.id.appVersion);
@@ -56,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
 
         if (sessionManager.isLoggedIn())
-            new GetUsersAsyncTask().execute();
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
 
         findViewById(R.id.Reports).setOnClickListener(new View.OnClickListener() {
@@ -92,8 +95,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void doLogin(final String strUserName, final String strPassword) {
+
+        String device_token = FirebaseInstanceId.getInstance().getToken();
         progress.show();
-        Call<UserInfo> UserInfoCall = RetrofitClient.getInstance().getApi().user_login(strUserName, strPassword);
+        Call<UserInfo> UserInfoCall = RetrofitClient.getInstance().getApi().user_login(strUserName, strPassword,device_token);
         UserInfoCall.enqueue(new Callback<UserInfo>() {
             @Override
             public void onResponse(Call<UserInfo> call, final Response<UserInfo> response) {
@@ -115,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                             protected void onPostExecute(Void aVoid) {
                                 super.onPostExecute(aVoid);
                                 sessionManager.setLogin(true);
-                                new GetUsersAsyncTask().execute();
+                             //   new GetUsersAsyncTask().execute();
                             }
                         }.execute();
                 }
@@ -131,35 +136,5 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    private class GetUsersAsyncTask extends AsyncTask<Void, Void, UserInfo>
-    {
-        Progress progress;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progress = new Progress(LoginActivity. this);
-            progress.show();
-        }
-
-        @Override
-        protected UserInfo doInBackground(Void... url) {
-            return userDatabase.dbAccess().getUserDetail();
-        }
-
-        @Override
-        protected void onPostExecute(UserInfo userinfoItems) {
-            super.onPostExecute(userinfoItems);
-            try {
-                USER = userinfoItems;
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            progress.dismiss();
-        }
-
-    }
 
 }

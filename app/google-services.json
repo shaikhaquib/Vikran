@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "830822257114",
+    "firebase_url": "https://vikran-4b0fc.firebaseio.com",
+    "project_id": "vikran-4b0fc",
+    "storage_bucket": "vikran-4b0fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830822257114:android:292a7560d747b572fef0e3",
+        "android_client_info": {
+          "package_name": "com.keights.vikran"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830822257114-vh970edrce8s6om7mnj7arkvacbmqa4c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_ojQhof9yFa6N3hB3O2P_WQsYC-kGImc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830822257114-vh970edrce8s6om7mnj7arkvacbmqa4c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

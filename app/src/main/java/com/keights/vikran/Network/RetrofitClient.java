@@ -11,10 +11,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    public static final String BASE_URL = "https://vikrangroup.com/portal";
+    public static final String BASE_URL = "https://vikrangroup.com/portal/";
     private static RetrofitClient mInstance;
     private Retrofit retrofit;
-
     private RetrofitClient(){
         OkHttpClient client = new OkHttpClient.Builder()
                 .readTimeout(90, TimeUnit.SECONDS)

@@ -1,6 +1,5 @@
 package com.keights.vikran.Activity;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,17 +12,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.keights.vikran.Extras.Constants;
 import com.keights.vikran.Extras.Progress;
 import com.keights.vikran.Fragment.MySurveyFragment;
 import com.keights.vikran.Network.RetrofitClient;
 import com.keights.vikran.R;
 import com.keights.vikran.ResponseModel.DaysFilterResponse;
-import com.keights.vikran.ResponseModel.DaysFilterResponse;
-import com.keights.vikran.ResponseModel.FilterData;
 import com.keights.vikran.ResponseModel.FilterList;
 
 import java.util.List;
@@ -35,7 +29,7 @@ import retrofit2.Response;
 import static com.keights.vikran.LoginActivity.USER;
 
 
-public class MySurvey extends AppCompatActivity implements View.OnClickListener{
+public class MyWork extends AppCompatActivity implements View.OnClickListener{
 
     Boolean isSelectedQuestions = true;
     TextView tabToday;
@@ -51,7 +45,7 @@ public class MySurvey extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_survey);
+        setContentView(R.layout.activity_my_work);
 
         mySurveyFragment = new MySurveyFragment();
        /*  questionsFragment = new RecentQuestionsFragment();*/
@@ -124,7 +118,7 @@ public class MySurvey extends AppCompatActivity implements View.OnClickListener{
     }
 
     private void setFilter(final String filter){
-        final Progress progress = new Progress(MySurvey.this);
+        final Progress progress = new Progress(MyWork.this);
         progress.show();
         Call<DaysFilterResponse> responseCall = RetrofitClient.getInstance().getApi().days_filter(USER.getReportingId(),USER.getUserId(),USER.getDivision(),filter);
         responseCall.enqueue(new Callback<DaysFilterResponse>() {
@@ -148,7 +142,7 @@ public class MySurvey extends AppCompatActivity implements View.OnClickListener{
 
 
                     }else {
-                        Constants.sessionExpired(MySurvey.this,response.body().getMsg());
+                        Constants.Alert(MyWork.this,response.body().getMsg());
                     }
 
             }

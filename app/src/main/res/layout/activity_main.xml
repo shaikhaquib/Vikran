@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="100dp">
+
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="20dp"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -159,7 +168,7 @@
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/MyServey"
+        app:layout_constraintEnd_toStartOf="@+id/MyWork"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
@@ -201,7 +210,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/MyServey"
+        android:id="@+id/MyWork"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -240,7 +249,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="My Survey"
+            android:text="My Work"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -248,7 +257,7 @@
 
 
     <LinearLayout
-        android:id="@+id/Connection"
+        android:id="@+id/Execution"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -285,84 +294,190 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Connection"
+            android:text="Execution"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
     </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/Consumerlist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="@+id/MyServey"
-        app:layout_constraintTop_toBottomOf="@+id/MyServey">
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/jmc"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginRight="6dp"
-            android:layout_marginBottom="8dp"
-            android:padding="24dp"
-            app:cardCornerRadius="12dp"
-            app:strokeColor="#c2c2c2"
-            app:strokeWidth="1dp">
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/MyWork"
+            app:layout_constraintTop_toBottomOf="@+id/MyWork">
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_margin="32dp"
-                android:padding="8dp"
-                android:src="@drawable/ic_qualitative_research"
-                android:tint="#2196F3" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="8dp"
+                android:padding="24dp"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="#c2c2c2"
+                app:strokeWidth="1dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_margin="32dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_measuring_tape"
+                    android:tint="#2196F3" />
 
 
-        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="match_parent"
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="JMC"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/rtc"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/Execution"
+            app:layout_constraintTop_toBottomOf="@+id/Execution">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="#c2c2c2"
+                app:strokeWidth="1dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_margin="32dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_vending_machine_1"
+                    android:tint="#2196F3" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="RTC"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/billing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/jmc"
+            app:layout_constraintTop_toBottomOf="@+id/jmc">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="#c2c2c2"
+                app:strokeWidth="1dp">
+
+                <ImageView
+                    android:layout_width="83dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_margin="32dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_tax"
+                    android:tint="#FF9800" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Billing"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Reports"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/purple"
+            android:text="Reports"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/appbar_padding_top"
+            app:icon="@drawable/ic_result"
+            app:iconGravity="textStart"
+            app:iconSize="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/Consumerlist"
+            app:layout_constraintStart_toStartOf="@+id/Consumerlist"
+            app:layout_constraintTop_toBottomOf="@+id/Consumerlist"
+            app:rippleColor="@color/blue_grey_100" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Consumerlist"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/purple"
             android:text="Consumer List"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/appbar_padding_top"
+            app:icon="@drawable/ic_qualitative_research"
+            app:iconGravity="textStart"
+            app:iconSize="30dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="@+id/billing"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/rtc"
+            app:layout_constraintTop_toBottomOf="@+id/rtc"
+            app:rippleColor="@color/blue_grey_100" />
 
-    </LinearLayout>
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/Reports"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/purple"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:text="Reports"
-        android:textSize="16sp"
-        app:icon="@drawable/ic_result"
-        app:iconSize="30dp"
-        app:iconGravity="textStart"
-        app:cornerRadius="@dimen/appbar_padding_top"
-        app:layout_constraintEnd_toEndOf="@+id/Consumerlist"
-        app:layout_constraintStart_toStartOf="@+id/Connection"
-        app:layout_constraintTop_toBottomOf="@+id/Connection"
-        app:rippleColor="@color/blue_grey_100" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

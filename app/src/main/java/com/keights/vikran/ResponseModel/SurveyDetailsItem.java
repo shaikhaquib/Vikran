@@ -1,0 +1,219 @@
+package com.keights.vikran.ResponseModel;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class SurveyDetailsItem implements Serializable {
+
+	@SerializedName("created_name")
+	private String createdName;
+
+	@SerializedName("tree_cutting")
+	private String treeCutting;
+
+	@SerializedName("rjs_pole_old_freezing")
+	private String rjsPoleOldFreezing;
+
+	@SerializedName("survey_pairing")
+	private String surveyPairing;
+
+	@SerializedName("date_of_survey")
+	private String dateOfSurvey;
+
+	@SerializedName("modified_date")
+	private String modifiedDate;
+
+	@SerializedName("survey_by")
+	private String surveyBy;
+
+	@SerializedName("survey_id")
+	private String surveyId;
+
+	@SerializedName("ht_line_in_km")
+	private String htLineInKm;
+
+	@SerializedName("soil_strata")
+	private String soilStrata;
+
+	@SerializedName("approach_road")
+	private String approachRoad;
+
+	@SerializedName("location")
+	private String location;
+
+	@SerializedName("row")
+	private String row;
+
+	@SerializedName("created_date")
+	private String createdDate;
+
+	@SerializedName("remarks")
+	private String remarks;
+
+	@SerializedName("consumer_no")
+	private String consumerNo;
+
+	@SerializedName("status")
+	private String status;
+
+	public void setCreatedName(String createdName){
+		this.createdName = createdName;
+	}
+
+	public String getCreatedName(){
+		return createdName;
+	}
+
+	public void setTreeCutting(String treeCutting){
+		this.treeCutting = treeCutting;
+	}
+
+	public String getTreeCutting(){
+		return treeCutting;
+	}
+
+	public void setRjsPoleOldFreezing(String rjsPoleOldFreezing){
+		this.rjsPoleOldFreezing = rjsPoleOldFreezing;
+	}
+
+	public String getRjsPoleOldFreezing(){
+		return rjsPoleOldFreezing;
+	}
+
+	public void setSurveyPairing(String surveyPairing){
+		this.surveyPairing = surveyPairing;
+	}
+
+	public String getSurveyPairing(){
+		return surveyPairing;
+	}
+
+	public void setDateOfSurvey(String dateOfSurvey){
+		this.dateOfSurvey = dateOfSurvey;
+	}
+
+	public String getDateOfSurvey(){
+		return dateOfSurvey;
+	}
+
+	public void setModifiedDate(String modifiedDate){
+		this.modifiedDate = modifiedDate;
+	}
+
+	public String getModifiedDate(){
+		return modifiedDate;
+	}
+
+	public void setSurveyBy(String surveyBy){
+		this.surveyBy = surveyBy;
+	}
+
+	public String getSurveyBy(){
+		return surveyBy;
+	}
+
+	public void setSurveyId(String surveyId){
+		this.surveyId = surveyId;
+	}
+
+	public String getSurveyId(){
+		return surveyId;
+	}
+
+	public void setHtLineInKm(String htLineInKm){
+		this.htLineInKm = htLineInKm;
+	}
+
+	public String getHtLineInKm(){
+		return htLineInKm;
+	}
+
+	public void setSoilStrata(String soilStrata){
+		this.soilStrata = soilStrata;
+	}
+
+	public String getSoilStrata(){
+		return soilStrata;
+	}
+
+	public void setApproachRoad(String approachRoad){
+		this.approachRoad = approachRoad;
+	}
+
+	public String getApproachRoad(){
+		return approachRoad;
+	}
+
+	public void setLocation(String location){
+		this.location = location;
+	}
+
+	public String getLocation(){
+		return location;
+	}
+
+	public void setRow(String row){
+		this.row = row;
+	}
+
+	public String getRow(){
+		return row;
+	}
+
+	public void setCreatedDate(String createdDate){
+		this.createdDate = createdDate;
+	}
+
+	public String getCreatedDate(){
+		return createdDate;
+	}
+
+	public void setRemarks(String remarks){
+		this.remarks = remarks;
+	}
+
+	public String getRemarks(){
+		return remarks;
+	}
+
+	public void setConsumerNo(String consumerNo){
+		this.consumerNo = consumerNo;
+	}
+
+	public String getConsumerNo(){
+		return consumerNo;
+	}
+
+	public void setStatus(String status){
+		this.status = status;
+	}
+
+	public String getStatus(){
+		return status;
+	}
+
+	@Override
+ 	public String toString(){
+		return 
+			"SurveyDetailsItem{" + 
+			"created_name = '" + createdName + '\'' + 
+			",tree_cutting = '" + treeCutting + '\'' + 
+			",rjs_pole_old_freezing = '" + rjsPoleOldFreezing + '\'' + 
+			",survey_pairing = '" + surveyPairing + '\'' + 
+			",date_of_survey = '" + dateOfSurvey + '\'' + 
+			",modified_date = '" + modifiedDate + '\'' + 
+			",survey_by = '" + surveyBy + '\'' + 
+			",survey_id = '" + surveyId + '\'' + 
+			",ht_line_in_km = '" + htLineInKm + '\'' + 
+			",soil_strata = '" + soilStrata + '\'' + 
+			",approach_road = '" + approachRoad + '\'' + 
+			",location = '" + location + '\'' + 
+			",row = '" + row + '\'' + 
+			",created_date = '" + createdDate + '\'' + 
+			",remarks = '" + remarks + '\'' + 
+			",consumer_no = '" + consumerNo + '\'' + 
+			",status = '" + status + '\'' + 
+			"}";
+		}
+}

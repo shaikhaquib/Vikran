@@ -14,13 +14,17 @@
         android:icon="@drawable/ic_vikran_app_icon_01"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_vikran_app_icon_01"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ConsumerList"></activity>
+        <activity android:name=".Activity.ActivityJMC">
+        </activity>
+        <activity android:name=".Activity.SurveyDetailActivity" />
+        <activity android:name=".Activity.ExecutionActivity" />
+        <activity android:name=".Activity.ConsumerList" />
         <activity android:name=".Activity.Reports" />
         <activity android:name=".Activity.NewSurveyActivity" />
-        <activity android:name=".Activity.MySurvey" />
+        <activity android:name=".Activity.MyWork" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Activity.SplashActivity">
             <intent-filter>
@@ -30,6 +34,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
+        <service android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

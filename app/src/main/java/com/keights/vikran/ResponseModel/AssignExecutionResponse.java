@@ -1,8 +1,9 @@
 package com.keights.vikran.ResponseModel;
 
+import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class SearchConsumerResponse{
+public class AssignExecutionResponse{
 
 	@SerializedName("msg")
 	private String msg;
@@ -10,8 +11,8 @@ public class SearchConsumerResponse{
 	@SerializedName("logged_in")
 	private boolean loggedIn;
 
-	@SerializedName("consumer_details")
-	private ConsumerDetails consumerDetails;
+	@SerializedName("assign_consumer")
+	private List<AssignConsumerItem> assignConsumer;
 
 	public void setMsg(String msg){
 		this.msg = msg;
@@ -29,21 +30,21 @@ public class SearchConsumerResponse{
 		return loggedIn;
 	}
 
-	public void setConsumerDetails(ConsumerDetails consumerDetails){
-		this.consumerDetails = consumerDetails;
+	public void setAssignConsumer(List<AssignConsumerItem> assignConsumer){
+		this.assignConsumer = assignConsumer;
 	}
 
-	public ConsumerDetails getConsumerDetails(){
-		return consumerDetails;
+	public List<AssignConsumerItem> getAssignConsumer(){
+		return assignConsumer;
 	}
 
 	@Override
  	public String toString(){
 		return 
-			"SearchConsumerResponse{" + 
+			"AssignExecutionResponse{" + 
 			"msg = '" + msg + '\'' + 
 			",logged_in = '" + loggedIn + '\'' + 
-			",consumer_details = '" + consumerDetails + '\'' + 
+			",assign_consumer = '" + assignConsumer + '\'' + 
 			"}";
 		}
 }

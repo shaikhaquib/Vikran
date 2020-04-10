@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Looper;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,8 @@ import com.keights.vikran.R;
 import com.keights.vikran.ResponseModel.ConsumerDetailsItem;
 import com.keights.vikran.ResponseModel.AddSurveyDetailsResponse;
 
+import org.json.JSONObject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,7 +61,7 @@ public class Frg_DetailNewSurvey extends Fragment {
 
 
     private ConsumerDetailsItem consumerDetailsItem;
-    private TextView cConsumerNo,cName,cDivision,cTaluka,cSubDivision,cSection,cVillage,cVoltagelevel,cDTCCode,sanctionedLoad;
+    private TextView cConsumerNo,cName,cDivision,cTaluka,cSubDivision,cSection,cVillage,cVoltagelevel,cDTCCode,sanctionedLoad,txtLocation,txtSurveyby;
 
     private TextInputEditText edtSurveyPairing;
     private TextInputEditText edtHTline       ;
@@ -71,6 +74,7 @@ public class Frg_DetailNewSurvey extends Fragment {
     private MaterialButton logInDetails;
 
     private String strLocation;
+    private static final String TAG = "Frg_DetailNewSurvey";
 
 
    private static final int PERMISSION_ID = 44;
@@ -108,6 +112,8 @@ public class Frg_DetailNewSurvey extends Fragment {
         cVoltagelevel = view.findViewById(R.id.cVoltagelevel);
         cDTCCode = view.findViewById(R.id.cDTCCode);
         sanctionedLoad = view.findViewById(R.id.sanctionedLoad);
+        txtLocation = view.findViewById(R.id.txtLocation);
+        txtSurveyby = view.findViewById(R.id.txtSurveyby);
 
 
         edtSurveyPairing = view.findViewById(R.id.edtSurveyPairing);
@@ -122,6 +128,8 @@ public class Frg_DetailNewSurvey extends Fragment {
         logInDetails = view.findViewById(R.id.logInDetails);
 
 
+        edtSurveyBy.setText(USER.getUsername());
+
         cConsumerNo.setText(consumerDetailsItem.getConsumerNo());
         cName.setText(consumerDetailsItem.getConsumerName());
         cDivision.setText(consumerDetailsItem.getDivision());
@@ -132,11 +140,26 @@ public class Frg_DetailNewSurvey extends Fragment {
         cVoltagelevel.setText(consumerDetailsItem.getVoltageLevel());
         cDTCCode.setText(consumerDetailsItem.getDtcCode());
         sanctionedLoad.setText(consumerDetailsItem.getSanctionLoad());
-        
+        txtSurveyby.setText(USER.getUsername());
+
         logInDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isValidForm()){
+                    if (strLocation.isEmpty())
+                    {
+                        new MaterialAlertDialogBuilder(getActivity(),R.style.AlertDiloge)
+                                .setTitle("Failed To get Location")
+                                .setMessage("Please try again to get location")
+                                .setCancelable(false)
+                                .setPositiveButton("Try Again", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                       getLastLocation();                           }
+                                })
+                                .show();
+
+                    }
                     addSurveyDetails();
                 }
             }
@@ -186,8 +209,7 @@ public class Frg_DetailNewSurvey extends Fragment {
     }
 
     private void requestPermissions() {
-        ActivityCompat.requestPermissions(
-                getActivity(),
+        requestPermissions(
                 new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
                 PERMISSION_ID
         );
@@ -206,6 +228,7 @@ public class Frg_DetailNewSurvey extends Fragment {
         if (requestCode == PERMISSION_ID) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Granted. Start getting the location information
+                getLastLocation();
             }
         }
     }
@@ -222,6 +245,7 @@ public class Frg_DetailNewSurvey extends Fragment {
                                     requestNewLocationData();
                                 } else {
                                     strLocation = location.getLatitude()+","+ location.getLongitude();
+                                    txtLocation.setText(strLocation);
                                 }
                             }
                         }
@@ -236,7 +260,7 @@ public class Frg_DetailNewSurvey extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(getActivity(), "Turn on location", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                                startActivity(intent);                            }
+                                startActivityForResult(intent,2011);                            }
                         })
                         .show();
 
@@ -270,20 +294,19 @@ public class Frg_DetailNewSurvey extends Fragment {
         }
     };
 
-    private void addSurveyDetails(){
+    private void addSurveyDetails() {
         final Progress progress = new Progress(getActivity());
         progress.show();
-        Call<AddSurveyDetailsResponse> responseCall = RetrofitClient.getInstance().getApi().add_survey_details(USER.getReportingId(),USER.getUserId(),consumerDetailsItem.getConsumerNo(),
-                edtSurveyPairing.getText().toString(),edtHTline.getText().toString(),edtRSJPole.getText().toString(),edtSurveyBy.getText().toString(),
-                edtAproachRoad.getText().toString(),edtSoilStrata.getText().toString(),edtRow.getText().toString(),edtTreeCutting.getText().toString(),
-                "Remark",strLocation);
+        Call<AddSurveyDetailsResponse> responseCall = RetrofitClient.getInstance().getApi().add_survey_details(USER.getReportingId(), USER.getUserId(), consumerDetailsItem.getConsumerNo(),
+                edtSurveyPairing.getText().toString(), edtHTline.getText().toString(), edtRSJPole.getText().toString(), edtSurveyBy.getText().toString(),
+                edtAproachRoad.getText().toString(), edtSoilStrata.getText().toString(), edtRow.getText().toString(), edtTreeCutting.getText().toString(),
+                "Remark", strLocation, USER.getDivision());
         responseCall.enqueue(new Callback<AddSurveyDetailsResponse>() {
             @Override
             public void onResponse(Call<AddSurveyDetailsResponse> call, Response<AddSurveyDetailsResponse> response) {
                 progress.dismiss();
                 if (response.isSuccessful())
-                    if (response.body().isLoggedIn())
-                    {
+                    if (response.body().isLoggedIn()) {
                         new MaterialAlertDialogBuilder(getActivity(), R.style.AlertDiloge)
                                 .setTitle("Alert")
                                 .setMessage(response.body().getMsg())
@@ -295,9 +318,18 @@ public class Frg_DetailNewSurvey extends Fragment {
                                 })
                                 .show();
 
-                    }else {
-                        Constants.sessionExpired(getActivity(),response.body().getMsg());
+                    } else {
+                        Constants.Alert(getActivity(), response.body().getMsg());
                     }
+                    else {
+                    try {
+                        /*JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        Toast.makeText(getContext(), jObjError.getJSONObject("error").getString("message"), Toast.LENGTH_LONG).show();*/
+                        Log.d(TAG, "onResponse: "+response.errorBody().string());
+                    } catch (Exception e) {
+                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
 
             }
 
@@ -309,7 +341,11 @@ public class Frg_DetailNewSurvey extends Fragment {
 
     }
 
-
-
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2011){
+            getLastLocation();
+        }
+    }
 }

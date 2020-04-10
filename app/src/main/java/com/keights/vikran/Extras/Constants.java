@@ -5,11 +5,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import androidx.room.Room;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputEditText;
 import com.keights.vikran.LoginActivity;
 import com.keights.vikran.Network.UserDatabase;
 import com.keights.vikran.R;
@@ -17,6 +20,7 @@ import com.keights.vikran.R;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class Constants
 {
@@ -93,5 +97,40 @@ public class Constants
     public static void showFormValidationError(Activity activity , EditText editText ,String errorMessage){
         Alert(activity, errorMessage);
         editText.setError(errorMessage);
+    }
+
+    public static boolean validate(Activity activity,List<TextInputEditText> validationList) {
+        for(TextInputEditText e : validationList) {
+            if(!isValid(e)) {
+                //display your message here
+                showFormValidationError(activity, e, e.getTag().toString() + " Field Required");
+                return false;
+            }
+        }
+        return true;
+        //Of course if you want to display message for all EditTexts validation faults just wait with returning "false".
+    }
+
+    public static boolean isValid(TextInputEditText et) {
+        if (et.getText().toString().isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public static void hideKeyboardFrom(Context context, View view) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

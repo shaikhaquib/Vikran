@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.ActivityWiseQuantity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:padding="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/borderdark"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/fragment_title_padding_10"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp">
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="10 KVA DTR"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tenDTR"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:inputType="number"
+                android:tag="10 KVA DTR"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="16 KVA DTC"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/SixteenDTC"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:tag="16 KVA DTC"
+                android:inputType="number"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="25 KVA DTC"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/twentyfiveDTC"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:inputType="number"
+                android:tag="25 KVA DTC"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="HT Stringing in Mtr"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/SringingInMtr"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:inputType="number"
+                android:tag="HT Stringing in Mtr"
+                android:gravity="center"
+                android:padding="6dp"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="Inline Pole"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inlinePole"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:tag="Inline Pole"
+                android:inputType="number"
+                android:padding="6dp"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="Cut Point Pole S1"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/CutpointpoleS1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:tag="Cut Point Pole S1"
+                android:gravity="center"
+                android:padding="6dp"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="Cut Point Pole S2"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/CutpointpoleS2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:tag="Cut Point Pole S2"
+                android:padding="6dp"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="Cut Point Pole (Single)"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/CutpointpoleSingle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:tag="Cut Point Pole (Single)"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="Cut Point Pole (Double)"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/CutpointpoleDouble"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:inputType="number"
+                android:tag="Cut Point Pole (Double)"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="Tapping Pole"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tappingPoll"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:inputType="number"
+                android:tag="Tapping Pole"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="Guarding"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Guarding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:inputType="number"
+                android:tag="Guarding"
+                android:padding="6dp"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="Guarding Length in Mtr"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/GurdingLengthMtr"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:tag="Guarding Length in Mtr"
+                android:inputType="number"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="Stay Set"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/staySet"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:tag="Stay Set"
+                android:inputType="number"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="11 Mtr RSJ Pole"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/elevenMtrRSJPole"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:tag="11 Mtr RSJ Pole"
+                android:inputType="number"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="9 Mtr RSJ Pole"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nineMtrRSJPole"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:tag="9 Mtr RSJ Pole"
+                android:inputType="number"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="LT AB Cable in Mtr"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ltABCableinmeter"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:tag="LT AB Cable in Mtr"
+                android:inputType="number"
+                android:padding="6dp"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="11 KV AB Switch"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/elevenKVABSwitch"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:tag="11 KV AB Switch"
+                android:inputType="number"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="12 KV AB Switch"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/twelveKVABSwitch"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:tag="12 KV AB Switch"
+                android:inputType="number"
+                android:gravity="center"
+                android:padding="6dp"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="@android:color/white"
+        android:padding="4dp"
+        android:text="Activity Wise Quantity"
+        android:textAppearance="@style/toolbartext"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Execute"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple"
+        android:text="Execute"
+        android:layout_marginTop="16dp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:cornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:rippleColor="@color/blue_grey_400" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

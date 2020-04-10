@@ -64,6 +64,424 @@
 
     </LinearLayout>
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ConsumerDetailsView"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/borderdark"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:paddingBottom="@dimen/fragment_title_padding_10"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="16dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Consumer No"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cConsumerNo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="202045847332"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Consumer Name"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Shivaji Anna Awaghade"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Division"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cDivision"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Vaduj"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Taluka"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cTaluka"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Khatav"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Sub-Division"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cSubDivision"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Aundh"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Section"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cSection"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Pusesawali"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Village"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cVillage"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Chorade"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Voltage Level"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cVoltagelevel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="20"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="DTC Code"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cDTCCode"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="H127557"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Sanction Load"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/sanctionedLoad"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="3"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:background="@android:color/white"
+            android:padding="4dp"
+            android:text="Consumer Details"
+            android:textAppearance="@style/toolbartext"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
+
+        <TextView
+            android:id="@+id/resultMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Survey is not taken"
+            android:textAppearance="@style/toolbartext"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/resultMessage"
+            app:layout_constraintStart_toStartOf="@+id/resultMessage"
+            app:layout_constraintTop_toBottomOf="@id/resultMessage">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/Survey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/purple"
+                    android:text="Survey"
+                    android:visibility="gone"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    app:cornerRadius="16dp"
+                    app:rippleColor="@color/blue_grey_400" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/Execute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/purple"
+                    android:text="Execute"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    app:cornerRadius="16dp"
+                    android:visibility="gone"
+                    app:rippleColor="@color/blue_grey_400" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/JMC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/purple"
+                    android:text="JMC"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    app:cornerRadius="16dp"
+                    android:visibility="gone"
+                    app:rippleColor="@color/blue_grey_400" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/BackButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/purple"
+                    android:text="Back"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    app:cornerRadius="16dp"
+                    app:rippleColor="@color/blue_grey_400" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/addSurvey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="55dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/purple"
+                    android:text="Add Survey"
+                    android:visibility="gone"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    app:cornerRadius="16dp"
+                    app:rippleColor="@color/blue_grey_400" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <RelativeLayout
         android:id="@+id/fragemntContener"
         android:visibility="gone"

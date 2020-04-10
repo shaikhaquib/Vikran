@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class ConsumerDetailsItem implements Serializable {
+public class ConsumerDetailsItem implements Serializable	 {
 
 	@SerializedName("created_name")
 	private String createdName;
