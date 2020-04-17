@@ -50,6 +50,7 @@
                 android:gravity="center"
                 android:padding="6dp"
                 android:tag="Name of Feeder"
+                android:singleLine="true"
                 android:background="@drawable/borderdark"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
@@ -82,6 +83,7 @@
                 android:gravity="center"
                 android:padding="6dp"
                 android:inputType="number"
+                android:singleLine="true"
                 android:tag="T/F Make SI No."
                 android:background="@drawable/borderdark"
                 android:textColor="@color/grey_60"
@@ -115,6 +117,7 @@
                 android:gravity="center"
                 android:padding="6dp"
                 android:inputType="number"
+                android:singleLine="true"
                 android:tag="T/F Capacity in KVA"
                 android:background="@drawable/borderdark"
                 android:textColor="@color/grey_60"
@@ -138,6 +141,7 @@
                 android:layout_weight="4"
                 android:text="DTR Code"
                 android:inputType="number"
+                android:singleLine="true"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
 
@@ -182,6 +186,7 @@
                 android:padding="6dp"
                 android:tag="Meter No."
                 android:inputType="number"
+                android:singleLine="true"
                 android:background="@drawable/borderdark"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />

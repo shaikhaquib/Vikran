@@ -33,11 +33,11 @@
             android:theme="@style/TextInput">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inlinePole"
+                android:id="@+id/new_pole"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:hint="Inline Pole"
+                android:hint="New Pole"
                 android:padding="12.5dp"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
@@ -52,11 +52,11 @@
             android:theme="@style/TextInput">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/SingleCutPoint"
+                android:id="@+id/existing_pole"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:hint="Single Cut Point"
+                android:hint="Existing Pole"
                 android:padding="12.5dp"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
@@ -71,11 +71,11 @@
             android:theme="@style/TextInput">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/doubleCutPoint"
+                android:id="@+id/stay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:hint="Double Cut Point"
+                android:hint="Stay"
                 android:padding="12.5dp"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
@@ -86,6 +86,25 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:theme="@style/TextInput">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/span_in_mtr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:hint="Span In Mtr"
+                android:padding="12.5dp"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:text="0" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
             android:theme="@style/TextInput">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -99,7 +118,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        
+
 
         <LinearLayout
             android:layout_width="match_parent"

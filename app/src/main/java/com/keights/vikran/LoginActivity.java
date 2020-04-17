@@ -120,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                             protected void onPostExecute(Void aVoid) {
                                 super.onPostExecute(aVoid);
                                 sessionManager.setLogin(true);
+                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
                              //   new GetUsersAsyncTask().execute();
                             }
                         }.execute();

@@ -27,17 +27,18 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_10_kva_dtr"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/TextInput">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inlinePole"
+                android:id="@+id/_10_kva_dtr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:hint="Inline Pole"
+                android:hint="10 KVA DTR"
                 android:padding="12.5dp"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
@@ -46,17 +47,18 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_16_kva_dtr"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/TextInput">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/SingleCutPoint"
+                android:id="@+id/_16_kva_dtr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:hint="Single Cut Point"
+                android:hint="16 KVA DTR"
                 android:padding="12.5dp"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
@@ -65,17 +67,18 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_25_kva_dtr"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/TextInput">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/doubleCutPoint"
+                android:id="@+id/_25_kva_dtr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:hint="Double Cut Point"
+                android:hint="25 KVA DTR"
                 android:padding="12.5dp"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
@@ -86,6 +89,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:theme="@style/TextInput">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -99,7 +103,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        
+
 
         <LinearLayout
             android:layout_width="match_parent"

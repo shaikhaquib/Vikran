@@ -87,7 +87,7 @@ public interface Api {
             @Field("guarding_len_mtr") String guarding_len_mtr,
             @Field("stay_set") String stay_set,
             @Field("11_mtr_rjs_pole") String _11_mtr_rjs_pole,
-            @Field("9_mtr_stud_pole ") String _9_mtr_stud_pole,
+            @Field("9_mtr_stud_pole") String _9_mtr_stud_pole,
             @Field("lt_ab_cable_mtr") String lt_ab_cable_mtr,
             @Field("sub_station_name") String sub_station_name,
             @Field("gps_cordinat_consu_east") String gps_cordinat_consu_east,
@@ -118,6 +118,42 @@ public interface Api {
             @Field("span_in_mtr") String span_in_mtr,
             @Field("tapping_from_existing_dtc") String tapping_from_existing_dtc,
             @Field("remarks") String remarks);
+
+    @FormUrlEncoded
+    @POST("add_jmc_b_details")
+    Call<JMCResponse> add_jmc_b_details(
+            @Field("reporting_id") String reporting_id,
+            @Field("user_id") String user_id,
+            @Field("consumer_no") String consumer_no,
+            @Field("division") String division,
+            @Field("voltage_type") String voltage_type,
+            @Field("10_kva_dtr") String _10_kva_dtr,
+            @Field("16_kva_dtr") String _16_kva_dtr,
+            @Field("25_kva_dtr") String _25_kva_dtr
+            );
+
+    @FormUrlEncoded
+    @POST("add_jmc_c_details")
+    Call<JMCResponse> add_jmc_c_details(
+            @Field("reporting_id") String reporting_id,
+            @Field("user_id") String user_id,
+            @Field("consumer_no") String consumer_no,
+            @Field("division") String division,
+            @Field("new_pole")      String new_pole,
+            @Field("existing_pole") String existing_pole,
+            @Field("stay")          String stay,
+            @Field("span_in_mtr")   String span_in_mtr
+            );
+
+ @FormUrlEncoded
+    @POST("add_jmc_d_details")
+    Call<JMCResponse> add_jmc_d_details(
+            @Field("reporting_id") String reporting_id,
+            @Field("user_id") String user_id,
+            @Field("consumer_no") String consumer_no,
+            @Field("division") String division,
+            @Field("service_connection") String service_connection
+            );
 
 
 }

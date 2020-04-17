@@ -16,6 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.keights.vikran.Extras.Constants;
 import com.keights.vikran.Extras.Progress;
 import com.keights.vikran.Network.RetrofitClient;
@@ -45,6 +46,8 @@ public class ActivityJMC extends AppCompatActivity {
     private View bottom_sheet;
     AutoCompleteTextView editTextFilledExposedDropdown;
     ConsumerDetailsItem consumerDetailsItem;
+
+    String strVoltage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +79,8 @@ public class ActivityJMC extends AppCompatActivity {
 
         DTR_Section.setText(Voltage_Level[0]+" DTR Section ");
         Line_Section.setText(Voltage_Level[0]+" Line Section ");
-        editTextFilledExposedDropdown.setText(Voltage_Level[0]);
+        strVoltage= Voltage_Level[0]+" Line Section ";
+     //   editTextFilledExposedDropdown.setText(Voltage_Level[0]);
 
         editTextFilledExposedDropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -85,6 +89,7 @@ public class ActivityJMC extends AppCompatActivity {
                                     long id) {
                 DTR_Section.setText(Voltage_Level[position]+" DTR Section ");
                 Line_Section.setText(Voltage_Level[position]+" Line Section ");
+                strVoltage = Voltage_Level[position];
             }
         });
 
@@ -112,6 +117,25 @@ public class ActivityJMC extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showBottomSheetDialog("11 Mtr RS Joist","11",editTextFilledExposedDropdown.getText().toString());
+            }
+        });
+
+        findViewById(R.id.sectionB).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showBottomSheetSectionB(DTR_Section.getText().toString());
+            }
+        });
+        findViewById(R.id.sectionC).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showBottomSheetSectionC("LT Line Section");
+            }
+        });
+        findViewById(R.id.sectionD).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showBottomSheetSectionD("Meter Board");
             }
         });
 
@@ -167,6 +191,167 @@ public class ActivityJMC extends AppCompatActivity {
         });
     }
 
+
+    private void showBottomSheetSectionB(String title) {
+        if (mBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            mBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+
+        final View view ;
+
+        mBottomSheetDialog = new BottomSheetDialog(this);
+        mBottomSheetDialog.setCancelable(false);
+
+        view =  getLayoutInflater().inflate(R.layout.jmc_sectionb, null);
+
+        mBottomSheetDialog.setContentView(view);
+
+        TextView txtTitle = view.findViewById(R.id.txtTitle);
+        txtTitle.setText(title);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mBottomSheetDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+        final TextInputEditText _10_kva_dtr = view.findViewById(R.id._10_kva_dtr);
+        final TextInputEditText _16_kva_dtr = view.findViewById(R.id._16_kva_dtr);
+        final TextInputEditText _25_kva_dtr = view.findViewById(R.id._25_kva_dtr);
+
+        final TextInputLayout til_10_kva_dtr = view.findViewById(R.id.til_10_kva_dtr);
+        final TextInputLayout til_16_kva_dtr = view.findViewById(R.id.til_16_kva_dtr);
+        final TextInputLayout til_25_kva_dtr = view.findViewById(R.id.til_25_kva_dtr);
+
+        til_10_kva_dtr.setHint(strVoltage+" "+_10_kva_dtr.getHint().toString());
+        til_16_kva_dtr.setHint(strVoltage+" "+_16_kva_dtr.getHint().toString());
+        til_25_kva_dtr.setHint(strVoltage+" "+_25_kva_dtr.getHint().toString());
+
+        view.findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                add_jmc_b_details(_10_kva_dtr.getText().toString(),
+                        _16_kva_dtr.getText().toString(),
+                        _25_kva_dtr.getText().toString());
+            }
+        });
+
+
+        mBottomSheetDialog.show();
+        mBottomSheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mBottomSheetDialog = null;
+            }
+        });
+
+        view.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBottomSheetDialog.dismiss();
+            }
+        });
+    }
+    private void showBottomSheetSectionC(String title) {
+        if (mBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            mBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+
+        final View view ;
+
+        mBottomSheetDialog = new BottomSheetDialog(this);
+        mBottomSheetDialog.setCancelable(false);
+
+        view =  getLayoutInflater().inflate(R.layout.jmc_sectionc, null);
+
+        mBottomSheetDialog.setContentView(view);
+
+        TextView txtTitle = view.findViewById(R.id.txtTitle);
+        txtTitle.setText(title);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mBottomSheetDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+        final TextInputEditText new_pole = view.findViewById(R.id.new_pole);
+        final TextInputEditText existing_pole = view.findViewById(R.id.existing_pole);
+        final TextInputEditText stay = view.findViewById(R.id.stay);
+        final TextInputEditText span_in_mtr = view.findViewById(R.id.span_in_mtr);
+
+
+        view.findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                add_jmc_c_details(new_pole.getText().toString(),
+                        existing_pole.getText().toString(),
+                        stay.getText().toString(),
+                        span_in_mtr.getText().toString());
+            }
+        });
+
+
+        mBottomSheetDialog.show();
+        mBottomSheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mBottomSheetDialog = null;
+            }
+        });
+
+        view.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBottomSheetDialog.dismiss();
+            }
+        });
+    }
+    private void showBottomSheetSectionD(String title) {
+        if (mBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            mBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+
+        final View view ;
+
+        mBottomSheetDialog = new BottomSheetDialog(this);
+        mBottomSheetDialog.setCancelable(false);
+
+        view =  getLayoutInflater().inflate(R.layout.jmc_sectiond, null);
+
+        mBottomSheetDialog.setContentView(view);
+
+        TextView txtTitle = view.findViewById(R.id.txtTitle);
+        txtTitle.setText(title);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mBottomSheetDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+
+        final TextInputEditText service_connection = view.findViewById(R.id.service_connection);
+
+
+        view.findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                add_jmc_d_details(service_connection.getText().toString());
+            }
+        });
+
+
+        mBottomSheetDialog.show();
+        mBottomSheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mBottomSheetDialog = null;
+            }
+        });
+
+        view.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBottomSheetDialog.dismiss();
+            }
+        });
+    }
+
+
     private void bottomsheet_9mtr(View view) {
 
         final TextInputEditText inlinePole = view.findViewById(R.id.inlinePole);
@@ -181,6 +366,7 @@ public class ActivityJMC extends AppCompatActivity {
         final TextInputEditText staySet = view.findViewById(R.id.staySet);
         final TextInputEditText ItypeDTC = view.findViewById(R.id.ItypeDTC);
         final TextInputEditText spanInMtr = view.findViewById(R.id.spanInMtr);
+        final TextInputEditText remark = view.findViewById(R.id.remark);
 
         view.findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,7 +374,7 @@ public class ActivityJMC extends AppCompatActivity {
                 addJmcDetails("9 Mtr",inlinePole.getText().toString() , SingleCutPoint.getText().toString() ,
                         doubleCutPoint.getText().toString(),newTappingPole.getText().toString() , ExistingTappingPole.getText().toString() , TappingFromDtc.getText().toString(),
                         studPole.getText().toString(),Guarding.getText().toString(),GourdingSpan.getText().toString(),
-                        staySet.getText().toString(),ItypeDTC.getText().toString(),spanInMtr.getText().toString());
+                        staySet.getText().toString(),ItypeDTC.getText().toString(),spanInMtr.getText().toString(),remark.getText().toString());
             }
         });
     }
@@ -196,22 +382,131 @@ public class ActivityJMC extends AppCompatActivity {
        final TextInputEditText inlinePole = view.findViewById(R.id.inlinePole);
        final TextInputEditText SingleCutPoint = view.findViewById(R.id.SingleCutPoint);
        final TextInputEditText doubleCutPoint = view.findViewById(R.id.doubleCutPoint);
+       final TextInputEditText remark = view.findViewById(R.id.remark);
 
         view.findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addJmcDetails("11 Mtr" , inlinePole.getText().toString() , SingleCutPoint.getText().toString() , doubleCutPoint.getText().toString(),"0","0","0","0","0","0","0","0","0");
+                addJmcDetails("11 Mtr" , inlinePole.getText().toString() , SingleCutPoint.getText().toString() , doubleCutPoint.getText().toString(),"0","0","0","0","0","0","0","0","0",remark.getText().toString());
             }
 
         });
 
     }
     private void addJmcDetails(String pollType ,String inlinePole ,String SingleCutPoint ,String doubleCutPoint,String newTappingPole ,String ExistingTappingPole ,String TappingFromDtc,
-                               String studPole,String Guarding,String GourdingSpan,String staySet,String  ItypeDTC,String spanInMtr) {
+                               String studPole,String Guarding,String GourdingSpan,String staySet,String  ItypeDTC,String spanInMtr,String remark) {
         final Progress progress = new Progress(ActivityJMC.this);
         progress.show();
-        Call<JMCResponse> responseCall = RetrofitClient.getInstance().getApi().add_jmc_details(USER.getReportingId(),USER.getUserId(),consumerDetailsItem.getConsumerNo(),USER.getDivision(),editTextFilledExposedDropdown.getText().toString(),pollType,
-                inlinePole,SingleCutPoint,doubleCutPoint,newTappingPole,ExistingTappingPole,studPole,Guarding,GourdingSpan,staySet,ItypeDTC,spanInMtr,TappingFromDtc,"--");
+        Call<JMCResponse> responseCall = RetrofitClient.getInstance().getApi().add_jmc_details(USER.getReportingId(),USER.getUserId(),consumerDetailsItem.getConsumerNo(),USER.getDivision(),editTextFilledExposedDropdown.getText().toString().replace(" KV",""),pollType,
+                inlinePole,SingleCutPoint,doubleCutPoint,newTappingPole,ExistingTappingPole,studPole,Guarding,GourdingSpan,staySet,ItypeDTC,spanInMtr,TappingFromDtc,remark);
+        responseCall.enqueue(new Callback<JMCResponse>() {
+            @Override
+            public void onResponse(Call<JMCResponse> call, Response<JMCResponse> response) {
+                progress.dismiss();
+                if (response.isSuccessful())
+                    if (response.body().isLoggedIn())
+                    {
+                        new MaterialAlertDialogBuilder(ActivityJMC.this, R.style.AlertDiloge)
+                                .setTitle("Alert")
+                                .setMessage(response.body().getMsg())
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                       mBottomSheetDialog.dismiss();
+                                    }
+                                })
+                                .show();
+
+                    }else {
+                        Constants.Alert(ActivityJMC.this,response.body().getMsg());
+                    }
+
+            }
+
+            @Override
+            public void onFailure(Call<JMCResponse> call, Throwable t) {
+                progress.dismiss();
+            }
+        });
+
+    }
+    private void add_jmc_b_details(String _10_kva_dtr ,String _16_kva_dtr ,String _25_kva_dtr ) {
+        final Progress progress = new Progress(ActivityJMC.this);
+        progress.show();
+        Call<JMCResponse> responseCall = RetrofitClient.getInstance().getApi().add_jmc_b_details(USER.getReportingId(),USER.getUserId(),consumerDetailsItem.getConsumerNo(),USER.getDivision(),editTextFilledExposedDropdown.getText().toString().replace(" KV",""),
+                _10_kva_dtr,_16_kva_dtr,_25_kva_dtr);
+        responseCall.enqueue(new Callback<JMCResponse>() {
+            @Override
+            public void onResponse(Call<JMCResponse> call, Response<JMCResponse> response) {
+                progress.dismiss();
+                if (response.isSuccessful())
+                    if (response.body().isLoggedIn())
+                    {
+                        new MaterialAlertDialogBuilder(ActivityJMC.this, R.style.AlertDiloge)
+                                .setTitle("Alert")
+                                .setMessage(response.body().getMsg())
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                       mBottomSheetDialog.dismiss();
+                                    }
+                                })
+                                .show();
+
+                    }else {
+                        Constants.Alert(ActivityJMC.this,response.body().getMsg());
+                    }
+
+            }
+
+            @Override
+            public void onFailure(Call<JMCResponse> call, Throwable t) {
+                progress.dismiss();
+            }
+        });
+
+    }
+    private void add_jmc_c_details(String new_pole, String existing_pole, String stay, String span_in_mtr) {
+        final Progress progress = new Progress(ActivityJMC.this);
+        progress.show();
+        Call<JMCResponse> responseCall = RetrofitClient.getInstance().getApi().add_jmc_c_details(USER.getReportingId(),USER.getUserId(),consumerDetailsItem.getConsumerNo(),USER.getDivision()
+                ,new_pole,existing_pole,stay,span_in_mtr);
+        responseCall.enqueue(new Callback<JMCResponse>() {
+            @Override
+            public void onResponse(Call<JMCResponse> call, Response<JMCResponse> response) {
+                progress.dismiss();
+                if (response.isSuccessful())
+                    if (response.body().isLoggedIn())
+                    {
+                        new MaterialAlertDialogBuilder(ActivityJMC.this, R.style.AlertDiloge)
+                                .setTitle("Alert")
+                                .setMessage(response.body().getMsg())
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                       mBottomSheetDialog.dismiss();
+                                    }
+                                })
+                                .show();
+
+                    }else {
+                        Constants.Alert(ActivityJMC.this,response.body().getMsg());
+                    }
+
+            }
+
+            @Override
+            public void onFailure(Call<JMCResponse> call, Throwable t) {
+                progress.dismiss();
+            }
+        });
+
+    }
+    private void add_jmc_d_details( String service_connection) {
+        final Progress progress = new Progress(ActivityJMC.this);
+        progress.show();
+        Call<JMCResponse> responseCall = RetrofitClient.getInstance().getApi().add_jmc_d_details(USER.getReportingId(),USER.getUserId(),consumerDetailsItem.getConsumerNo(),USER.getDivision()
+                ,service_connection);
         responseCall.enqueue(new Callback<JMCResponse>() {
             @Override
             public void onResponse(Call<JMCResponse> call, Response<JMCResponse> response) {

@@ -19,6 +19,7 @@ import com.keights.vikran.Activity.ExecutionActivity;
 import com.keights.vikran.Activity.MyWork;
 import com.keights.vikran.Activity.NewSurveyActivity;
 import com.keights.vikran.Activity.Reports;
+import com.keights.vikran.Extras.AppExecutor;
 import com.keights.vikran.Extras.Constants;
 import com.keights.vikran.Extras.Progress;
 import com.keights.vikran.Network.UserDatabase;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         userDatabase = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, Constants.DATABASE_NAME).
                 fallbackToDestructiveMigration().build();
-        new GetUsersAsyncTask().execute();
+        GetUsersAsyncTask();
         //Log.d(TAG, "onCreate: "+LoginActivity.USER.getUsername());
 
 
@@ -105,38 +106,20 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class GetUsersAsyncTask extends AsyncTask<Void, Void, UserInfo>
-    {
-       Progress progress;
+    private void GetUsersAsyncTask(){
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progress = new Progress(MainActivity. this);
-            progress.show();
-        }
-
-        @Override
-        protected UserInfo doInBackground(Void... url) {
-            return userDatabase.dbAccess().getUserDetail();
-        }
-
-        @Override
-        protected void onPostExecute(UserInfo userinfoItems) {
-            super.onPostExecute(userinfoItems);
-            try {
-                LoginActivity.USER = userinfoItems;
+        AppExecutor.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                ///Your data access task////
+                LoginActivity.USER  = userDatabase.dbAccess().getUserDetail();
                 initData(toolbar);
 
-           /*     startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();*/
-            } catch (Exception e) {
-                e.printStackTrace();
             }
-           progress.dismiss();
-        }
-
+        });
     }
+
+
 
 
 }

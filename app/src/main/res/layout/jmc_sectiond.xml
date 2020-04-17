@@ -33,11 +33,11 @@
             android:theme="@style/TextInput">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inlinePole"
+                android:id="@+id/service_connection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:hint="Inline Pole"
+                android:hint="Service Connection"
                 android:padding="12.5dp"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
@@ -45,61 +45,9 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/TextInput">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/SingleCutPoint"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:hint="Single Cut Point"
-                android:padding="12.5dp"
-                android:inputType="numberDecimal"
-                android:singleLine="true"
-                android:text="0" />
 
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/TextInput">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/doubleCutPoint"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:hint="Double Cut Point"
-                android:padding="12.5dp"
-                android:inputType="numberDecimal"
-                android:singleLine="true"
-                android:text="0" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/TextInput">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/remark"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:hint="Remark"
-                android:padding="12.5dp"
-                android:text="0" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        
 
         <LinearLayout
             android:layout_width="match_parent"

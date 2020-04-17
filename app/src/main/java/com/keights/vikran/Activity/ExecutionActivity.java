@@ -141,10 +141,12 @@ public class ExecutionActivity extends AppCompatActivity {
         findViewById(R.id.secondStep).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate(ExecutionActivity.this,validationList))
-                {   findViewById(R.id.secondStepView).setVisibility(View.VISIBLE);
+               /* if (validate(ExecutionActivity.this,validationList))
+                { */
+                    findViewById(R.id.secondStepView).setVisibility(View.VISIBLE);
                     findViewById(R.id.firstStepView).setVisibility(View.GONE);
-                    hideKeyboardFrom(ExecutionActivity.this, feederNote);}
+                    hideKeyboardFrom(ExecutionActivity.this, feederNote);
+            //}
             }
         });
 
@@ -207,15 +209,15 @@ public class ExecutionActivity extends AppCompatActivity {
         findViewById(R.id.Execute).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate(ExecutionActivity.this,SecondStep)){
-                    AddExection("");
-                }
+             //   if (validate(ExecutionActivity.this,SecondStep)){
+                    AddExection();
+             //   }
             }
         });
     
     }
 
-    private void AddExection(String consumerNo){
+    private void AddExection(){
         final Progress progress = new Progress(ExecutionActivity.this);
         progress.show();
         Call<AddExecutionResponse> responseCall = RetrofitClient.getInstance().getApi().add_execution_details(USER.getReportingId(),
