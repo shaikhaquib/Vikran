@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.keights.vikran">
 
     <dist:module dist:instant="true" />
@@ -8,6 +9,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,9 +19,12 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@drawable/ic_vikran_app_icon_01"
         android:supportsRtl="true"
+        tools:replace="android:icon"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ActivityJMC">
-        </activity>
+        <activity android:name=".Activity.ActivityBilling"></activity>
+        <activity android:name=".Activity.ActivityPermissionandcommi" />
+        <activity android:name=".Activity.ActivityRTC" />
+        <activity android:name=".Activity.ActivityJMC" />
         <activity android:name=".Activity.SurveyDetailActivity" />
         <activity android:name=".Activity.ExecutionActivity" />
         <activity android:name=".Activity.ConsumerList" />
@@ -40,6 +46,16 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <provider
+            android:name=".GenericFileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/external_files" />
+        </provider>
     </application>
 
 </manifest>

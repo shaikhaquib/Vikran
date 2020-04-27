@@ -1,11 +1,22 @@
 package com.keights.vikran.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -13,18 +24,34 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
+import com.keights.vikran.BuildConfig;
 import com.keights.vikran.Extras.Constants;
+import com.keights.vikran.Extras.FileDownloader;
 import com.keights.vikran.Extras.Progress;
 import com.keights.vikran.Fragment.Frg_DetailNewSurvey;
 import com.keights.vikran.Network.RetrofitClient;
 import com.keights.vikran.R;
 import com.keights.vikran.ResponseModel.ConsumerDetailsItem;
-import com.keights.vikran.ResponseModel.ExecutionDetailsItem;
 import com.keights.vikran.ResponseModel.SearchConsumerResponse;
 import com.keights.vikran.ResponseModel.SurveyDetailsItem;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,7 +65,12 @@ public class NewSurveyActivity extends AppCompatActivity {
     ConsumerDetailsItem consumerDetailsItem;
     SurveyDetailsItem surveyDetailsItem ;
     private TextView cConsumerNo,cName,cDivision,cTaluka,cSubDivision,cSection,cVillage,cVoltagelevel,cDTCCode,sanctionedLoad,resultMessage;
-    MaterialButton addSurvey,Execute,Survey,JMC;
+    MaterialButton addSurvey,Execute,Survey,JMC,ExecutionPdf,Rtc,PermissionandCommission,Billing;
+    private static final String TAG = "NewSurveyActivity";
+    private static final String[] PERMISSIONS = {android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    public static final int PERMISSION_REQUEST_CODE = 1001;
+    int notificationId;
+    NotificationManager notificationManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +82,10 @@ public class NewSurveyActivity extends AppCompatActivity {
         Execute = findViewById(R.id.Execute);
         Survey = findViewById(R.id.Survey);
         JMC = findViewById(R.id.JMC);
+        ExecutionPdf = findViewById(R.id.ExecutionPdf);
+        Rtc = findViewById(R.id.RTC);
+        Billing = findViewById(R.id.Billing);
+        PermissionandCommission = findViewById(R.id.PermissionandCommission);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Division : "+USER.getDivision());
         findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
@@ -129,7 +165,7 @@ public class NewSurveyActivity extends AppCompatActivity {
 
     }
 
-    private void VerifyData(SearchConsumerResponse body) {
+    private void VerifyData(final SearchConsumerResponse body) {
         findViewById(R.id.consumerNoLayout).setVisibility(View.GONE);
         findViewById(R.id.ConsumerDetailsView).setVisibility(View.VISIBLE);
 
@@ -150,22 +186,58 @@ public class NewSurveyActivity extends AppCompatActivity {
         if(body.getConsumerDetails().getSurveyDetails().isEmpty()){
             resultMessage.setText("Survey pending please add one ");
             addSurvey.setVisibility(View.VISIBLE);
+        }else if(body.getConsumerDetails().getRtcDetails().isEmpty()){
+            resultMessage.setText("Rtc is not competed");
+            Survey.setVisibility(View.VISIBLE);
+            Rtc.setVisibility(View.VISIBLE);
+
         }else if(body.getConsumerDetails().getExecutionDetails().isEmpty()){
             resultMessage.setText("Execution is not taken");
             Survey.setVisibility(View.VISIBLE);
+            Rtc.setVisibility(View.VISIBLE);
             Execute.setVisibility(View.VISIBLE);
 
         }else if(body.getConsumerDetails().getExecutionDetails().get(0).getExecutionStatus().equals("not_approved")){
             resultMessage.setText("Execution not approved");
             Survey.setVisibility(View.VISIBLE);
             Execute.setVisibility(View.VISIBLE);
+            Rtc.setVisibility(View.VISIBLE);
         } else if(body.getConsumerDetails().getExecutionDetails().get(0).getExecutionStatus().equals("pending")){
             resultMessage.setText("Execution is under review");
+            Rtc.setVisibility(View.VISIBLE);
             Survey.setVisibility(View.VISIBLE);
-        } else if(body.getConsumerDetails().getExecutionDetails().get(0).getExecutionStatus().equals("approved")){
+        } else if(body.getConsumerDetails().getExecutionDetails().get(0).getExecutionStatus().equals("approved")  && body.getConsumerDetails().getJmcSectionADetails().isEmpty()){
             resultMessage.setText("Execution is successfully approved");
             Survey.setVisibility(View.VISIBLE);
             JMC.setVisibility(View.VISIBLE);
+            //ExecutionPdf.setVisibility(View.VISIBLE);
+            Rtc.setVisibility(View.VISIBLE);
+        }else if(body.getConsumerDetails().getJmcSectionBDetails().isEmpty()){
+            resultMessage.setText("JMC Section A is competed.");
+            Survey.setVisibility(View.VISIBLE);
+            JMC.setVisibility(View.VISIBLE);
+            //ExecutionPdf.setVisibility(View.VISIBLE);
+            Rtc.setVisibility(View.VISIBLE);
+        }else if(body.getConsumerDetails().getJmcSectionCDetails().isEmpty()){
+            resultMessage.setText("JMC Section B is competed.");
+            Survey.setVisibility(View.VISIBLE);
+            JMC.setVisibility(View.VISIBLE);
+            //ExecutionPdf.setVisibility(View.VISIBLE);
+            Rtc.setVisibility(View.VISIBLE);
+        }else if(body.getConsumerDetails().getJmcSectionBDetails().isEmpty()){
+            resultMessage.setText("JMC Section C is competed.");
+            Survey.setVisibility(View.VISIBLE);
+            JMC.setVisibility(View.VISIBLE);
+            //ExecutionPdf.setVisibility(View.VISIBLE);
+            Rtc.setVisibility(View.VISIBLE);
+        }else if(!body.getConsumerDetails().getJmcSectionDDetails().isEmpty()){
+            resultMessage.setText("JMC Completed ");
+            Survey.setVisibility(View.VISIBLE);
+            JMC.setVisibility(View.VISIBLE);
+            //ExecutionPdf.setVisibility(View.VISIBLE);
+            Rtc.setVisibility(View.VISIBLE);
+            PermissionandCommission.setVisibility(View.VISIBLE);
+            Billing.setVisibility(View.VISIBLE);
         }
         addSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,7 +245,12 @@ public class NewSurveyActivity extends AppCompatActivity {
                 openAddSurveyFragement();
             }
         });
-
+        Rtc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addRTC(body);
+            }
+        });
         Execute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,23 +269,93 @@ public class NewSurveyActivity extends AppCompatActivity {
                 mJmc();
             }
         });
+        Billing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addBilling(body);
+            }
+        });
+        PermissionandCommission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addPerComm(body);
+            }
+        });
+        ExecutionPdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    PermissionCheck();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
 
         }
+
+    private void PermissionCheck() throws IOException {
+        Log.d(TAG, "openN: ");
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkPermission()) {
+                new DownloadFile().execute("https://vikrangroup.com/portal/download_jobcard/20180002295","Execute.pdf");
+            } else {
+                requestPermission();
+            }
+        }else {
+            new DownloadFile().execute("https://vikrangroup.com/portal/download_jobcard/20180002295","Execute.pdf");
+        }
+    }
+
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(NewSurveyActivity.this,android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(NewSurveyActivity.this,new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE},PERMISSION_REQUEST_CODE);
+    }
+
+
+
 
     private void SurveyDetails() {
         Intent intent = new Intent(getApplicationContext(),SurveyDetailActivity.class);
         intent.putExtra("Data", consumerDetailsItem);
         intent.putExtra("surveyDetailsItem", surveyDetailsItem);
         startActivity(intent);
-        finish();
+    }
+    private void addRTC(SearchConsumerResponse body) {
+        Intent intent = new Intent(getApplicationContext(), ActivityRTC.class);
+        intent.putExtra("Data", consumerDetailsItem);
+        if (!body.getConsumerDetails().getRtcDetails().isEmpty())
+         intent.putExtra("RTC", body.getConsumerDetails().getRtcDetails().get(0));
+        startActivity(intent);
+    }
+    private void addPerComm(SearchConsumerResponse body) {
+        Intent intent = new Intent(getApplicationContext(), ActivityPermissionandcommi.class);
+        intent.putExtra("Data", consumerDetailsItem);
+        if (!body.getConsumerDetails().getPerComDetails().isEmpty())
+         intent.putExtra("perComDetailsItem", body.getConsumerDetails().getPerComDetails().get(0));
+        startActivity(intent);
+    }
+    private void addBilling(SearchConsumerResponse body) {
+        Intent intent = new Intent(getApplicationContext(), ActivityBilling.class);
+        intent.putExtra("Data", consumerDetailsItem);
+        if (!body.getConsumerDetails().getBillingDetails().isEmpty())
+         intent.putExtra("billingDetailsItem", body.getConsumerDetails().getBillingDetails().get(0));
+        startActivity(intent);
     }
     private void mJmc() {
         Intent intent = new Intent(getApplicationContext(),ActivityJMC.class);
         intent.putExtra("Data", consumerDetailsItem);
         intent.putExtra("surveyDetailsItem", surveyDetailsItem);
         startActivity(intent);
-        finish();
     }
 
         private void openExecutePage(){
@@ -216,7 +363,6 @@ public class NewSurveyActivity extends AppCompatActivity {
             intent.putExtra("Data", consumerDetailsItem);
             intent.putExtra("surveyId", surveyDetailsItem.getSurveyId());
             startActivity(intent);
-            finish();
         }
 
     private void openAddSurveyFragement(){
@@ -235,6 +381,167 @@ public class NewSurveyActivity extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frgHolder, frg_detailNewSurvey);
         transaction.commit();
+    }
+
+
+    private class DownloadFile extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            showNotification("Download in process...","Vikran is downloading");
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            Log.v(TAG, "doInBackground() Method invoked ");
+
+            String fileUrl = strings[0];   // -> http://maven.apache.org/maven-1.x/maven.pdf
+            String fileName = strings[1];  // -> maven.pdf
+            String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
+            File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+
+            File pdfFile = new File(folder, fileName);
+            Log.v(TAG, "doInBackground() pdfFile invoked " + pdfFile.getAbsolutePath());
+            Log.v(TAG, "doInBackground() pdfFile invoked " + pdfFile.getAbsoluteFile());
+
+            try {
+                pdfFile.createNewFile();
+                Log.v(TAG, "doInBackground() file created" + pdfFile);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e(TAG, "doInBackground() error" + e.getMessage());
+                Log.e(TAG, "doInBackground() error" + e.getStackTrace());
+
+
+            }
+            Log.v(TAG, "doInBackground() file download completed");
+
+            if (FileDownloader.downloadFile(fileUrl, pdfFile))
+                return pdfFile.getPath();
+            else
+                return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            removeNotification();
+            if (s == null){
+                Constants.Alert(NewSurveyActivity.this,"Some thing went wrong while downloading file.\n Please Check your Internet connection or contact admin");
+            }else {
+                new MaterialAlertDialogBuilder(NewSurveyActivity.this, R.style.AlertDiloge)
+                        .setTitle("Download Complete")
+                        .setMessage("File has been downloaded successfully in download folder do you want to preview.")
+                        .setPositiveButton("Preview", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                File d = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);  // -> filename = maven.pdf
+                                File pdfFile = new File(d, "Execute.pdf");
+
+                                Log.v(TAG, "view() Method pdfFile " + pdfFile.getAbsolutePath());
+
+                                Uri path = FileProvider.getUriForFile(NewSurveyActivity.this, BuildConfig.APPLICATION_ID + ".fileprovider", pdfFile);
+
+
+                                Log.v(TAG, "view() Method path " + path);
+
+                                Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
+                                pdfIntent.setDataAndType(path, "application/pdf");
+                                pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                pdfIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                                try {
+                                    startActivity(pdfIntent);
+                                } catch (ActivityNotFoundException e) {
+                                    Toast.makeText(NewSurveyActivity.this, "No Application available to view PDF", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        })
+                        .setNeutralButton("Later",null)
+                        .show();
+
+            }
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    new DownloadFile().execute("https://vikrangroup.com/portal/download_jobcard/20180002295","Execute.pdf");
+                } else {
+                    new MaterialAlertDialogBuilder(NewSurveyActivity.this, R.style.AlertDiloge)
+                            .setTitle("Storage Permission Required")
+                            .setMessage("To download file Storage Permission Required")
+                            .setPositiveButton("Give Permission", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(NewSurveyActivity.this)) {
+                                        Intent mSettingsIntent = mSettingsIntent = new Intent(Intent.ACTION_MAIN)
+                                                .setAction(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                                        try {
+                                            startActivity(mSettingsIntent);
+                                        } catch (Exception ex) {
+                                            Log.w("ErrorLog", "Unable to launch app draw overlay settings " + mSettingsIntent, ex);
+                                        }
+                                    }
+                                    else{
+                                        //Device does not support app overlay
+                                    }
+                                }
+                            })
+                            .setNeutralButton("Close",null)
+                            .setCancelable(false)
+                            .show();
+                }
+                break;
+        }
+    }
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public void showNotification(String message , String Title) {
+
+        Random random = new Random();
+        notificationId = random.nextInt(9999 - 1000) + 1000;
+
+        notificationManager = (NotificationManager) getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        String channelId = "vikran";
+        String channelName = "vdownload";
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel(
+                    channelId, channelName, importance);
+            notificationManager.createNotificationChannel(mChannel);
+        }
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.BigTextStyle inboxStyle = new NotificationCompat.BigTextStyle();
+        inboxStyle.bigText(message);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getBaseContext(), channelId)
+                .setSmallIcon(android.R.drawable.stat_sys_download)
+                .setLargeIcon(BitmapFactory.decodeResource(NewSurveyActivity.this.getResources(),
+                        R.drawable.ic_vikran_app_login_logo_01))
+                .setContentTitle(Title)
+                .setSound(alarmSound)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                .setContentText(message);
+
+
+
+        notificationManager.notify(notificationId, mBuilder.build());
+
+    }
+
+    public void removeNotification () {
+        if ( notificationId != 0 )
+            notificationManager.cancel( notificationId ) ;
     }
 
 }

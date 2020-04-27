@@ -5,13 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -79,7 +83,7 @@ public class ActivityJMC extends AppCompatActivity {
 
         DTR_Section.setText(Voltage_Level[0]+" DTR Section ");
         Line_Section.setText(Voltage_Level[0]+" Line Section ");
-        strVoltage= Voltage_Level[0]+" Line Section ";
+        strVoltage= Voltage_Level[0];
      //   editTextFilledExposedDropdown.setText(Voltage_Level[0]);
 
         editTextFilledExposedDropdown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -144,9 +148,26 @@ public class ActivityJMC extends AppCompatActivity {
         cSubDivision.setText(consumerDetailsItem.getSubDivision());
         cSection.setText(consumerDetailsItem.getSection());
         Consumer.setText(consumerDetailsItem.getConsumerNo());
+        initToolbar();
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        } else {
+            Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    private void initToolbar() {
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
 
     private void showBottomSheetDialog(String title, String mtr,String voltagelevel) {
         if (mBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
@@ -365,16 +386,17 @@ public class ActivityJMC extends AppCompatActivity {
         final TextInputEditText GourdingSpan = view.findViewById(R.id.GourdingSpan);
         final TextInputEditText staySet = view.findViewById(R.id.staySet);
         final TextInputEditText ItypeDTC = view.findViewById(R.id.ItypeDTC);
+        final TextInputEditText i_type_dtc_inline = view.findViewById(R.id.i_type_dtc_inline);
         final TextInputEditText spanInMtr = view.findViewById(R.id.spanInMtr);
         final TextInputEditText remark = view.findViewById(R.id.remark);
 
         view.findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addJmcDetails("9 Mtr",inlinePole.getText().toString() , SingleCutPoint.getText().toString() ,
+                addJmcDetails("9",inlinePole.getText().toString() , SingleCutPoint.getText().toString() ,
                         doubleCutPoint.getText().toString(),newTappingPole.getText().toString() , ExistingTappingPole.getText().toString() , TappingFromDtc.getText().toString(),
                         studPole.getText().toString(),Guarding.getText().toString(),GourdingSpan.getText().toString(),
-                        staySet.getText().toString(),ItypeDTC.getText().toString(),spanInMtr.getText().toString(),remark.getText().toString());
+                        staySet.getText().toString(),ItypeDTC.getText().toString(),i_type_dtc_inline.getText().toString(),spanInMtr.getText().toString(),remark.getText().toString());
             }
         });
     }
@@ -387,18 +409,18 @@ public class ActivityJMC extends AppCompatActivity {
         view.findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addJmcDetails("11 Mtr" , inlinePole.getText().toString() , SingleCutPoint.getText().toString() , doubleCutPoint.getText().toString(),"0","0","0","0","0","0","0","0","0",remark.getText().toString());
+                addJmcDetails("11" , inlinePole.getText().toString() , SingleCutPoint.getText().toString() , doubleCutPoint.getText().toString(),"0","0","0","0","0","0","0","0","0","0",remark.getText().toString());
             }
 
         });
 
     }
     private void addJmcDetails(String pollType ,String inlinePole ,String SingleCutPoint ,String doubleCutPoint,String newTappingPole ,String ExistingTappingPole ,String TappingFromDtc,
-                               String studPole,String Guarding,String GourdingSpan,String staySet,String  ItypeDTC,String spanInMtr,String remark) {
+                               String studPole,String Guarding,String GourdingSpan,String staySet,String  ItypeDTC,String i_type_dtc_inline,String spanInMtr,String remark) {
         final Progress progress = new Progress(ActivityJMC.this);
         progress.show();
-        Call<JMCResponse> responseCall = RetrofitClient.getInstance().getApi().add_jmc_details(USER.getReportingId(),USER.getUserId(),consumerDetailsItem.getConsumerNo(),USER.getDivision(),editTextFilledExposedDropdown.getText().toString().replace(" KV",""),pollType,
-                inlinePole,SingleCutPoint,doubleCutPoint,newTappingPole,ExistingTappingPole,studPole,Guarding,GourdingSpan,staySet,ItypeDTC,spanInMtr,TappingFromDtc,remark);
+        Call<JMCResponse> responseCall = RetrofitClient.getInstance().getApi().add_jmc_details(USER.getReportingId(),USER.getUserId(),consumerDetailsItem.getConsumerNo(),USER.getDivision(),strVoltage.replace(" KV+",""),pollType,
+                inlinePole,SingleCutPoint,doubleCutPoint,newTappingPole,ExistingTappingPole,studPole,Guarding,GourdingSpan,staySet,ItypeDTC,i_type_dtc_inline,spanInMtr,TappingFromDtc,remark);
         responseCall.enqueue(new Callback<JMCResponse>() {
             @Override
             public void onResponse(Call<JMCResponse> call, Response<JMCResponse> response) {
@@ -407,6 +429,7 @@ public class ActivityJMC extends AppCompatActivity {
                     if (response.body().isLoggedIn())
                     {
                         new MaterialAlertDialogBuilder(ActivityJMC.this, R.style.AlertDiloge)
+                                .setCancelable(false)
                                 .setTitle("Alert")
                                 .setMessage(response.body().getMsg())
                                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -420,6 +443,15 @@ public class ActivityJMC extends AppCompatActivity {
                     }else {
                         Constants.Alert(ActivityJMC.this,response.body().getMsg());
                     }
+                else
+                    try {
+                        /*JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        Toast.makeText(getContext(), jObjError.getJSONObject("error").getString("message"), Toast.LENGTH_LONG).show();*/
+                        Log.d("Error", "onResponse: "+response.errorBody().string());
+                    } catch (Exception e) {
+                        // Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+
 
             }
 

@@ -2,8 +2,11 @@ package com.keights.vikran.Network;
 
 import com.keights.vikran.ResponseModel.AddExecutionResponse;
 import com.keights.vikran.ResponseModel.AddSurveyDetailsResponse;
+import com.keights.vikran.ResponseModel.BillingResponse;
 import com.keights.vikran.ResponseModel.DaysFilterResponse;
 import com.keights.vikran.ResponseModel.JMCResponse;
+import com.keights.vikran.ResponseModel.PermcommResponse;
+import com.keights.vikran.ResponseModel.RTCResponse;
 import com.keights.vikran.ResponseModel.SearchConsumerResponse;
 import com.keights.vikran.ResponseModel.UserInfo;
 
@@ -64,36 +67,21 @@ public interface Api {
             @Field("consumer_no") String consumer_no,
             @Field("division") String division,
             @Field("survey_id") String survey_id,
-            @Field("name_of_feeder") String name_of_feeder,
-            @Field("tf_make_sl_no") String tf_make_sl_no,
+            @Field("pole_shifting") String pole_shifting,
+            @Field("pole_erection") String pole_erection,
+            @Field("str_fitting") String str_fitting,
+            @Field("string_per_location") String string_per_location,
+            @Field("dtr_erection") String dtr_erection,
+            @Field("finishing_per_location") String finishing_per_location,
+            @Field("transformer_make") String transformer_make,
+            @Field("tf_sl_no") String tf_sl_no,
             @Field("tf_capacity_in_kva") String tf_capacity_in_kva,
-            @Field("dtr_code") String dtr_code,
+            @Field("meter_make") String meter_make,
             @Field("meter_no") String meter_no,
-            @Field("gps_cordinat_dtr_north") String gps_cordinat_dtr_north,
-            @Field("gps_cordinat_dtr_east") String gps_cordinat_dtr_east,
-            @Field("gps_cordinat_tapping_north") String gps_cordinat_tapping_north,
-            @Field("gps_cordinat_tapping_east") String gps_cordinat_tapping_east,
-            @Field("feeder_node") String feeder_node,
-            @Field("10_kva_dtr") String _10_kva_dtr,
-            @Field("16_kva_dtc") String _16_kva_dtc,
-            @Field("25_kva_dtc") String _25_kva_dtc,
-            @Field("ht_stringing_mtr") String ht_stringing_mtr,
-            @Field("inline_pole") String inline_pole,
-            @Field("cut_point_pole_s1") String cut_point_pole_s1,
-            @Field("cut_point_pole_s2") String cut_point_pole_s2,
-            @Field("cut_point_pole_dbl") String cut_point_pole_dbl,
-            @Field("tapping_pole") String tapping_pole,
-            @Field("guarding") String guarding,
-            @Field("guarding_len_mtr") String guarding_len_mtr,
-            @Field("stay_set") String stay_set,
-            @Field("11_mtr_rjs_pole") String _11_mtr_rjs_pole,
-            @Field("9_mtr_stud_pole") String _9_mtr_stud_pole,
-            @Field("lt_ab_cable_mtr") String lt_ab_cable_mtr,
-            @Field("sub_station_name") String sub_station_name,
-            @Field("gps_cordinat_consu_east") String gps_cordinat_consu_east,
-            @Field("gps_cordinat_consu_north") String gps_cordinat_consu_north,
-            @Field("11_kv_ab_switch") String _11_kv_ab_switch,
-            @Field("22_kv_ab_switch") String _22_kv_ab_switch);
+            @Field("mtr9_psc") String mtr9_psc,
+            @Field("mtr9_rsj") String mtr9_rsj,
+            @Field("mtr11_rsj") String mtr11_rsj
+          );
 
 
     @FormUrlEncoded
@@ -115,6 +103,7 @@ public interface Api {
             @Field("gaurding_span") String gaurding_span,
             @Field("stay_set") String stay_set,
             @Field("i_type_dtc") String i_type_dtc,
+            @Field("i_type_dtc_inline") String i_type_dtc_inline,
             @Field("span_in_mtr") String span_in_mtr,
             @Field("tapping_from_existing_dtc") String tapping_from_existing_dtc,
             @Field("remarks") String remarks);
@@ -153,6 +142,39 @@ public interface Api {
             @Field("consumer_no") String consumer_no,
             @Field("division") String division,
             @Field("service_connection") String service_connection
+            );
+    @FormUrlEncoded
+    @POST("add_rtc_details")
+    Call<RTCResponse> add_rtc_details(
+            @Field("reporting_id") String reporting_id,
+            @Field("user_id") String user_id,
+            @Field("consumer_no") String consumer_no,
+            @Field("division") String division,
+            @Field("rtc_status") String rtc_status
+            );
+
+  @FormUrlEncoded
+    @POST("add_permission_commission")
+    Call<PermcommResponse> add_permission_commission(
+            @Field("reporting_id") String reporting_id,
+            @Field("user_id") String user_id,
+            @Field("consumer_no") String consumer_no,
+            @Field("division") String division,
+            @Field("applied_e1_permission") String applied_e1_permission,
+            @Field("received_e1_permission") String received_e1_permission,
+            @Field("applied_commission") String applied_commission,
+            @Field("remark") String remark
+            );
+
+    @FormUrlEncoded
+    @POST("add_billing")
+    Call<BillingResponse> add_billing(
+            @Field("reporting_id") String reporting_id,
+            @Field("user_id") String user_id,
+            @Field("consumer_no") String consumer_no,
+            @Field("division") String division,
+            @Field("billing_status") String billing_status,
+            @Field("remark") String remark
             );
 
 

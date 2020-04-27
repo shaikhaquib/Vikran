@@ -249,7 +249,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="My Work"
+            android:text="My Survey"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
@@ -263,8 +263,8 @@
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="@+id/new_Survey"
-        app:layout_constraintTop_toBottomOf="@+id/new_Survey">
+        app:layout_constraintEnd_toEndOf="@+id/MyWork"
+        app:layout_constraintTop_toBottomOf="@+id/MyWork">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -284,7 +284,7 @@
                 android:layout_margin="32dp"
                 android:padding="8dp"
                 android:src="@drawable/ic_clipboard_1"
-                android:tint="#FF9800" />
+                android:tint="#2196F3" />
 
 
         </com.google.android.material.card.MaterialCardView>
@@ -303,13 +303,14 @@
 
         <LinearLayout
             android:id="@+id/jmc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="158dp"
+            android:layout_height="185dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="@+id/MyWork"
-            app:layout_constraintTop_toBottomOf="@+id/MyWork">
+            app:layout_constraintEnd_toEndOf="@+id/rtc"
+            app:layout_constraintTop_toBottomOf="@+id/rtc"
+            >
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -352,9 +353,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginTop="8dp"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="@+id/Execution"
-            app:layout_constraintTop_toBottomOf="@+id/Execution">
+            app:layout_constraintEnd_toEndOf="@+id/new_Survey"
+            app:layout_constraintTop_toBottomOf="@+id/new_Survey">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -374,7 +376,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_vending_machine_1"
-                    android:tint="#2196F3" />
+                    android:tint="#FF9800" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -391,11 +393,55 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/billing"
+            android:id="@+id/PermissionandCommission"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/Execution"
+            app:layout_constraintTop_toBottomOf="@+id/Execution">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="#c2c2c2"
+                app:strokeWidth="1dp">
+
+                <ImageView
+                    android:layout_width="83dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_margin="32dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_permission"
+                    android:tint="#FF9800" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Permission &amp;\n Commission"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/Nscfeeding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginTop="22dp"
             app:layout_constraintEnd_toEndOf="@+id/jmc"
             app:layout_constraintTop_toBottomOf="@+id/jmc">
 
@@ -416,8 +462,51 @@
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:layout_margin="32dp"
                     android:padding="8dp"
-                    android:src="@drawable/ic_tax"
+                    android:src="@drawable/ic_microsoft_excel"
                     android:tint="#FF9800" />
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="NSC Feeding"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/billing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/PermissionandCommission"
+            app:layout_constraintTop_toBottomOf="@+id/PermissionandCommission">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="#c2c2c2"
+                app:strokeWidth="1dp">
+
+                <ImageView
+                    android:layout_width="83dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_margin="32dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_tax"
+                    android:tint="#2196F3" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -469,10 +558,10 @@
             app:iconGravity="textStart"
             app:iconSize="30dp"
             android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="@+id/billing"
+            app:layout_constraintEnd_toEndOf="@+id/PermissionandCommission"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/rtc"
-            app:layout_constraintTop_toBottomOf="@+id/rtc"
+            app:layout_constraintStart_toStartOf="@+id/Nscfeeding"
+            app:layout_constraintTop_toBottomOf="@+id/Nscfeeding"
             app:rippleColor="@color/blue_grey_100" />
 
 

@@ -6,8 +6,8 @@ import java.io.Serializable;
 
 public class SurveyDetailsItem implements Serializable {
 
-	@SerializedName("created_name")
-	private String createdName;
+	@SerializedName("modified_id")
+	private String modifiedId;
 
 	@SerializedName("tree_cutting")
 	private String treeCutting;
@@ -29,6 +29,9 @@ public class SurveyDetailsItem implements Serializable {
 
 	@SerializedName("survey_id")
 	private String surveyId;
+
+	@SerializedName("created_id")
+	private String createdId;
 
 	@SerializedName("ht_line_in_km")
 	private String htLineInKm;
@@ -57,12 +60,12 @@ public class SurveyDetailsItem implements Serializable {
 	@SerializedName("status")
 	private String status;
 
-	public void setCreatedName(String createdName){
-		this.createdName = createdName;
+	public void setModifiedId(String modifiedId){
+		this.modifiedId = modifiedId;
 	}
 
-	public String getCreatedName(){
-		return createdName;
+	public String getModifiedId(){
+		return modifiedId;
 	}
 
 	public void setTreeCutting(String treeCutting){
@@ -119,6 +122,14 @@ public class SurveyDetailsItem implements Serializable {
 
 	public String getSurveyId(){
 		return surveyId;
+	}
+
+	public void setCreatedId(String createdId){
+		this.createdId = createdId;
+	}
+
+	public String getCreatedId(){
+		return createdId;
 	}
 
 	public void setHtLineInKm(String htLineInKm){
@@ -197,7 +208,7 @@ public class SurveyDetailsItem implements Serializable {
  	public String toString(){
 		return 
 			"SurveyDetailsItem{" + 
-			"created_name = '" + createdName + '\'' + 
+			"modified_id = '" + modifiedId + '\'' + 
 			",tree_cutting = '" + treeCutting + '\'' + 
 			",rjs_pole_old_freezing = '" + rjsPoleOldFreezing + '\'' + 
 			",survey_pairing = '" + surveyPairing + '\'' + 
@@ -205,6 +216,7 @@ public class SurveyDetailsItem implements Serializable {
 			",modified_date = '" + modifiedDate + '\'' + 
 			",survey_by = '" + surveyBy + '\'' + 
 			",survey_id = '" + surveyId + '\'' + 
+			",created_id = '" + createdId + '\'' + 
 			",ht_line_in_km = '" + htLineInKm + '\'' + 
 			",soil_strata = '" + soilStrata + '\'' + 
 			",approach_road = '" + approachRoad + '\'' + 

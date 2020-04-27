@@ -3,12 +3,16 @@ package com.keights.vikran.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.keights.vikran.Extras.Constants;
@@ -25,9 +29,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.keights.vikran.Extras.Constants.hideKeyboard;
-import static com.keights.vikran.Extras.Constants.hideKeyboardFrom;
-import static com.keights.vikran.Extras.Constants.validate;
 import static com.keights.vikran.LoginActivity.USER;
 
 public class ExecutionActivity extends AppCompatActivity {
@@ -37,17 +38,9 @@ public class ExecutionActivity extends AppCompatActivity {
     List<TextInputEditText> validationList = new ArrayList();
     private TextView cConsumerNo,cName,cDivision,cTaluka,cSubDivision,cSection,cVillage,cVoltagelevel,cDTCCode,sanctionedLoad;
 
-    TextInputEditText CNmFeeder;
-    TextInputEditText cSIno;
-    TextInputEditText cCapacityKVA;
-    TextInputEditText cDTRCode;
-    TextInputEditText cMeterNo;
-    TextInputEditText gpsDtr;
-    TextInputEditText gpsTappingPoll;
-    TextInputEditText gpsConsumerNorth;
-    TextInputEditText gpsConsumerEast;
-    TextInputEditText feederNote;
-
+    TextInputEditText transformer_make ,tf_sl_no,tf_capacity_in_kva,meter_make,meter_no;
+    ElegantNumberButton PoleShifting,STRShiftinginnumbers,DTRErectioninnumbers,FinishingPerLocation,mtr9_psc,mtr9_rsj,mtr11_rsj;
+    TextView PoleErection,StringPerLocation;
 
     private static final String TAG = "ExecutionActivity";
 
@@ -55,24 +48,7 @@ public class ExecutionActivity extends AppCompatActivity {
 
     List<TextInputEditText> SecondStep = new ArrayList();
 
-    TextInputEditText tenDTR;
-    TextInputEditText SixteenDTC;
-    TextInputEditText twentyfiveDTC;
-    TextInputEditText SringingInMtr;
-    TextInputEditText inlinePole;
-    TextInputEditText CutpointpoleS1;
-    TextInputEditText CutpointpoleS2;
-    TextInputEditText CutpointpoleSingle;
-    TextInputEditText CutpointpoleDouble;
-    TextInputEditText tappingPoll;
-    TextInputEditText Guarding;
-    TextInputEditText GurdingLengthMtr; 
-    TextInputEditText staySet;
-    TextInputEditText elevenMtrRSJPole;
-    TextInputEditText nineMtrRSJPole;
-    TextInputEditText ltABCableinmeter;
-    TextInputEditText elevenKVABSwitch; 
-    TextInputEditText twelveKVABSwitch;
+
     ConsumerDetailsItem consumerDetailsItem;
     String surveyId;
 
@@ -85,10 +61,30 @@ public class ExecutionActivity extends AppCompatActivity {
         consumerDetailsItem = (ConsumerDetailsItem) getIntent().getSerializableExtra("Data");
         surveyId =  getIntent().getStringExtra("surveyId");
 
+        initToolbar();
+
+
         init();
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        } else {
+            Toast.makeText(getApplicationContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    private void initToolbar() {
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
 
 
     void init() {
@@ -116,26 +112,38 @@ public class ExecutionActivity extends AppCompatActivity {
         cDTCCode.setText(consumerDetailsItem.getDtcCode());
         sanctionedLoad.setText(consumerDetailsItem.getSanctionLoad());
 
-        CNmFeeder = findViewById(R.id.CNmFeeder);
-        validationList.add(CNmFeeder);
-        cSIno = findViewById(R.id.cSIno);
-        validationList.add(cSIno);
-        cCapacityKVA = findViewById(R.id.cCapacityKVA);
-        validationList.add(cCapacityKVA);
-        cDTRCode = findViewById(R.id.cDTRCode);
-        validationList.add(cDTRCode);
-        cMeterNo = findViewById(R.id.cMeterNo);
-        validationList.add(cMeterNo);
-        gpsDtr = findViewById(R.id.gpsDtr);
-        validationList.add(gpsDtr);
-        gpsTappingPoll = findViewById(R.id.gpsTappingPoll);
-        validationList.add(gpsTappingPoll);
-        gpsConsumerNorth = findViewById(R.id.gpsConsumerNorth);
-        validationList.add(gpsConsumerNorth);
-        gpsConsumerEast = findViewById(R.id.gpsConsumerEast);
-        validationList.add(gpsConsumerEast);
-        feederNote = findViewById(R.id.feederNote);
-        validationList.add(feederNote);
+        StringPerLocation = findViewById(R.id.StringPerLocation);
+        PoleErection = findViewById(R.id.PoleErection);
+
+        transformer_make = findViewById(R.id.transformer_make);
+        tf_sl_no = findViewById(R.id.tf_sl_no);
+        tf_capacity_in_kva = findViewById(R.id.tf_capacity_in_kva);
+        meter_make = findViewById(R.id.meter_make);
+        meter_no = findViewById(R.id.meter_no);
+
+
+        PoleShifting = findViewById(R.id.PoleShifting);
+        STRShiftinginnumbers = findViewById(R.id.STRShiftinginnumbers);
+        DTRErectioninnumbers = findViewById(R.id.DTRErectioninnumbers);
+        FinishingPerLocation = findViewById(R.id.FinishingPerLocation);
+        mtr9_psc = findViewById(R.id.mtr9_psc);
+        mtr9_rsj = findViewById(R.id.mtr9_rsj);
+        mtr11_rsj = findViewById(R.id.mtr11_rsj);
+
+        StringPerLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showChoiceDialog((TextView) v, new String[]{"0", "0.5", "1"});
+            }
+        });
+
+        PoleErection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showChoiceDialog((TextView) v, new String[]{"9 Mtr PSC", "9 Mtr RSJ", "11 Mtr RSJ", "9 Mtr PSC + 9 Mtr RSJ","9 Mtr PSC + 11 Mtr RSJ"});
+            }
+        });
+
 
 
         findViewById(R.id.secondStep).setOnClickListener(new View.OnClickListener() {
@@ -145,66 +153,11 @@ public class ExecutionActivity extends AppCompatActivity {
                 { */
                     findViewById(R.id.secondStepView).setVisibility(View.VISIBLE);
                     findViewById(R.id.firstStepView).setVisibility(View.GONE);
-                    hideKeyboardFrom(ExecutionActivity.this, feederNote);
+                   // hideKeyboardFrom(ExecutionActivity.this, feederNote);
             //}
             }
         });
 
-
-
-        tenDTR = findViewById(R.id.tenDTR);
-        SecondStep.add(tenDTR);
-
-        SixteenDTC = findViewById(R.id.SixteenDTC);
-        SecondStep.add(SixteenDTC);
-
-        twentyfiveDTC = findViewById(R.id.twentyfiveDTC);
-        SecondStep.add(twentyfiveDTC);
-
-        SringingInMtr = findViewById(R.id.SringingInMtr);
-        SecondStep.add(SringingInMtr);
-
-        inlinePole = findViewById(R.id.inlinePole);
-        SecondStep.add(inlinePole);
-
-        CutpointpoleS1 = findViewById(R.id.CutpointpoleS1);
-        SecondStep.add(CutpointpoleS1);
-
-        CutpointpoleS2 = findViewById(R.id.CutpointpoleS2);
-        SecondStep.add(CutpointpoleS2);
-
-        CutpointpoleSingle = findViewById(R.id.CutpointpoleSingle);
-        SecondStep.add(CutpointpoleSingle);
-
-        CutpointpoleDouble = findViewById(R.id.CutpointpoleDouble);
-        SecondStep.add(CutpointpoleDouble);
-
-        tappingPoll = findViewById(R.id.tappingPoll);
-        SecondStep.add(tappingPoll);
-
-        Guarding = findViewById(R.id.Guarding);
-        SecondStep.add(Guarding);
-
-        GurdingLengthMtr = findViewById(R.id.GurdingLengthMtr);
-        SecondStep.add(GurdingLengthMtr);
-
-        staySet = findViewById(R.id.staySet);
-        SecondStep.add(staySet);
-
-        elevenMtrRSJPole = findViewById(R.id.elevenMtrRSJPole);
-        SecondStep.add(elevenMtrRSJPole);
-
-        nineMtrRSJPole = findViewById(R.id.nineMtrRSJPole);
-        SecondStep.add(nineMtrRSJPole);
-
-        ltABCableinmeter = findViewById(R.id.ltABCableinmeter);
-        SecondStep.add(ltABCableinmeter);
-
-        elevenKVABSwitch = findViewById(R.id.elevenKVABSwitch);
-        SecondStep.add(elevenKVABSwitch);
-        
-        twelveKVABSwitch = findViewById(R.id.twelveKVABSwitch);
-        SecondStep.add(twelveKVABSwitch);
 
         findViewById(R.id.Execute).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,37 +177,8 @@ public class ExecutionActivity extends AppCompatActivity {
                 USER.getUserId(),
                 consumerDetailsItem.getConsumerNo(),
                 USER.getDivision(),
-                surveyId,
-                CNmFeeder.getText().toString(),
-                cSIno.getText().toString(),
-                cCapacityKVA.getText().toString(),
-                cDTRCode.getText().toString(),
-                cMeterNo.getText().toString(),
-                gpsConsumerNorth.getText().toString(),
-                gpsConsumerEast.getText().toString(),
-                gpsDtr.getText().toString(),
-                tappingPoll.getText().toString(),
-                feederNote.getText().toString(),
-                tenDTR.getText().toString(),
-                SixteenDTC.getText().toString(),
-                twentyfiveDTC.getText().toString(),
-                SringingInMtr.getText().toString(),
-                inlinePole.getText().toString(),
-                CutpointpoleS1.getText().toString(),
-                CutpointpoleS2.getText().toString(),
-                CutpointpoleSingle.getText().toString(),
-                CutpointpoleDouble.getText().toString(),
-                Guarding.getText().toString(),
-                GurdingLengthMtr.getText().toString(),
-                staySet.getText().toString(),
-                elevenMtrRSJPole.getText().toString(),
-                nineMtrRSJPole.getText().toString(),
-                ltABCableinmeter.getText().toString(),
-                "-",
-                gpsConsumerEast.getText().toString(),
-                gpsConsumerNorth.getText().toString(),
-                elevenKVABSwitch.getText().toString(),
-                twelveKVABSwitch.getText().toString()
+                surveyId,PoleShifting.getNumber(),PoleErection.getText().toString(),STRShiftinginnumbers.getNumber(),StringPerLocation.getText().toString(),DTRErectioninnumbers.getNumber(),FinishingPerLocation.getNumber(),transformer_make.getText().toString(),
+                tf_sl_no.getText().toString(),tf_capacity_in_kva.getText().toString(),meter_make.getText().toString(),meter_no.getText().toString(),mtr9_psc.getNumber(),mtr9_rsj.getNumber(),mtr11_rsj.getNumber()
                 );
         responseCall.enqueue(new Callback<AddExecutionResponse>() {
             @Override
@@ -297,5 +221,23 @@ public class ExecutionActivity extends AppCompatActivity {
         });
 
     }
+
+    private void showChoiceDialog(final TextView v, final String[] strings) {
+        final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(ExecutionActivity.this);
+        builder.setCancelable(true);
+        builder.setItems(strings, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                v.setText(strings[which]);
+                if (v.getError() != null)
+                    v.setError(null);
+
+
+            }
+        });
+        builder.show();
+    }
+
 
 }

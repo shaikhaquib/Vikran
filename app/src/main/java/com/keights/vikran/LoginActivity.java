@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.keights.vikran.Extras.Constants;
 import com.keights.vikran.Extras.Progress;
@@ -51,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         userDatabase = Room.databaseBuilder(getApplicationContext(), UserDatabase.class, Constants.DATABASE_NAME).
                 fallbackToDestructiveMigration().build();
 
-        Log.d(TAG, "onCreate: "+FirebaseInstanceId.getInstance().getToken());
+       // Log.d(TAG, "onCreate: "+FirebaseInstanceId.getInstance().getToken());
 
         loginUserName = findViewById(R.id.loginUserName);
         appVersion = findViewById(R.id.appVersion);

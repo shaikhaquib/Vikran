@@ -22,7 +22,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,24 +64,24 @@ public class Frg_DetailNewSurvey extends Fragment {
 
 
     private ConsumerDetailsItem consumerDetailsItem;
-    private TextView cConsumerNo,cName,cDivision,cTaluka,cSubDivision,cSection,cVillage,cVoltagelevel,cDTCCode,sanctionedLoad,txtLocation,txtSurveyby;
+    private TextView cConsumerNo, cName, cDivision, cTaluka, cSubDivision, cSection, cVillage, cVoltagelevel, cDTCCode, sanctionedLoad, txtLocation, txtSurveyby;
 
-    private TextInputEditText edtSurveyPairing;
-    private TextInputEditText edtHTline       ;
-    private TextInputEditText edtRSJPole      ;
-    private TextInputEditText edtSurveyBy     ;
-    private TextInputEditText edtAproachRoad  ;
-    private TextInputEditText edtSoilStrata   ;
-    private TextInputEditText edtRow          ;
-    private TextInputEditText edtTreeCutting  ;
+    private RadioGroup edtSurveyPairing;
+    private TextInputEditText edtHTline;
+    private TextInputEditText edtRSJPole;
+    private TextInputEditText edtSurveyBy;
+    private TextInputEditText edtAproachRoad;
+    private TextView edtSoilStrata;
+    private TextInputEditText edtRow;
+    private TextInputEditText edtTreeCutting;
     private MaterialButton logInDetails;
 
     private String strLocation;
     private static final String TAG = "Frg_DetailNewSurvey";
 
 
-   private static final int PERMISSION_ID = 44;
-   private FusedLocationProviderClient mFusedLocationClient;
+    private static final int PERMISSION_ID = 44;
+    private FusedLocationProviderClient mFusedLocationClient;
 
 
     public Frg_DetailNewSurvey() {
@@ -96,7 +99,7 @@ public class Frg_DetailNewSurvey extends Fragment {
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-       Bundle bundle = getArguments();
+        Bundle bundle = getArguments();
         consumerDetailsItem = (ConsumerDetailsItem) bundle.getSerializable("Data");
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         getLastLocation();
@@ -140,63 +143,83 @@ public class Frg_DetailNewSurvey extends Fragment {
         cVoltagelevel.setText(consumerDetailsItem.getVoltageLevel());
         cDTCCode.setText(consumerDetailsItem.getDtcCode());
         sanctionedLoad.setText(consumerDetailsItem.getSanctionLoad());
+
+
+        edtSoilStrata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showChoiceDialog((TextView) v, new String[]{"Soft Soil", "Murrum", "Mix", "Hard Rock "});
+            }
+        });
+
         txtSurveyby.setText(USER.getUsername());
 
         logInDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isValidForm()){
-                    if (strLocation.isEmpty())
-                    {
-                        new MaterialAlertDialogBuilder(getActivity(),R.style.AlertDiloge)
+                if (isValidForm()) {
+                    if (strLocation.isEmpty()) {
+                        new MaterialAlertDialogBuilder(getActivity(), R.style.AlertDiloge)
                                 .setTitle("Failed To get Location")
                                 .setMessage("Please try again to get location")
                                 .setCancelable(false)
                                 .setPositiveButton("Try Again", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                       getLastLocation();                           }
+                                        getLastLocation();
+                                    }
                                 })
                                 .show();
 
                     }
                     addSurveyDetails();
                 }
+
             }
         });
 
 
-
     }
-    
-    private boolean isValidForm(){
-        
-        if (edtSurveyPairing.getText().toString().isEmpty()){
-            Constants.showFormValidationError(getActivity(),edtSurveyPairing,"Survey Pairing Field is Empty please enter valid value");
+
+    private void showChoiceDialog(final TextView v, final String[] strings) {
+        final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
+        builder.setCancelable(true);
+        builder.setItems(strings, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                v.setText(strings[which]);
+                if (v.getError() != null)
+                    v.setError(null);
+
+
+            }
+        });
+        builder.show();
+    }
+
+    private boolean isValidForm() {
+
+        if (edtHTline.getText().toString().isEmpty()) {
+            Constants.showFormValidationError(getActivity(), edtHTline, "HT Line Field is Empty please enter valid value");
             return false;
-        }else if (edtHTline.getText().toString().isEmpty()){
-            Constants.showFormValidationError(getActivity(),edtHTline,"HT Line Field is Empty please enter valid value");
+        } else if (edtRSJPole.getText().toString().isEmpty()) {
+            Constants.showFormValidationError(getActivity(), edtRSJPole, "RSJ Pole Field is Empty please enter valid value");
             return false;
-        }else if (edtRSJPole.getText().toString().isEmpty()){
-            Constants.showFormValidationError(getActivity(),edtRSJPole,"RSJ Pole Field is Empty please enter valid value");
+        } else if (edtSurveyBy.getText().toString().isEmpty()) {
+            Constants.showFormValidationError(getActivity(), edtSurveyBy, "Survey By Field is Empty please enter valid value");
             return false;
-        }else if (edtSurveyBy.getText().toString().isEmpty()){
-            Constants.showFormValidationError(getActivity(),edtSurveyBy,"Survey By Field is Empty please enter valid value");
+        } else if (edtAproachRoad.getText().toString().isEmpty()) {
+            Constants.showFormValidationError(getActivity(), edtAproachRoad, "Aproach Road Field is Empty please enter valid value");
             return false;
-        }else if (edtAproachRoad.getText().toString().isEmpty()){
-            Constants.showFormValidationError(getActivity(),edtAproachRoad,"Aproach Road Field is Empty please enter valid value");
+        }else if (edtRow.getText().toString().isEmpty()) {
+            Constants.showFormValidationError(getActivity(), edtRow, "Survey Pairing Field is Empty please enter valid value");
             return false;
-        }else if (edtSoilStrata.getText().toString().isEmpty()){
-            Constants.showFormValidationError(getActivity(),edtSoilStrata,"ROW Field is Empty please enter valid value");
+        } else if (edtTreeCutting.getText().toString().isEmpty()) {
+            Constants.showFormValidationError(getActivity(), edtTreeCutting, "Tree Cutting Field is Empty please enter valid value");
             return false;
-        }else if (edtRow.getText().toString().isEmpty()){
-            Constants.showFormValidationError(getActivity(),edtRow,"Survey Pairing Field is Empty please enter valid value");
-            return false;
-        }else if (edtTreeCutting.getText().toString().isEmpty()){
-            Constants.showFormValidationError(getActivity(),edtTreeCutting,"Tree Cutting Field is Empty please enter valid value");
-            return false;
-        }else
-        return true;
+        } else
+            return true;
     }
 
 
@@ -233,7 +256,7 @@ public class Frg_DetailNewSurvey extends Fragment {
         }
     }
 
-    private void getLastLocation(){
+    private void getLastLocation() {
         if (checkPermissions()) {
             if (isLocationEnabled()) {
                 mFusedLocationClient.getLastLocation().addOnCompleteListener(
@@ -244,14 +267,14 @@ public class Frg_DetailNewSurvey extends Fragment {
                                 if (location == null) {
                                     requestNewLocationData();
                                 } else {
-                                    strLocation = location.getLatitude()+","+ location.getLongitude();
+                                    strLocation = location.getLatitude() + "," + location.getLongitude();
                                     txtLocation.setText(strLocation);
                                 }
                             }
                         }
                 );
             } else {
-                new MaterialAlertDialogBuilder(getActivity(),R.style.AlertDiloge)
+                new MaterialAlertDialogBuilder(getActivity(), R.style.AlertDiloge)
                         .setTitle("Turn on Location")
                         .setMessage("Turn on location service to allow Vikran App to determine your location")
                         .setCancelable(false)
@@ -260,7 +283,8 @@ public class Frg_DetailNewSurvey extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(getActivity(), "Turn on location", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                                startActivityForResult(intent,2011);                            }
+                                startActivityForResult(intent, 2011);
+                            }
                         })
                         .show();
 
@@ -270,7 +294,7 @@ public class Frg_DetailNewSurvey extends Fragment {
         }
     }
 
-    private void requestNewLocationData(){
+    private void requestNewLocationData() {
 
         LocationRequest mLocationRequest = new LocationRequest();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -290,7 +314,7 @@ public class Frg_DetailNewSurvey extends Fragment {
         @Override
         public void onLocationResult(LocationResult locationResult) {
             Location mLastLocation = locationResult.getLastLocation();
-            strLocation = mLastLocation.getLatitude()+","+ mLastLocation.getLongitude();
+            strLocation = mLastLocation.getLatitude() + "," + mLastLocation.getLongitude();
         }
     };
 
@@ -298,7 +322,7 @@ public class Frg_DetailNewSurvey extends Fragment {
         final Progress progress = new Progress(getActivity());
         progress.show();
         Call<AddSurveyDetailsResponse> responseCall = RetrofitClient.getInstance().getApi().add_survey_details(USER.getReportingId(), USER.getUserId(), consumerDetailsItem.getConsumerNo(),
-                edtSurveyPairing.getText().toString(), edtHTline.getText().toString(), edtRSJPole.getText().toString(), edtSurveyBy.getText().toString(),
+                getSurveyParing(), edtHTline.getText().toString(), edtRSJPole.getText().toString(), edtSurveyBy.getText().toString(),
                 edtAproachRoad.getText().toString(), edtSoilStrata.getText().toString(), edtRow.getText().toString(), edtTreeCutting.getText().toString(),
                 "Remark", strLocation, USER.getDivision());
         responseCall.enqueue(new Callback<AddSurveyDetailsResponse>() {
@@ -321,11 +345,11 @@ public class Frg_DetailNewSurvey extends Fragment {
                     } else {
                         Constants.Alert(getActivity(), response.body().getMsg());
                     }
-                    else {
+                else {
                     try {
                         /*JSONObject jObjError = new JSONObject(response.errorBody().string());
                         Toast.makeText(getContext(), jObjError.getJSONObject("error").getString("message"), Toast.LENGTH_LONG).show();*/
-                        Log.d(TAG, "onResponse: "+response.errorBody().string());
+                        Log.d(TAG, "onResponse: " + response.errorBody().string());
                     } catch (Exception e) {
                         Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -344,8 +368,16 @@ public class Frg_DetailNewSurvey extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 2011){
+        if (requestCode == 2011) {
             getLastLocation();
         }
+    }
+
+    public String getSurveyParing() {
+        int id = edtSurveyPairing.getCheckedRadioButtonId();
+        View radioButton = edtSurveyPairing.findViewById(id);
+        int radioId = edtSurveyPairing.indexOfChild(radioButton);
+        RadioButton btn = (RadioButton) edtSurveyPairing.getChildAt(radioId);
+        return (String) btn.getText();
     }
 }

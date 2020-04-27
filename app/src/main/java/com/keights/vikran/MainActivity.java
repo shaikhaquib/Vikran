@@ -50,6 +50,24 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), NewSurveyActivity.class));
             }
         });
+        findViewById(R.id.rtc).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), NewSurveyActivity.class));
+            }
+        });
+        findViewById(R.id.PermissionandCommission).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), NewSurveyActivity.class));
+            }
+        });
+        findViewById(R.id.billing).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), NewSurveyActivity.class));
+            }
+        });
         findViewById(R.id.MyWork).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

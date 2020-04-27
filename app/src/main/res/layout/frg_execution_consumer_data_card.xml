@@ -38,20 +38,22 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"
                 android:layout_weight="4"
-                android:text="Name of Feeder"
+                android:layout_gravity="center"
+                android:text="Pole Shifting"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/CNmFeeder"
+            <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                android:id="@+id/PoleShifting"
+                android:theme="@style/AlertDiloge"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
                 android:gravity="center"
-                android:padding="6dp"
-                android:tag="Name of Feeder"
                 android:singleLine="true"
-                android:background="@drawable/borderdark"
+                app:initialNumber="0"
+                app:textColor="#000"
+                app:finalNumber="100"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
 
@@ -62,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -71,21 +74,24 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"
                 android:layout_weight="4"
-                android:text="T/F Make SI No."
+                android:layout_gravity="center"
+                android:text="Pole Erection"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cSIno"
+            <TextView
+                android:id="@+id/PoleErection"
+                android:theme="@style/AlertDiloge"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
                 android:gravity="center"
-                android:padding="6dp"
-                android:inputType="number"
+                android:background="@drawable/borderdark"
                 android:singleLine="true"
-                android:tag="T/F Make SI No."
-                android:background="@drawable/borderdark"
+                android:padding="6dp"
+                android:text="9 Mtr PSC"
+                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                android:drawableTint="@color/blue_700"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
 
@@ -96,6 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -105,21 +112,22 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"
                 android:layout_weight="4"
-                android:text="T/F Capacity in KVA"
+                android:layout_gravity="center"
+                android:text="STR Shifting in numbers"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cCapacityKVA"
+            <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                android:id="@+id/STRShiftinginnumbers"
+                android:theme="@style/AlertDiloge"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
                 android:gravity="center"
-                android:padding="6dp"
-                android:inputType="number"
                 android:singleLine="true"
-                android:tag="T/F Capacity in KVA"
-                android:background="@drawable/borderdark"
+                app:initialNumber="0"
+                app:textColor="#000"
+                app:finalNumber="1"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
 
@@ -130,6 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -139,31 +148,36 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"
                 android:layout_weight="4"
-                android:text="DTR Code"
-                android:inputType="number"
+                android:layout_gravity="center"
+                android:text="String Per Location"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <TextView
+                android:id="@+id/StringPerLocation"
+                android:theme="@style/AlertDiloge"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:background="@drawable/borderdark"
                 android:singleLine="true"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/roboto_medium" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cDTRCode"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="6"
-                android:gravity="center"
                 android:padding="6dp"
-                android:tag="DTR Code"
-                android:background="@drawable/borderdark"
+                android:text="0"
+                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                android:drawableTint="@color/blue_700"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -173,21 +187,22 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"
                 android:layout_weight="4"
-                android:text="Meter No."
+                android:layout_gravity="center"
+                android:text="DTR Erection in numbers"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cMeterNo"
+            <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                android:id="@+id/DTRErectioninnumbers"
+                android:theme="@style/AlertDiloge"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
                 android:gravity="center"
-                android:padding="6dp"
-                android:tag="Meter No."
-                android:inputType="number"
                 android:singleLine="true"
-                android:background="@drawable/borderdark"
+                app:initialNumber="0"
+                app:textColor="#000"
+                app:finalNumber="1"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
 
@@ -198,143 +213,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp"
             android:orientation="horizontal"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp"
-                android:layout_weight="4"
-                android:text="GPS Coordinate of DTR in Decimal"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/roboto_medium" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/gpsDtr"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="6"
-                android:gravity="center"
-                android:inputType="numberDecimal"
-                android:padding="6dp"
-                android:tag="GPS Coordinate of DTR in Decimal"
-                android:background="@drawable/borderdark"
-                android:textColor="@color/grey_60"
-                android:fontFamily="@font/roboto_medium" />
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp"
-                android:layout_weight="4"
-                android:gravity="center_vertical"
-                android:text="GPS Coordinate of Tapping Poll in Decimal"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/roboto_medium" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/gpsTappingPoll"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="6"
-                android:gravity="center"
-                android:inputType="numberDecimal"
-                android:layout_margin="2dp"
-                android:tag="GPS Coordinate of Tapping Poll in Decimal"
-                android:background="@drawable/borderdark"
-                android:textColor="@color/grey_60"
-                android:fontFamily="@font/roboto_medium" />
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp"
-                android:layout_weight="4"
-                android:gravity="center_vertical"
-                android:text="GPS Coordinate Consumer North"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/roboto_medium" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/gpsConsumerNorth"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="6"
-                android:gravity="center"
-                android:inputType="numberDecimal"
-                android:layout_margin="2dp"
-                android:tag="GPS Coordinate Consumer North"
-                android:background="@drawable/borderdark"
-                android:textColor="@color/grey_60"
-                android:fontFamily="@font/roboto_medium" />
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp"
-                android:layout_weight="4"
-                android:gravity="center_vertical"
-                android:text="GPS Coordinate Consumer East"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/roboto_medium" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/gpsConsumerEast"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="6"
-                android:gravity="center"
-                android:inputType="numberDecimal"
-                android:layout_margin="2dp"
-                android:tag="GPS Coordinate Consumer East"
-                android:background="@drawable/borderdark"
-                android:textColor="@color/grey_60"
-                android:fontFamily="@font/roboto_medium" />
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp"
             android:weightSum="10">
 
             <TextView
@@ -343,19 +223,22 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"
                 android:layout_weight="4"
-                android:text="Feeder Note"
+                android:layout_gravity="center"
+                android:text="Finishing Per Location"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/feederNote"
+            <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                android:id="@+id/FinishingPerLocation"
+                android:theme="@style/AlertDiloge"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
                 android:gravity="center"
-                android:padding="6dp"
-                android:tag="Feeder Note"
-                android:background="@drawable/borderdark"
+                android:singleLine="true"
+                app:initialNumber="0"
+                app:textColor="#000"
+                app:finalNumber="1"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
 
