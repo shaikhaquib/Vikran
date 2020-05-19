@@ -2,9 +2,11 @@ package com.keights.vikran.Network;
 
 import com.keights.vikran.ResponseModel.AddExecutionResponse;
 import com.keights.vikran.ResponseModel.AddSurveyDetailsResponse;
+import com.keights.vikran.ResponseModel.AssignExecutionResponse;
 import com.keights.vikran.ResponseModel.BillingResponse;
 import com.keights.vikran.ResponseModel.DaysFilterResponse;
 import com.keights.vikran.ResponseModel.JMCResponse;
+import com.keights.vikran.ResponseModel.MyWorkFilterResponse;
 import com.keights.vikran.ResponseModel.PermcommResponse;
 import com.keights.vikran.ResponseModel.RTCResponse;
 import com.keights.vikran.ResponseModel.SearchConsumerResponse;
@@ -52,8 +54,8 @@ public interface Api {
     );
 
     @FormUrlEncoded
-    @POST("days_filter")
-    Call<DaysFilterResponse> days_filter(
+    @POST("days_my_work")
+    Call<MyWorkFilterResponse> days_filter(
             @Field("reporting_id") String reporting_id,
             @Field("user_id") String user_id,
             @Field("division") String division,
@@ -67,6 +69,7 @@ public interface Api {
             @Field("consumer_no") String consumer_no,
             @Field("division") String division,
             @Field("survey_id") String survey_id,
+            @Field("num_of_pole") String num_of_pole,
             @Field("pole_shifting") String pole_shifting,
             @Field("pole_erection") String pole_erection,
             @Field("str_fitting") String str_fitting,
@@ -143,6 +146,26 @@ public interface Api {
             @Field("division") String division,
             @Field("service_connection") String service_connection
             );
+
+    @FormUrlEncoded
+    @POST("add_jmc_e_details")
+    Call<JMCResponse> add_jmc_e_details(
+            @Field("reporting_id") String reporting_id,
+            @Field("user_id") String user_id,
+            @Field("consumer_no") String consumer_no,
+            @Field("division") String division,
+            @Field("live_consumer_no") String live_consumer_no,
+            @Field("name_of_feeder") String name_of_feeder,
+            @Field("sub_station_name") String sub_station_name,
+            @Field("gps_dtr_north") String gps_dtr_north,
+            @Field("gps_dtr_east") String gps_dtr_east,
+            @Field("gps_tapping_north") String gps_tapping_north,
+            @Field("gps_tapping_east") String gps_tapping_east,
+            @Field("gps_live_north") String gps_live_north,
+            @Field("gps_live_east") String gps_live_east,
+            @Field("feeder_note") String feeder_note,
+            @Field("dtr_code") String dtr_code
+            );
     @FormUrlEncoded
     @POST("add_rtc_details")
     Call<RTCResponse> add_rtc_details(
@@ -175,6 +198,14 @@ public interface Api {
             @Field("division") String division,
             @Field("billing_status") String billing_status,
             @Field("remark") String remark
+            );
+
+    @FormUrlEncoded
+    @POST("assign_consumer_list")
+    Call<AssignExecutionResponse> assign_consumer_list(
+            @Field("reporting_id") String reporting_id,
+            @Field("user_id") String user_id,
+            @Field("division") String division
             );
 
 

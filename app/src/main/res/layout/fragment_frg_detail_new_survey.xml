@@ -314,7 +314,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="5"
-                android:text="Location"
+                android:text="live location captured "
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
 
@@ -373,20 +373,20 @@
 
           </RadioGroup>
       </LinearLayout>
+
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginRight="8dp"
           android:layout_marginTop="16dp"
-          android:orientation="horizontal"
-          android:weightSum="10">
+          android:orientation="horizontal">
 
           <TextView
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:layout_marginLeft="10dp"
               android:textSize="16sp"
-              android:layout_weight="5"
+              android:layout_weight="3"
               android:text="HT Line in Km"
               android:textColor="@android:color/black"
               android:fontFamily="@font/roboto_medium" />
@@ -395,27 +395,44 @@
               android:id="@+id/edtHTline"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:layout_weight="5"
+              android:layout_weight="3"
+              android:layout_marginRight="4dp"
               android:gravity="center"
               android:padding="6dp"
+              android:tag="16 KVA DTC"
+              android:inputType="text"
+              android:singleLine="true"
               android:background="@drawable/borderdark"
               android:textColor="@color/grey_60"
               android:fontFamily="@font/roboto_medium" />
+
+          <ImageView
+              android:id="@+id/nextedtRSJPole"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="5"
+              android:background="@drawable/circle"
+              android:backgroundTint="@color/blue_700"
+              android:padding="4dp"
+              android:layout_gravity="center"
+              android:src="@drawable/ic_arrow_forward"/>
+
+
       </LinearLayout>
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginRight="8dp"
           android:layout_marginTop="16dp"
-          android:orientation="horizontal"
-          android:weightSum="10">
+          android:orientation="horizontal">
 
           <TextView
               android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
+              android:layout_height="match_parent"
+              android:gravity="center_vertical"
               android:layout_marginLeft="10dp"
               android:textSize="16sp"
-              android:layout_weight="4"
+              android:layout_weight="3"
               android:text="RSJ Pole old Freezing"
               android:textColor="@android:color/black"
               android:fontFamily="@font/roboto_medium" />
@@ -424,13 +441,31 @@
               android:id="@+id/edtRSJPole"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:layout_weight="6"
+              android:layout_weight="3"
+              android:layout_marginRight="4dp"
               android:gravity="center"
               android:padding="6dp"
+              android:tag="16 KVA DTC"
+              android:inputType="text"
+              android:singleLine="true"
               android:background="@drawable/borderdark"
               android:textColor="@color/grey_60"
               android:fontFamily="@font/roboto_medium" />
+
+          <ImageView
+              android:id="@+id/nextAproachRoad"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="5"
+              android:background="@drawable/circle"
+              android:backgroundTint="@color/blue_700"
+              android:padding="4dp"
+              android:layout_gravity="center"
+              android:src="@drawable/ic_arrow_forward"/>
+
+
       </LinearLayout>
+
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -531,7 +566,6 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginRight="8dp"
-          android:layout_marginTop="16dp"
           android:orientation="horizontal"
           android:weightSum="10">
 
@@ -542,25 +576,37 @@
               android:textSize="16sp"
               android:layout_weight="5"
               android:text="ROW"
+              android:layout_gravity="center"
               android:textColor="@android:color/black"
               android:fontFamily="@font/roboto_medium" />
 
-          <com.google.android.material.textfield.TextInputEditText
+          <RadioGroup
               android:id="@+id/edtRow"
-              android:layout_width="fill_parent"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_weight="5"
-              android:gravity="center"
-              android:padding="6dp"
-              android:background="@drawable/borderdark"
-              android:textColor="@color/grey_60"
-              android:fontFamily="@font/roboto_medium" />
+              android:layout_margin="6dp"
+              android:orientation="horizontal">
+
+              <RadioButton
+                  android:id="@+id/rowyes"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:checked="true"
+                  android:text="Yes" />
+
+              <RadioButton
+                  android:id="@+id/rowno"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="No" />
+
+
+          </RadioGroup>
       </LinearLayout>
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginRight="8dp"
-          android:layout_marginTop="16dp"
           android:orientation="horizontal"
           android:weightSum="10">
 
@@ -569,21 +615,34 @@
               android:layout_height="wrap_content"
               android:layout_marginLeft="10dp"
               android:textSize="16sp"
+              android:layout_gravity="center"
               android:layout_weight="5"
               android:text="Tree Cutting"
               android:textColor="@android:color/black"
               android:fontFamily="@font/roboto_medium" />
 
-          <com.google.android.material.textfield.TextInputEditText
+          <RadioGroup
               android:id="@+id/edtTreeCutting"
-              android:layout_width="fill_parent"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_weight="5"
-              android:gravity="center"
-              android:padding="6dp"
-              android:background="@drawable/borderdark"
-              android:textColor="@color/grey_60"
-              android:fontFamily="@font/roboto_medium" />
+              android:layout_margin="6dp"
+              android:orientation="horizontal">
+
+              <RadioButton
+                  android:id="@+id/treeyes"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:checked="true"
+                  android:text="Yes" />
+
+              <RadioButton
+                  android:id="@+id/treeno"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="No" />
+
+
+          </RadioGroup>
       </LinearLayout>
 
       <com.google.android.material.button.MaterialButton

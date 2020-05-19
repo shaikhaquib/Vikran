@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.keights.vikran.Activity.MyWork;
 import com.keights.vikran.Extras.MyItemDecoration;
 import com.keights.vikran.Extras.Progress;
 import com.keights.vikran.MySurveyAdapt;
@@ -21,6 +22,7 @@ import com.keights.vikran.Network.RetrofitClient;
 import com.keights.vikran.R;
 import com.keights.vikran.ResponseModel.FilterData;
 import com.keights.vikran.ResponseModel.FilterList;
+import com.keights.vikran.ResponseModel.MyWorkModel;
 
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class MySurveyFragment extends Fragment {
 
     RecyclerView rvLearningSub;
     RecyclerView.Adapter adapter;
-    List<FilterList> filterLists;
+    List<MyWorkModel> filterLists;
 
 
     public MySurveyFragment() {
@@ -54,12 +56,12 @@ public class MySurveyFragment extends Fragment {
 
 
         Bundle bundle = getArguments();
-        FilterData filterData =(FilterData) bundle.getSerializable("filterList");
+      //  FilterData filterData =(FilterData) bundle.getSerializable("filterList");
         if (filterLists==null)
-            filterLists = filterData.getFilterList();
+            filterLists = (List<MyWorkModel>) bundle.getSerializable("filterList");
         else {
             filterLists.clear();
-            filterLists = filterData.getFilterList();
+            filterLists = (List<MyWorkModel>)bundle.getSerializable("filterList");
         }
 
         rvLearningSub = view.findViewById(R.id.rvMySurvey);

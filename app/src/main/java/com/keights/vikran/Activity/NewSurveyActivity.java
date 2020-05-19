@@ -45,6 +45,7 @@ import com.keights.vikran.Extras.Progress;
 import com.keights.vikran.Fragment.Frg_DetailNewSurvey;
 import com.keights.vikran.Network.RetrofitClient;
 import com.keights.vikran.R;
+import com.keights.vikran.ResponseModel.ConsumerDetails;
 import com.keights.vikran.ResponseModel.ConsumerDetailsItem;
 import com.keights.vikran.ResponseModel.SearchConsumerResponse;
 import com.keights.vikran.ResponseModel.SurveyDetailsItem;
@@ -63,6 +64,7 @@ public class NewSurveyActivity extends AppCompatActivity {
     Frg_DetailNewSurvey frg_detailNewSurvey;
     TextInputEditText edtconsumerNo;
     ConsumerDetailsItem consumerDetailsItem;
+    public static ConsumerDetails consumerDetails;
     SurveyDetailsItem surveyDetailsItem ;
     private TextView cConsumerNo,cName,cDivision,cTaluka,cSubDivision,cSection,cVillage,cVoltagelevel,cDTCCode,sanctionedLoad,resultMessage;
     MaterialButton addSurvey,Execute,Survey,JMC,ExecutionPdf,Rtc,PermissionandCommission,Billing;
@@ -146,6 +148,7 @@ public class NewSurveyActivity extends AppCompatActivity {
                     {
                         if (response.body().getConsumerDetails().getConsumerDetails().size()>0) {
                             consumerDetailsItem = response.body().getConsumerDetails().getConsumerDetails().get(0);
+                            consumerDetails = response.body().getConsumerDetails();
                             if (response.body().getConsumerDetails().getSurveyDetails().size()>0)
                                 surveyDetailsItem = response.body().getConsumerDetails().getSurveyDetails().get(0);
                             VerifyData(response.body());
@@ -184,12 +187,14 @@ public class NewSurveyActivity extends AppCompatActivity {
 
 
         if(body.getConsumerDetails().getSurveyDetails().isEmpty()){
-            resultMessage.setText("Survey pending please add one ");
+            resultMessage.setText("Survey pending please add one");
             addSurvey.setVisibility(View.VISIBLE);
         }else if(body.getConsumerDetails().getRtcDetails().isEmpty()){
-            resultMessage.setText("Rtc is not competed");
+            resultMessage.setText("Rtc is not completed");
             Survey.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
+            Execute.setVisibility(View.VISIBLE);
+            addSurvey.setVisibility(View.VISIBLE);
 
         }else if(body.getConsumerDetails().getExecutionDetails().isEmpty()){
             resultMessage.setText("Execution is not taken");
@@ -213,31 +218,45 @@ public class NewSurveyActivity extends AppCompatActivity {
             //ExecutionPdf.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
         }else if(body.getConsumerDetails().getJmcSectionBDetails().isEmpty()){
-            resultMessage.setText("JMC Section A is competed.");
+            resultMessage.setText("JMC Section A is completed .");
             Survey.setVisibility(View.VISIBLE);
             JMC.setVisibility(View.VISIBLE);
             //ExecutionPdf.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
         }else if(body.getConsumerDetails().getJmcSectionCDetails().isEmpty()){
-            resultMessage.setText("JMC Section B is competed.");
+            resultMessage.setText("JMC Section B is completed.");
             Survey.setVisibility(View.VISIBLE);
             JMC.setVisibility(View.VISIBLE);
             //ExecutionPdf.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
-        }else if(body.getConsumerDetails().getJmcSectionBDetails().isEmpty()){
-            resultMessage.setText("JMC Section C is competed.");
+        }else if(body.getConsumerDetails().getJmcSectionCDetails().isEmpty()){
+            resultMessage.setText("JMC Section C is completed.");
             Survey.setVisibility(View.VISIBLE);
             JMC.setVisibility(View.VISIBLE);
             //ExecutionPdf.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
-        }else if(!body.getConsumerDetails().getJmcSectionDDetails().isEmpty()){
+        }else if(body.getConsumerDetails().getJmcSectionDDetails().isEmpty()){
+            resultMessage.setText("JMC Section D is completed.");
+            Survey.setVisibility(View.VISIBLE);
+            JMC.setVisibility(View.VISIBLE);
+            //ExecutionPdf.setVisibility(View.VISIBLE);
+            Rtc.setVisibility(View.VISIBLE);
+        }else{
             resultMessage.setText("JMC Completed ");
             Survey.setVisibility(View.VISIBLE);
             JMC.setVisibility(View.VISIBLE);
-            //ExecutionPdf.setVisibility(View.VISIBLE);
+            ExecutionPdf.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
             PermissionandCommission.setVisibility(View.VISIBLE);
             Billing.setVisibility(View.VISIBLE);
+
+            if (!body.getConsumerDetails().getPerComDetails().isEmpty()){
+                resultMessage.setText("Permission and Commission is  Completed ");
+            }
+            if (!body.getConsumerDetails().getBillingDetails().isEmpty()){
+                resultMessage.setText("Billing is Completed ");
+            }
+
         }
         addSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -299,12 +318,12 @@ public class NewSurveyActivity extends AppCompatActivity {
         Log.d(TAG, "openN: ");
         if (Build.VERSION.SDK_INT >= 23) {
             if (checkPermission()) {
-                new DownloadFile().execute("https://vikrangroup.com/portal/download_jobcard/20180002295","Execute.pdf");
+                new DownloadFile().execute("https://vikrangroup.com/portal/download_jobcard/"+consumerDetailsItem.getConsumerNo(),"datacard_"+consumerDetailsItem.getConsumerNo()+".pdf");
             } else {
                 requestPermission();
             }
         }else {
-            new DownloadFile().execute("https://vikrangroup.com/portal/download_jobcard/20180002295","Execute.pdf");
+            new DownloadFile().execute("https://vikrangroup.com/portal/download_jobcard/"+consumerDetailsItem.getConsumerNo(),"datacard_"+consumerDetailsItem.getConsumerNo()+".pdf");
         }
     }
 
@@ -352,18 +371,16 @@ public class NewSurveyActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void mJmc() {
-        Intent intent = new Intent(getApplicationContext(),ActivityJMC.class);
-        intent.putExtra("Data", consumerDetailsItem);
-        intent.putExtra("surveyDetailsItem", surveyDetailsItem);
+        Intent intent = new Intent(NewSurveyActivity.this,ActivityJMC.class);
         startActivity(intent);
     }
 
-        private void openExecutePage(){
-            Intent intent = new Intent(getApplicationContext(),ExecutionActivity.class);
-            intent.putExtra("Data", consumerDetailsItem);
-            intent.putExtra("surveyId", surveyDetailsItem.getSurveyId());
-            startActivity(intent);
-        }
+    private void openExecutePage(){
+        Intent intent = new Intent(getApplicationContext(),ExecutionActivity.class);
+        intent.putExtra("Data", consumerDetailsItem);
+        intent.putExtra("surveyId", surveyDetailsItem.getSurveyId());
+        startActivity(intent);
+    }
 
     private void openAddSurveyFragement(){
         findViewById(R.id.ConsumerDetailsView).setVisibility(View.GONE);
@@ -396,8 +413,8 @@ public class NewSurveyActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
             Log.v(TAG, "doInBackground() Method invoked ");
 
-            String fileUrl = strings[0];   // -> http://maven.apache.org/maven-1.x/maven.pdf
-            String fileName = strings[1];  // -> maven.pdf
+            String fileUrl = strings[0];
+            String fileName = strings[1];
             String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
             File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
@@ -438,7 +455,7 @@ public class NewSurveyActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 File d = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);  // -> filename = maven.pdf
-                                File pdfFile = new File(d, "Execute.pdf");
+                                File pdfFile = new File(d, "datacard_"+consumerDetailsItem.getConsumerNo()+".pdf");
 
                                 Log.v(TAG, "view() Method pdfFile " + pdfFile.getAbsolutePath());
 
@@ -472,7 +489,7 @@ public class NewSurveyActivity extends AppCompatActivity {
         switch (requestCode) {
             case PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    new DownloadFile().execute("https://vikrangroup.com/portal/download_jobcard/20180002295","Execute.pdf");
+                    new DownloadFile().execute("https://vikrangroup.com/portal/download_jobcard/"+consumerDetailsItem.getConsumerNo(),"datacard_"+consumerDetailsItem.getConsumerNo()+".pdf");
                 } else {
                     new MaterialAlertDialogBuilder(NewSurveyActivity.this, R.style.AlertDiloge)
                             .setTitle("Storage Permission Required")

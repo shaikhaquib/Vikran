@@ -97,7 +97,7 @@
                         android:layout_weight="5"
                         android:textSize="16sp"
                         android:text="2016545445"
-                        android:textColor="@android:color/tertiary_text_dark"
+                        android:textColor="@color/blue_700"
                         android:fontFamily="@font/roboto_regular" />
                 </LinearLayout>
                 <LinearLayout
@@ -112,12 +112,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
                         android:textSize="16sp"
-                        android:text="Status"
+                        android:text="Division"
                         android:textColor="@android:color/black"
                         android:fontFamily="@font/roboto_regular" />
 
                     <TextView
-                        android:id="@+id/sStatus"
+                        android:id="@+id/sDivision"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="5"
@@ -131,7 +131,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:layout_marginTop="4dp"
-                    android:weightSum="10">
+                    android:weightSum="10"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="fill_parent"

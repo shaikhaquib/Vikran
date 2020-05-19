@@ -512,20 +512,6 @@
                         app:rippleColor="@color/blue_grey_400" />
 
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/BackButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:layout_margin="8dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/purple"
-                        android:text="Back"
-                        android:textAllCaps="false"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold"
-                        app:cornerRadius="16dp"
-                        app:rippleColor="@color/blue_grey_400" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/addSurvey"
@@ -552,7 +538,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/purple"
-                        android:text="Download Execution PDF"
+                        android:text="Download PDF"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
@@ -560,6 +546,20 @@
                         app:cornerRadius="16dp"
                         app:rippleColor="@color/blue_grey_400" />
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/BackButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:layout_margin="8dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/purple"
+                        android:text="Back"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        app:cornerRadius="16dp"
+                        app:rippleColor="@color/blue_grey_400" />
 
                 </LinearLayout>
             </LinearLayout>

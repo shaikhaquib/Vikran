@@ -19,6 +19,9 @@ public class ExecutionDetailsItem{
 	@SerializedName("finishing_per_location")
 	private String finishingPerLocation;
 
+	@SerializedName("approved_date")
+	private String approvedDate;
+
 	@SerializedName("modified_date")
 	private String modifiedDate;
 
@@ -27,6 +30,9 @@ public class ExecutionDetailsItem{
 
 	@SerializedName("created_id")
 	private String createdId;
+
+	@SerializedName("approved_by")
+	private String approvedBy;
 
 	@SerializedName("mtr9_rsj")
 	private String mtr9Rsj;
@@ -60,6 +66,9 @@ public class ExecutionDetailsItem{
 
 	@SerializedName("tf_capacity_in_kva")
 	private String tfCapacityInKva;
+
+	@SerializedName("num_of_pole")
+	private String numOfPole;
 
 	@SerializedName("consumer_no")
 	private String consumerNo;
@@ -107,6 +116,14 @@ public class ExecutionDetailsItem{
 		return finishingPerLocation;
 	}
 
+	public void setApprovedDate(String approvedDate){
+		this.approvedDate = approvedDate;
+	}
+
+	public String getApprovedDate(){
+		return approvedDate;
+	}
+
 	public void setModifiedDate(String modifiedDate){
 		this.modifiedDate = modifiedDate;
 	}
@@ -129,6 +146,14 @@ public class ExecutionDetailsItem{
 
 	public String getCreatedId(){
 		return createdId;
+	}
+
+	public void setApprovedBy(String approvedBy){
+		this.approvedBy = approvedBy;
+	}
+
+	public String getApprovedBy(){
+		return approvedBy;
 	}
 
 	public void setMtr9Rsj(String mtr9Rsj){
@@ -219,6 +244,14 @@ public class ExecutionDetailsItem{
 		return tfCapacityInKva;
 	}
 
+	public void setNumOfPole(String numOfPole){
+		this.numOfPole = numOfPole;
+	}
+
+	public String getNumOfPole(){
+		return numOfPole;
+	}
+
 	public void setConsumerNo(String consumerNo){
 		this.consumerNo = consumerNo;
 	}
@@ -244,9 +277,11 @@ public class ExecutionDetailsItem{
 			",mtr9_psc = '" + mtr9Psc + '\'' + 
 			",modified_id = '" + modifiedId + '\'' + 
 			",finishing_per_location = '" + finishingPerLocation + '\'' + 
+			",approved_date = '" + approvedDate + '\'' + 
 			",modified_date = '" + modifiedDate + '\'' + 
 			",execution_id = '" + executionId + '\'' + 
 			",created_id = '" + createdId + '\'' + 
+			",approved_by = '" + approvedBy + '\'' + 
 			",mtr9_rsj = '" + mtr9Rsj + '\'' + 
 			",pole_erection = '" + poleErection + '\'' + 
 			",execution_status = '" + executionStatus + '\'' + 
@@ -258,6 +293,7 @@ public class ExecutionDetailsItem{
 			",meter_make = '" + meterMake + '\'' + 
 			",tf_sl_no = '" + tfSlNo + '\'' + 
 			",tf_capacity_in_kva = '" + tfCapacityInKva + '\'' + 
+			",num_of_pole = '" + numOfPole + '\'' + 
 			",consumer_no = '" + consumerNo + '\'' + 
 			",str_fitting = '" + strFitting + '\'' + 
 			"}";

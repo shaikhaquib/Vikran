@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.keights.vikran">
+    package="com.keights.vikran"
+    android:versionCode="1"
+    android:versionName="1.1.5">
 
     <dist:module dist:instant="true" />
 
@@ -27,7 +29,15 @@
         <activity android:name=".Activity.ActivityJMC" />
         <activity android:name=".Activity.SurveyDetailActivity" />
         <activity android:name=".Activity.ExecutionActivity" />
-        <activity android:name=".Activity.ConsumerList" />
+        <activity android:name=".Activity.ConsumerList" >
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Activity.Reports" />
         <activity android:name=".Activity.NewSurveyActivity" />
         <activity android:name=".Activity.MyWork" />

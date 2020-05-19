@@ -66,14 +66,16 @@ public class Frg_DetailNewSurvey extends Fragment {
     private ConsumerDetailsItem consumerDetailsItem;
     private TextView cConsumerNo, cName, cDivision, cTaluka, cSubDivision, cSection, cVillage, cVoltagelevel, cDTCCode, sanctionedLoad, txtLocation, txtSurveyby;
 
-    private RadioGroup edtSurveyPairing;
     private TextInputEditText edtHTline;
     private TextInputEditText edtRSJPole;
     private TextInputEditText edtSurveyBy;
     private TextInputEditText edtAproachRoad;
     private TextView edtSoilStrata;
-    private TextInputEditText edtRow;
-    private TextInputEditText edtTreeCutting;
+
+    private RadioGroup edtSurveyPairing;
+    private RadioGroup edtRow;
+    private RadioGroup edtTreeCutting;
+
     private MaterialButton logInDetails;
 
     private String strLocation;
@@ -103,6 +105,19 @@ public class Frg_DetailNewSurvey extends Fragment {
         consumerDetailsItem = (ConsumerDetailsItem) bundle.getSerializable("Data");
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         getLastLocation();
+
+        view.findViewById(R.id.nextedtRSJPole).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtRSJPole.requestFocus();
+            }
+        });
+        view.findViewById(R.id.nextAproachRoad).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtAproachRoad.requestFocus();
+            }
+        });
 
 
         cConsumerNo = view.findViewById(R.id.cConsumerNo);
@@ -212,13 +227,7 @@ public class Frg_DetailNewSurvey extends Fragment {
         } else if (edtAproachRoad.getText().toString().isEmpty()) {
             Constants.showFormValidationError(getActivity(), edtAproachRoad, "Aproach Road Field is Empty please enter valid value");
             return false;
-        }else if (edtRow.getText().toString().isEmpty()) {
-            Constants.showFormValidationError(getActivity(), edtRow, "Survey Pairing Field is Empty please enter valid value");
-            return false;
-        } else if (edtTreeCutting.getText().toString().isEmpty()) {
-            Constants.showFormValidationError(getActivity(), edtTreeCutting, "Tree Cutting Field is Empty please enter valid value");
-            return false;
-        } else
+        }else
             return true;
     }
 
@@ -322,8 +331,8 @@ public class Frg_DetailNewSurvey extends Fragment {
         final Progress progress = new Progress(getActivity());
         progress.show();
         Call<AddSurveyDetailsResponse> responseCall = RetrofitClient.getInstance().getApi().add_survey_details(USER.getReportingId(), USER.getUserId(), consumerDetailsItem.getConsumerNo(),
-                getSurveyParing(), edtHTline.getText().toString(), edtRSJPole.getText().toString(), edtSurveyBy.getText().toString(),
-                edtAproachRoad.getText().toString(), edtSoilStrata.getText().toString(), edtRow.getText().toString(), edtTreeCutting.getText().toString(),
+                getRadioValue(edtSurveyPairing), edtHTline.getText().toString(), edtRSJPole.getText().toString(), edtSurveyBy.getText().toString(),
+                edtAproachRoad.getText().toString(), edtSoilStrata.getText().toString(), getRadioValue(edtRow), getRadioValue(edtTreeCutting),
                 "Remark", strLocation, USER.getDivision());
         responseCall.enqueue(new Callback<AddSurveyDetailsResponse>() {
             @Override
@@ -372,12 +381,14 @@ public class Frg_DetailNewSurvey extends Fragment {
             getLastLocation();
         }
     }
+    public String getRadioValue(RadioGroup radioGroup) {
+        int id = radioGroup.getCheckedRadioButtonId();
+        View radioButton = radioGroup.findViewById(id);
+        int radioId = radioGroup.indexOfChild(radioButton);
+        RadioButton btn = (RadioButton) radioGroup.getChildAt(radioId);
 
-    public String getSurveyParing() {
-        int id = edtSurveyPairing.getCheckedRadioButtonId();
-        View radioButton = edtSurveyPairing.findViewById(id);
-        int radioId = edtSurveyPairing.indexOfChild(radioButton);
-        RadioButton btn = (RadioButton) edtSurveyPairing.getChildAt(radioId);
         return (String) btn.getText();
+
     }
+
 }

@@ -25,67 +25,161 @@
             android:textColor="@android:color/black"
             android:textSize="30dp" />
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/TextInput">
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:layout_gravity="center"
+                android:text="New Pole in Nos"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_light" />
+
+            <TextView
+                android:id="@+id/txtnew_pole"
+                android:theme="@style/AlertDiloge"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:singleLine="true"
+                android:visibility="gone"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_light" />
+
+
+            <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                 android:id="@+id/new_pole"
-                android:layout_width="match_parent"
+                android:theme="@style/AlertDiloge"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:hint="New Pole"
-                android:padding="12.5dp"
-                android:inputType="numberDecimal"
+                android:layout_weight="6"
+                android:gravity="center"
                 android:singleLine="true"
-                android:text="0" />
+                app:initialNumber="0"
+                app:textColor="#000"
+                app:finalNumber="100"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_light" />
 
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/TextInput">
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:layout_gravity="center"
+                android:text="Existing Pole in Nos"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_light" />
+
+            <TextView
+                android:id="@+id/txtexisting_pole"
+                android:theme="@style/AlertDiloge"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:singleLine="true"
+                android:visibility="gone"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_light" />
+
+
+            <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                 android:id="@+id/existing_pole"
-                android:layout_width="match_parent"
+                android:theme="@style/AlertDiloge"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:hint="Existing Pole"
-                android:padding="12.5dp"
-                android:inputType="numberDecimal"
+                android:layout_weight="6"
+                android:gravity="center"
                 android:singleLine="true"
-                android:text="0" />
+                app:initialNumber="0"
+                app:textColor="#000"
+                app:finalNumber="100"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_light" />
 
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/TextInput">
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:layout_gravity="center"
+                android:text="Stay in Nos"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_light" />
+
+            <TextView
+                android:id="@+id/txtstay"
+                android:theme="@style/AlertDiloge"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:singleLine="true"
+                android:visibility="gone"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_light" />
+
+
+            <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                 android:id="@+id/stay"
-                android:layout_width="match_parent"
+                android:theme="@style/AlertDiloge"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:hint="Stay"
-                android:padding="12.5dp"
-                android:inputType="numberDecimal"
+                android:layout_weight="6"
+                android:gravity="center"
                 android:singleLine="true"
-                android:text="0" />
+                app:initialNumber="0"
+                app:textColor="#000"
+                app:finalNumber="100"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_light" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:theme="@style/TextInput">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -95,11 +189,12 @@
                 android:layout_marginBottom="20dp"
                 android:hint="Span In Mtr"
                 android:padding="12.5dp"
-                android:inputType="numberDecimal"
-                android:singleLine="true"
                 android:text="0" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"

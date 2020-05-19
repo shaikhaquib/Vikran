@@ -15,13 +15,17 @@ import com.keights.vikran.ConsumerAdapt;
 import com.keights.vikran.Extras.MyItemDecoration;
 import com.keights.vikran.MySurveyAdapt;
 import com.keights.vikran.R;
+import com.keights.vikran.ResponseModel.AssignConsumerItem;
+import com.keights.vikran.ResponseModel.MyWorkModel;
+
+import java.util.List;
 
 public class Frg_Consumerlist extends Fragment {
 
 
     RecyclerView rvLearningSub;
     RecyclerView.Adapter adapter;
-
+    List<AssignConsumerItem> filterLists;
 
     public Frg_Consumerlist() {
         // Required empty public constructor
@@ -40,11 +44,20 @@ public class Frg_Consumerlist extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+        Bundle bundle = getArguments();
+        //  FilterData filterData =(FilterData) bundle.getSerializable("filterList");
+        if (filterLists==null)
+            filterLists = (List<AssignConsumerItem>) bundle.getSerializable("list");
+        else {
+            filterLists.clear();
+            filterLists = (List<AssignConsumerItem>)bundle.getSerializable("list");
+        }
+
         rvLearningSub = view.findViewById(R.id.rvMySurvey);
         rvLearningSub.setHasFixedSize(true);
         rvLearningSub.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvLearningSub.addItemDecoration(new MyItemDecoration());
-        adapter = new ConsumerAdapt(getActivity());
+        adapter = new ConsumerAdapt(getActivity(),filterLists);
         rvLearningSub.setAdapter(adapter);
         //    getRecentQuestions();
     }

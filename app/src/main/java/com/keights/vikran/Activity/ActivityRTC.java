@@ -45,7 +45,13 @@ public class ActivityRTC extends AppCompatActivity {
 
             findViewById(R.id.RTCDetails).setVisibility(View.VISIBLE);
             TextView RTCStatus =findViewById(R.id.RTCStatus);
-            RTCStatus.setText(rtcDetailsItem.getRtcStatus());
+
+            if (rtcDetailsItem.getRtcStatus().equals("0"))
+                 RTCStatus.setText("No");
+            else
+                RTCStatus.setText("Yes");
+
+
 
             TextView RTCDate =findViewById(R.id.RTCDate);
             RTCDate.setText(Constants.Date(rtcDetailsItem.getCreatedDate()));

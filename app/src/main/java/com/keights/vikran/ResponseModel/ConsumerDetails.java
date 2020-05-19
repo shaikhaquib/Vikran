@@ -1,9 +1,10 @@
 package com.keights.vikran.ResponseModel;
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class ConsumerDetails{
+public class ConsumerDetails implements Serializable {
 
 	@SerializedName("jmc_section_a_details")
 	private List<JmcSectionADetailsItem> jmcSectionADetails;
@@ -13,6 +14,9 @@ public class ConsumerDetails{
 
 	@SerializedName("billing_details")
 	private List<BillingDetailsItem> billingDetails;
+
+	@SerializedName("jmc_section_e_details")
+	private List<JmcSectionEDetailsItem> jmcSectionEDetails;
 
 	@SerializedName("consumer_details")
 	private List<ConsumerDetailsItem> consumerDetails;
@@ -57,6 +61,14 @@ public class ConsumerDetails{
 
 	public List<BillingDetailsItem> getBillingDetails(){
 		return billingDetails;
+	}
+
+	public void setJmcSectionEDetails(List<JmcSectionEDetailsItem> jmcSectionEDetails){
+		this.jmcSectionEDetails = jmcSectionEDetails;
+	}
+
+	public List<JmcSectionEDetailsItem> getJmcSectionEDetails(){
+		return jmcSectionEDetails;
 	}
 
 	public void setConsumerDetails(List<ConsumerDetailsItem> consumerDetails){
@@ -122,6 +134,7 @@ public class ConsumerDetails{
 			"jmc_section_a_details = '" + jmcSectionADetails + '\'' + 
 			",jmc_section_b_details = '" + jmcSectionBDetails + '\'' + 
 			",billing_details = '" + billingDetails + '\'' + 
+			",jmc_section_e_details = '" + jmcSectionEDetails + '\'' + 
 			",consumer_details = '" + consumerDetails + '\'' + 
 			",survey_details = '" + surveyDetails + '\'' + 
 			",jmc_section_d_details = '" + jmcSectionDDetails + '\'' + 

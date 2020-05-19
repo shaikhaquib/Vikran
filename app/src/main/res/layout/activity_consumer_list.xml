@@ -18,6 +18,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:gravity="center">
 
         <TextView
@@ -58,7 +59,8 @@
         app:strokeColor="#0288D1"
         app:strokeWidth="2dp"
         app:layout_collapseMode="pin"
-        app:cardElevation="3dp">
+        app:cardElevation="3dp"
+        android:visibility="gone">
 
         <HorizontalScrollView
             android:layout_width="wrap_content"
@@ -167,7 +169,18 @@
 
     <FrameLayout
         android:id="@+id/frgHolder"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMySurvey"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:clipToPadding="false"
+        android:paddingLeft="@dimen/spacing_mlarge"
+        android:paddingRight="@dimen/spacing_mlarge" />
+
 
 </LinearLayout>

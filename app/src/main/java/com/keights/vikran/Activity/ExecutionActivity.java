@@ -36,11 +36,11 @@ public class ExecutionActivity extends AppCompatActivity {
     // Consumer Data Card
 
     List<TextInputEditText> validationList = new ArrayList();
-    private TextView cConsumerNo,cName,cDivision,cTaluka,cSubDivision,cSection,cVillage,cVoltagelevel,cDTCCode,sanctionedLoad;
+    private TextView cConsumerNo,cName,cDivision,cTaluka,cSubDivision,cSection,cVillage,cVoltagelevel,cDTCCode,sanctionedLoad,cSurveyTakenBy,surveyDate;
 
-    TextInputEditText transformer_make ,tf_sl_no,tf_capacity_in_kva,meter_make,meter_no;
-    ElegantNumberButton PoleShifting,STRShiftinginnumbers,DTRErectioninnumbers,FinishingPerLocation,mtr9_psc,mtr9_rsj,mtr11_rsj;
-    TextView PoleErection,StringPerLocation;
+    TextInputEditText transformer_make ,tf_sl_no,meter_make,meter_no;
+    ElegantNumberButton num_of_pole,PoleShifting,STRShiftinginnumbers,DTRErectioninnumbers,FinishingPerLocation,mtr9_psc,mtr9_rsj,mtr11_rsj;
+    TextView PoleErection,StringPerLocation,tf_capacity_in_kva;
 
     private static final String TAG = "ExecutionActivity";
 
@@ -51,6 +51,7 @@ public class ExecutionActivity extends AppCompatActivity {
 
     ConsumerDetailsItem consumerDetailsItem;
     String surveyId;
+
 
 
 
@@ -65,6 +66,25 @@ public class ExecutionActivity extends AppCompatActivity {
 
 
         init();
+
+        findViewById(R.id.nextTF).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tf_sl_no.requestFocus();
+            }
+        });
+        findViewById(R.id.nextMetrNo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                meter_no.requestFocus();
+            }
+        });
+        findViewById(R.id.nextMetrNo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                meter_no.requestFocus();
+            }
+        });
 
     }
 
@@ -95,10 +115,12 @@ public class ExecutionActivity extends AppCompatActivity {
         cTaluka = findViewById(R.id.cTaluka);
         cSubDivision = findViewById(R.id.cSubDivision);
         cSection = findViewById(R.id.cSection);
+        cSurveyTakenBy = findViewById(R.id.cSurveyTakenBy);
         cVillage = findViewById(R.id.cVillage);
         cVoltagelevel = findViewById(R.id.cVoltagelevel);
         cDTCCode = findViewById(R.id.cDTCCode);
         sanctionedLoad = findViewById(R.id.sanctionedLoad);
+        surveyDate = findViewById(R.id.surveyDate);
 
 
         cConsumerNo.setText(consumerDetailsItem.getConsumerNo());
@@ -111,6 +133,8 @@ public class ExecutionActivity extends AppCompatActivity {
         cVoltagelevel.setText(consumerDetailsItem.getVoltageLevel());
         cDTCCode.setText(consumerDetailsItem.getDtcCode());
         sanctionedLoad.setText(consumerDetailsItem.getSanctionLoad());
+        cSurveyTakenBy.setText(consumerDetailsItem.getCreatedName());
+        surveyDate.setText(Constants.Date(consumerDetailsItem.getCreatedDate()));
 
         StringPerLocation = findViewById(R.id.StringPerLocation);
         PoleErection = findViewById(R.id.PoleErection);
@@ -123,6 +147,7 @@ public class ExecutionActivity extends AppCompatActivity {
 
 
         PoleShifting = findViewById(R.id.PoleShifting);
+        num_of_pole = findViewById(R.id.num_of_pole);
         STRShiftinginnumbers = findViewById(R.id.STRShiftinginnumbers);
         DTRErectioninnumbers = findViewById(R.id.DTRErectioninnumbers);
         FinishingPerLocation = findViewById(R.id.FinishingPerLocation);
@@ -134,6 +159,12 @@ public class ExecutionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showChoiceDialog((TextView) v, new String[]{"0", "0.5", "1"});
+            }
+        });
+        tf_capacity_in_kva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showChoiceDialog((TextView) v, new String[]{"10 KVA", "16 KVA", "25 KVA"});
             }
         });
 
@@ -177,7 +208,7 @@ public class ExecutionActivity extends AppCompatActivity {
                 USER.getUserId(),
                 consumerDetailsItem.getConsumerNo(),
                 USER.getDivision(),
-                surveyId,PoleShifting.getNumber(),PoleErection.getText().toString(),STRShiftinginnumbers.getNumber(),StringPerLocation.getText().toString(),DTRErectioninnumbers.getNumber(),FinishingPerLocation.getNumber(),transformer_make.getText().toString(),
+                surveyId,num_of_pole.getNumber(),PoleShifting.getNumber(),PoleErection.getText().toString(),STRShiftinginnumbers.getNumber(),StringPerLocation.getText().toString(),DTRErectioninnumbers.getNumber(),FinishingPerLocation.getNumber(),transformer_make.getText().toString(),
                 tf_sl_no.getText().toString(),tf_capacity_in_kva.getText().toString(),meter_make.getText().toString(),meter_no.getText().toString(),mtr9_psc.getNumber(),mtr9_rsj.getNumber(),mtr11_rsj.getNumber()
                 );
         responseCall.enqueue(new Callback<AddExecutionResponse>() {

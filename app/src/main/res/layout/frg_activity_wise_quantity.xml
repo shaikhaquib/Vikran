@@ -24,15 +24,14 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:weightSum="10">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"
-                android:layout_weight="4"
+                android:layout_weight="3"
                 android:text="Transformer Make"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
@@ -41,15 +40,27 @@
                 android:id="@+id/transformer_make"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="6"
+                android:layout_weight="3"
+                android:layout_marginRight="4dp"
                 android:gravity="center"
                 android:padding="6dp"
                 android:tag="16 KVA DTC"
-                android:inputType="number"
+                android:inputType="text"
                 android:singleLine="true"
                 android:background="@drawable/borderdark"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
+
+            <ImageView
+                android:id="@+id/nextTF"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:background="@drawable/circle"
+                android:backgroundTint="@color/blue_700"
+                android:padding="4dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_forward"/>
 
 
         </LinearLayout>
@@ -58,15 +69,14 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:weightSum="10">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"
-                android:layout_weight="4"
+                android:layout_weight="3"
                 android:text="T/F Sl No"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
@@ -75,15 +85,27 @@
                 android:id="@+id/tf_sl_no"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="6"
+                android:layout_weight="3"
+                android:layout_marginRight="4dp"
                 android:gravity="center"
                 android:padding="6dp"
                 android:tag="16 KVA DTC"
-                android:inputType="number"
+                android:inputType="text"
                 android:singleLine="true"
                 android:background="@drawable/borderdark"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
+
+            <ImageView
+                android:id="@+id/nextMeterMake"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:background="@drawable/circle"
+                android:backgroundTint="@color/blue_700"
+                android:padding="4dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_forward"/>
 
 
         </LinearLayout>
@@ -105,14 +127,16 @@
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
 
-            <com.google.android.material.textfield.TextInputEditText
+            <TextView
                 android:id="@+id/tf_capacity_in_kva"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
                 android:gravity="center"
                 android:padding="6dp"
-                android:tag="16 KVA DTC"
+                android:text="10 KVA"
+                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                android:drawableTint="@color/blue_700"
                 android:inputType="number"
                 android:singleLine="true"
                 android:background="@drawable/borderdark"
@@ -121,20 +145,20 @@
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:weightSum="10">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"
-                android:layout_weight="4"
+                android:layout_weight="3"
                 android:text="Meter Make"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
@@ -143,18 +167,31 @@
                 android:id="@+id/meter_make"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="6"
+                android:layout_weight="3"
+                android:layout_marginRight="4dp"
                 android:gravity="center"
                 android:padding="6dp"
                 android:tag="16 KVA DTC"
-                android:inputType="number"
+                android:inputType="text"
                 android:singleLine="true"
                 android:background="@drawable/borderdark"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
 
+            <ImageView
+                android:id="@+id/nextMetrNo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:background="@drawable/circle"
+                android:backgroundTint="@color/blue_700"
+                android:padding="4dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_forward"/>
+
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
