@@ -2,7 +2,9 @@ package com.keights.vikran.ResponseModel;
 
 import com.google.gson.annotations.SerializedName;
 
-public class JmcSectionEDetailsItem{
+import java.io.Serializable;
+
+public class JmcSectionEDetailsItem implements Serializable {
 
 	@SerializedName("dtr_code")
 	private String dtrCode;

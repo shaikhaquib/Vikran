@@ -30,6 +30,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -69,9 +70,12 @@ public class Frg_DetailNewSurvey extends Fragment {
     private TextInputEditText edtHTline;
     private TextInputEditText edtRSJPole;
     private TextInputEditText edtSurveyBy;
-    private TextInputEditText edtAproachRoad;
     private TextView edtSoilStrata;
 
+    ElegantNumberButton no_of_crossing;
+    ElegantNumberButton no_of_gaurding;
+
+    private RadioGroup edtAproachRoad;
     private RadioGroup edtSurveyPairing;
     private RadioGroup edtRow;
     private RadioGroup edtTreeCutting;
@@ -144,6 +148,8 @@ public class Frg_DetailNewSurvey extends Fragment {
         edtTreeCutting = view.findViewById(R.id.edtTreeCutting);
 
         logInDetails = view.findViewById(R.id.logInDetails);
+        no_of_gaurding = view.findViewById(R.id.no_of_gaurding);
+        no_of_crossing = view.findViewById(R.id.no_of_crossing);
 
 
         edtSurveyBy.setText(USER.getUsername());
@@ -223,9 +229,6 @@ public class Frg_DetailNewSurvey extends Fragment {
             return false;
         } else if (edtSurveyBy.getText().toString().isEmpty()) {
             Constants.showFormValidationError(getActivity(), edtSurveyBy, "Survey By Field is Empty please enter valid value");
-            return false;
-        } else if (edtAproachRoad.getText().toString().isEmpty()) {
-            Constants.showFormValidationError(getActivity(), edtAproachRoad, "Aproach Road Field is Empty please enter valid value");
             return false;
         }else
             return true;
@@ -332,8 +335,8 @@ public class Frg_DetailNewSurvey extends Fragment {
         progress.show();
         Call<AddSurveyDetailsResponse> responseCall = RetrofitClient.getInstance().getApi().add_survey_details(USER.getReportingId(), USER.getUserId(), consumerDetailsItem.getConsumerNo(),
                 getRadioValue(edtSurveyPairing), edtHTline.getText().toString(), edtRSJPole.getText().toString(), edtSurveyBy.getText().toString(),
-                edtAproachRoad.getText().toString(), edtSoilStrata.getText().toString(), getRadioValue(edtRow), getRadioValue(edtTreeCutting),
-                "Remark", strLocation, USER.getDivision());
+                getRadioValue(edtAproachRoad), edtSoilStrata.getText().toString(), getRadioValue(edtRow), getRadioValue(edtTreeCutting),
+                "Remark", strLocation,no_of_gaurding.getNumber(),no_of_crossing.getNumber(), USER.getDivision());
         responseCall.enqueue(new Callback<AddSurveyDetailsResponse>() {
             @Override
             public void onResponse(Call<AddSurveyDetailsResponse> call, Response<AddSurveyDetailsResponse> response) {

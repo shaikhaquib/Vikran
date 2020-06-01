@@ -1,10 +1,9 @@
 package com.keights.vikran.ResponseModel;
 
-import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class ConsumerDetails implements Serializable {
+public class ConsumerDetails{
 
 	@SerializedName("jmc_section_a_details")
 	private List<JmcSectionADetailsItem> jmcSectionADetails;

@@ -109,42 +109,6 @@
 
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp"
-                android:layout_weight="4"
-                android:text="T/F Capacity In KVA"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/roboto_medium" />
-
-            <TextView
-                android:id="@+id/tf_capacity_in_kva"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="6"
-                android:gravity="center"
-                android:padding="6dp"
-                android:text="10 KVA"
-                android:drawableEnd="@drawable/ic_arrow_drop_down"
-                android:drawableTint="@color/blue_700"
-                android:inputType="number"
-                android:singleLine="true"
-                android:background="@drawable/borderdark"
-                android:textColor="@color/grey_60"
-                android:fontFamily="@font/roboto_medium" />
-
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -226,6 +190,44 @@
 
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:text="T/F Capacity In KVA"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <TextView
+                android:id="@+id/tf_capacity_in_kva"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="10 KVA"
+                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                android:drawableTint="@color/blue_700"
+                android:inputType="number"
+                android:singleLine="true"
+                android:background="@drawable/borderdark"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

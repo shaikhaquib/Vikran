@@ -61,6 +61,7 @@ public class MySurveyFragment extends Fragment {
             filterLists = (List<MyWorkModel>) bundle.getSerializable("filterList");
         else {
             filterLists.clear();
+            adapter.notifyDataSetChanged();
             filterLists = (List<MyWorkModel>)bundle.getSerializable("filterList");
         }
 

@@ -111,47 +111,11 @@
                 android:textSize="16sp"
                 android:layout_weight="4"
                 android:layout_gravity="center"
-                android:text="Pole Erection"
+                android:text="DTR STR Fitting"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
 
-            <TextView
-                android:id="@+id/PoleErection"
-                android:theme="@style/AlertDiloge"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="6"
-                android:gravity="center"
-                android:background="@drawable/borderdark"
-                android:singleLine="true"
-                android:padding="6dp"
-                android:text="9 Mtr PSC"
-                android:drawableEnd="@drawable/ic_arrow_drop_down"
-                android:drawableTint="@color/blue_700"
-                android:textColor="@color/grey_60"
-                android:fontFamily="@font/roboto_medium" />
 
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="6dp"
-            android:orientation="horizontal"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:textSize="16sp"
-                android:layout_weight="4"
-                android:layout_gravity="center"
-                android:text="STR Shifting in numbers"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/roboto_medium" />
 
             <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                 android:id="@+id/STRShiftinginnumbers"
@@ -169,6 +133,7 @@
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -189,19 +154,17 @@
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/roboto_medium" />
 
-            <TextView
+            <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                 android:id="@+id/StringPerLocation"
                 android:theme="@style/AlertDiloge"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
                 android:gravity="center"
-                android:background="@drawable/borderdark"
                 android:singleLine="true"
-                android:padding="6dp"
-                android:text="0"
-                android:drawableEnd="@drawable/ic_arrow_drop_down"
-                android:drawableTint="@color/blue_700"
+                app:initialNumber="0"
+                app:textColor="#000"
+                app:finalNumber="50"
                 android:textColor="@color/grey_60"
                 android:fontFamily="@font/roboto_medium" />
 
@@ -280,6 +243,46 @@
 
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="6dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:layout_weight="4"
+                android:layout_gravity="center"
+                android:text="Pole Erection"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/roboto_medium" />
+
+            <TextView
+                android:id="@+id/PoleErection"
+                android:theme="@style/AlertDiloge"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:background="@drawable/borderdark"
+                android:singleLine="true"
+                android:padding="6dp"
+                android:text="9 Mtr PSC"
+                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                android:drawableTint="@color/blue_700"
+                android:textColor="@color/grey_60"
+                android:fontFamily="@font/roboto_medium" />
+
+
+        </LinearLayout>
+
 
 
     </LinearLayout>

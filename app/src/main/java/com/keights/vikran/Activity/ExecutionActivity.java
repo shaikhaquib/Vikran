@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.keights.vikran.Extras.Constants;
@@ -39,8 +38,8 @@ public class ExecutionActivity extends AppCompatActivity {
     private TextView cConsumerNo,cName,cDivision,cTaluka,cSubDivision,cSection,cVillage,cVoltagelevel,cDTCCode,sanctionedLoad,cSurveyTakenBy,surveyDate;
 
     TextInputEditText transformer_make ,tf_sl_no,meter_make,meter_no;
-    ElegantNumberButton num_of_pole,PoleShifting,STRShiftinginnumbers,DTRErectioninnumbers,FinishingPerLocation,mtr9_psc,mtr9_rsj,mtr11_rsj;
-    TextView PoleErection,StringPerLocation,tf_capacity_in_kva;
+    ElegantNumberButton num_of_pole,PoleShifting,StringPerLocation,STRShiftinginnumbers,DTRErectioninnumbers,FinishingPerLocation,mtr9_psc,mtr9_rsj,mtr11_rsj;
+    TextView PoleErection,tf_capacity_in_kva;
 
     private static final String TAG = "ExecutionActivity";
 
@@ -155,12 +154,6 @@ public class ExecutionActivity extends AppCompatActivity {
         mtr9_rsj = findViewById(R.id.mtr9_rsj);
         mtr11_rsj = findViewById(R.id.mtr11_rsj);
 
-        StringPerLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showChoiceDialog((TextView) v, new String[]{"0", "0.5", "1"});
-            }
-        });
         tf_capacity_in_kva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -208,7 +201,7 @@ public class ExecutionActivity extends AppCompatActivity {
                 USER.getUserId(),
                 consumerDetailsItem.getConsumerNo(),
                 USER.getDivision(),
-                surveyId,num_of_pole.getNumber(),PoleShifting.getNumber(),PoleErection.getText().toString(),STRShiftinginnumbers.getNumber(),StringPerLocation.getText().toString(),DTRErectioninnumbers.getNumber(),FinishingPerLocation.getNumber(),transformer_make.getText().toString(),
+                surveyId,num_of_pole.getNumber(),PoleShifting.getNumber(),PoleErection.getText().toString(),STRShiftinginnumbers.getNumber(),StringPerLocation.getNumber(),DTRErectioninnumbers.getNumber(),FinishingPerLocation.getNumber(),transformer_make.getText().toString(),
                 tf_sl_no.getText().toString(),tf_capacity_in_kva.getText().toString(),meter_make.getText().toString(),meter_no.getText().toString(),mtr9_psc.getNumber(),mtr9_rsj.getNumber(),mtr11_rsj.getNumber()
                 );
         responseCall.enqueue(new Callback<AddExecutionResponse>() {

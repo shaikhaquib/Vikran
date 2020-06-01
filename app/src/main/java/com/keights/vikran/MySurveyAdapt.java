@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.keights.vikran.Activity.NewSurveyActivity;
 import com.keights.vikran.Activity.SurveyDetailActivity;
 import com.keights.vikran.Extras.Constants;
 import com.keights.vikran.Extras.Progress;
@@ -41,7 +42,7 @@ public class MySurveyAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        RecyclerView.ViewHolder vh;
+        RecyclerView.ViewHolder vh = null;
         if (viewType == VIEW_ITEM) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.survey_item, parent, false);
             vh = new ViewHolder(v);
@@ -49,6 +50,7 @@ public class MySurveyAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_section, parent, false);
             vh = new SectionViewHolder(v);
         }
+        vh.setIsRecyclable(false);
         return vh;
     }
 
@@ -110,7 +112,7 @@ public class MySurveyAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             sConsumerNo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    searchConsumer(list.getConsumerNo());
+                    activity.startActivity(new Intent(activity, NewSurveyActivity.class).putExtra("ConsumerNo",list.getConsumerNo()));
                     }
             });
         }

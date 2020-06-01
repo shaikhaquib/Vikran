@@ -27,24 +27,20 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
             android:text="Target of the Month"
             android:textAppearance="@style/toolbartext"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout6"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <LinearLayout
             android:id="@+id/linearLayout6"
-            android:layout_width="0dp"
+            android:layout_width="500dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/orange_grad"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -165,12 +161,11 @@
             android:id="@+id/new_Survey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:orientation="vertical"
             app:layout_constraintEnd_toStartOf="@+id/MyWork"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/linearLayout6"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
@@ -210,17 +205,18 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:id="@+id/MyWork"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
+            app:layout_constraintEnd_toStartOf="@+id/rtc"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/new_Survey"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+            app:layout_constraintTop_toTopOf="@+id/new_Survey">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -257,17 +253,17 @@
 
         </LinearLayout>
 
-
         <LinearLayout
             android:id="@+id/Execution"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="@+id/MyWork"
-            app:layout_constraintTop_toBottomOf="@+id/MyWork">
+            app:layout_constraintEnd_toStartOf="@+id/jmc"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/new_Survey"
+            app:layout_constraintTop_toTopOf="@+id/jmc">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -312,8 +308,10 @@
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="@+id/rtc"
-            app:layout_constraintTop_toBottomOf="@+id/rtc">
+            app:layout_constraintEnd_toStartOf="@+id/PermissionandCommission"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/Execution"
+            app:layout_constraintTop_toBottomOf="@+id/MyWork">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -355,12 +353,13 @@
             android:id="@+id/rtc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="@+id/new_Survey"
-            app:layout_constraintTop_toBottomOf="@+id/new_Survey">
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/MyWork"
+            app:layout_constraintTop_toTopOf="@+id/MyWork">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -398,14 +397,15 @@
 
         <LinearLayout
             android:id="@+id/PermissionandCommission"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_width="156dp"
+            android:layout_height="196dp"
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="@+id/Execution"
-            app:layout_constraintTop_toBottomOf="@+id/Execution">
+            app:layout_constraintEnd_toEndOf="@+id/rtc"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/jmc"
+            app:layout_constraintTop_toTopOf="@+id/jmc">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -445,11 +445,13 @@
             android:id="@+id/Nscfeeding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="@+id/jmc"
+            app:layout_constraintEnd_toEndOf="@+id/PermissionandCommission"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/billing"
             app:layout_constraintTop_toBottomOf="@+id/jmc">
 
             <com.google.android.material.card.MaterialCardView
@@ -486,16 +488,18 @@
 
         </LinearLayout>
 
+
         <LinearLayout
             android:id="@+id/billing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="@+id/PermissionandCommission"
-            app:layout_constraintTop_toBottomOf="@+id/PermissionandCommission">
+            app:layout_constraintEnd_toStartOf="@+id/Nscfeeding"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/Execution"
+            app:layout_constraintTop_toTopOf="@+id/Nscfeeding">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -531,11 +535,11 @@
 
         </LinearLayout>
 
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/Reports"
             android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_marginTop="24dp"
             android:backgroundTint="@color/purple"
             android:text="Reports"
             android:textAllCaps="false"
@@ -546,16 +550,16 @@
             app:icon="@drawable/ic_result"
             app:iconGravity="textStart"
             app:iconSize="30dp"
-            app:layout_constraintEnd_toEndOf="@+id/Consumerlist"
-            app:layout_constraintStart_toStartOf="@+id/Consumerlist"
-            app:layout_constraintTop_toBottomOf="@+id/Consumerlist"
+            app:layout_constraintEnd_toEndOf="@+id/PermissionandCommission"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/Execution"
+            app:layout_constraintTop_toBottomOf="@+id/billing"
             app:rippleColor="@color/blue_grey_100" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/Consumerlist"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_marginTop="12dp"
             android:backgroundTint="@color/purple"
             android:text="Consumer List"
             android:textAllCaps="false"
@@ -566,10 +570,9 @@
             app:icon="@drawable/ic_qualitative_research"
             app:iconGravity="textStart"
             app:iconSize="30dp"
-            app:layout_constraintEnd_toEndOf="@+id/PermissionandCommission"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/Nscfeeding"
-            app:layout_constraintTop_toBottomOf="@+id/Nscfeeding"
+            app:layout_constraintEnd_toEndOf="@+id/Reports"
+            app:layout_constraintStart_toStartOf="@+id/Reports"
+            app:layout_constraintTop_toBottomOf="@+id/Reports"
             app:rippleColor="@color/blue_grey_100" />
 
 

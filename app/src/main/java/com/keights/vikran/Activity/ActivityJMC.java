@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +22,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.keights.vikran.Extras.Constants;
 import com.keights.vikran.Extras.Progress;
 import com.keights.vikran.Network.RetrofitClient;
@@ -485,6 +485,7 @@ public class ActivityJMC extends AppCompatActivity {
         final TextInputEditText GPScoordinatesofLiveConsumerinDecimalEast = view.findViewById(R.id.GPScoordinatesofLiveConsumerinDecimalEast);
         final TextInputEditText Feedernote = view.findViewById(R.id.Feedernote);
         final TextInputEditText DTRCode=view.findViewById(R.id.DTRCode);
+        final TextInputEditText live_consumer_name=view.findViewById(R.id.LiveConsumerName);
 
         if (!consumerDetails.getJmcSectionEDetails().isEmpty()){
 
@@ -493,6 +494,7 @@ public class ActivityJMC extends AppCompatActivity {
             LiveConsumerNo.setEnabled(false);
             NameofSubStation.setEnabled(false);
             Nameoffeeder.setEnabled(false);
+            live_consumer_name.setEnabled(false);
             GPScoordinatesofDTRinDecimalNorth.setEnabled(false);
             GPScoordinatesofDTRinDecimalEast.setEnabled(false);
             GPScoordinatesofTappingpoleinDecimalNorth.setEnabled(false);
@@ -506,6 +508,7 @@ public class ActivityJMC extends AppCompatActivity {
             LiveConsumerNo.setText("--");
             NameofSubStation.setText("--");
             Nameoffeeder.setText("--");
+            live_consumer_name.setText("--");
             GPScoordinatesofDTRinDecimalNorth.setText(jmcSectionEDetailsItem.getGpsDtrNorth());
             GPScoordinatesofDTRinDecimalEast.setText(jmcSectionEDetailsItem.getGpsDtrEast());
             GPScoordinatesofTappingpoleinDecimalNorth.setText(jmcSectionEDetailsItem.getGpsTappingNorth());
@@ -530,7 +533,7 @@ public class ActivityJMC extends AppCompatActivity {
                         GPScoordinatesofDTRinDecimalNorth.getText().toString(),GPScoordinatesofDTRinDecimalEast.getText().toString(),
                         GPScoordinatesofTappingpoleinDecimalNorth.getText().toString(),GPScoordinatesofTappingpoleinDecimalEast.getText().toString(),
                         GPScoordinatesofLiveConsumerinDecimalNorth.getText().toString(),GPScoordinatesofLiveConsumerinDecimalEast.getText().toString(),
-                        Feedernote.getText().toString(),DTRCode.getText().toString());
+                        Feedernote.getText().toString(),DTRCode.getText().toString(),live_consumer_name.getText().toString());
             }
         });
 
@@ -553,15 +556,15 @@ public class ActivityJMC extends AppCompatActivity {
         });
     }
 
-    private void add_jmc_e_details(String LiveConsumerNo, String NameofSubStation, String Nameoffeeder, String GPScoordinatesofDTRinDecimalNorth,String GPScoordinatesofDTRinDecimalEast, String GPScoordinatesofTappingpoleinDecimalNorth,String GPScoordinatesofTappingpoleinDecimalEast,
-                                   String GPScoordinatesofLiveConsumerinDecimalNorth, String GPScoordinatesofLiveConsumerinDecimalEast, String Feedernote, String DTRCode) {
+    private void add_jmc_e_details(String LiveConsumerNo, String NameofSubStation, String Nameoffeeder, String GPScoordinatesofDTRinDecimalNorth, String GPScoordinatesofDTRinDecimalEast, String GPScoordinatesofTappingpoleinDecimalNorth, String GPScoordinatesofTappingpoleinDecimalEast,
+                                   String GPScoordinatesofLiveConsumerinDecimalNorth, String GPScoordinatesofLiveConsumerinDecimalEast, String Feedernote, String DTRCode, String s) {
         final Progress progress = new Progress(ActivityJMC.this);
         progress.show();
         Call<JMCResponse> responseCall = RetrofitClient.getInstance().getApi().add_jmc_e_details(USER.getReportingId(),USER.getUserId(),consumerDetailsItem.getConsumerNo(),USER.getDivision()
                 ,LiveConsumerNo,Nameoffeeder,NameofSubStation,GPScoordinatesofDTRinDecimalNorth,
                 GPScoordinatesofDTRinDecimalEast,GPScoordinatesofTappingpoleinDecimalNorth,GPScoordinatesofTappingpoleinDecimalEast,
                 GPScoordinatesofLiveConsumerinDecimalNorth,GPScoordinatesofLiveConsumerinDecimalEast,
-                Feedernote,DTRCode);
+                Feedernote,DTRCode,s);
         responseCall.enqueue(new Callback<JMCResponse>() {
             @Override
             public void onResponse(Call<JMCResponse> call, Response<JMCResponse> response) {
@@ -622,11 +625,22 @@ public class ActivityJMC extends AppCompatActivity {
         final TextView txtstaySet = view.findViewById(R.id.txtstaySet);
         final TextView txtItypeDTC = view.findViewById(R.id.txtItypeDTC);
         final TextView txti_type_dtc_inline = view.findViewById(R.id.txti_type_dtc_inline);
-
-
-
+        final TextView txt_ab_switch = view.findViewById(R.id.txt_ab_switch);
+        final LinearLayout liSwitch = view.findViewById(R.id.liSwitch);
+        txt_ab_switch.setText(strVoltage+" AB Switch");
+        String ab_switch_11kv = "0";
+        String ab_switch_22kv = "0";
         final TextInputEditText spanInMtr = view.findViewById(R.id.spanInMtr);
-        final TextInputEditText remark = view.findViewById(R.id.remark);
+        final TextInputEditText remark   = view.findViewById(R.id.remark);
+        final TextInputEditText ab_switch   = view.findViewById(R.id.ab_switch);
+
+
+        if (strVoltage.equals("11 KV")){
+            ab_switch_11kv = ab_switch.getText().toString();
+        }else {
+            ab_switch_22kv = ab_switch.getText().toString();
+        }
+
 
 
 
@@ -642,6 +656,7 @@ public class ActivityJMC extends AppCompatActivity {
             GourdingSpan.setVisibility(View.GONE);
             staySet.setVisibility(View.GONE);
             ItypeDTC.setVisibility(View.GONE);
+            liSwitch.setVisibility(View.GONE);
             i_type_dtc_inline.setVisibility(View.GONE);
 
             txtinlinePole.setVisibility(View.VISIBLE);
@@ -681,13 +696,15 @@ public class ActivityJMC extends AppCompatActivity {
             view.findViewById(R.id.btnSave).setVisibility(View.GONE);
         }
 
+        final String finalAb_switch_11kv = ab_switch_11kv;
+        final String finalAb_switch_22kv = ab_switch_22kv;
         view.findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addJmcDetails("9",inlinePole.getNumber() , SingleCutPoint.getNumber() ,
                         doubleCutPoint.getNumber(),newTappingPole.getNumber() , ExistingTappingPole.getNumber() , TappingFromDtc.getNumber(),
                         studPole.getNumber(),Guarding.getNumber(),GourdingSpan.getNumber(),
-                        staySet.getNumber(),ItypeDTC.getNumber(),i_type_dtc_inline.getNumber(),spanInMtr.getText().toString(),remark.getText().toString());
+                        staySet.getNumber(),ItypeDTC.getNumber(),i_type_dtc_inline.getNumber(),spanInMtr.getText().toString(),remark.getText().toString(), finalAb_switch_11kv, finalAb_switch_22kv);
             }
         });
     }
@@ -699,7 +716,22 @@ public class ActivityJMC extends AppCompatActivity {
        final TextView txtinlinePole     = view.findViewById(R.id.txtinlinePole);
        final TextView txtSingleCutPoint = view.findViewById(R.id.txtSingleCutPoint);
        final TextView txtdoubleCutPoint = view.findViewById(R.id.txtdoubleCutPoint);
+       final TextView txt_ab_switch = view.findViewById(R.id.txt_ab_switch);
+       final LinearLayout liSwitch = view.findViewById(R.id.liSwitch);
+
+       txt_ab_switch.setText(strVoltage+" AB Switch");
+
+
+
        final TextInputEditText remark   = view.findViewById(R.id.remark);
+       final TextInputEditText ab_switch   = view.findViewById(R.id.ab_switch);
+
+        String ab_switch_11kv = "0";
+        String ab_switch_22kv = "0";if (strVoltage.equals("11 KV")){
+            ab_switch_11kv = ab_switch.getText().toString();
+        }else {
+            ab_switch_22kv = ab_switch.getText().toString();
+        }
 
        if (!consumerDetails.getJmcSectionADetails().isEmpty()){
            inlinePole.setVisibility(View.GONE);
@@ -710,6 +742,7 @@ public class ActivityJMC extends AppCompatActivity {
            txtinlinePole.setVisibility(View.VISIBLE);
            txtSingleCutPoint.setVisibility(View.VISIBLE);
            txtdoubleCutPoint.setVisibility(View.VISIBLE);
+           liSwitch.setVisibility(View.GONE);
 
            txtinlinePole.setText(jmcSectionADetailsItem.getStudPole());
            txtSingleCutPoint.setText(jmcSectionADetailsItem.getSingleCutpointPole());
@@ -719,21 +752,23 @@ public class ActivityJMC extends AppCompatActivity {
            view.findViewById(R.id.btnSave).setVisibility(View.GONE);
        }
 
+        final String finalAb_switch_11kv = ab_switch_11kv;
+        final String finalAb_switch_22kv = ab_switch_22kv;
         view.findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addJmcDetails("11" , inlinePole.getNumber() , SingleCutPoint.getNumber() , doubleCutPoint.getNumber(),"0","0","0","0","0","0","0","0","0","0",remark.getText().toString());
+                addJmcDetails("11" , inlinePole.getNumber() , SingleCutPoint.getNumber() , doubleCutPoint.getNumber(),"0","0","0","0","0","0","0","0","0","0",remark.getText().toString(), finalAb_switch_11kv, finalAb_switch_22kv);
             }
 
         });
 
     }
-    private void addJmcDetails(String pollType ,String inlinePole ,String SingleCutPoint ,String doubleCutPoint,String newTappingPole ,String ExistingTappingPole ,String TappingFromDtc,
-                               String studPole,String Guarding,String GourdingSpan,String staySet,String  ItypeDTC,String i_type_dtc_inline,String spanInMtr,String remark) {
+    private void addJmcDetails(String pollType, String inlinePole, String SingleCutPoint, String doubleCutPoint, String newTappingPole, String ExistingTappingPole, String TappingFromDtc,
+                               String studPole, String Guarding, String GourdingSpan, String staySet, String ItypeDTC, String i_type_dtc_inline, String spanInMtr, String remark, String ab_switch_11kv, String ab_switch_22kv) {
         final Progress progress = new Progress(ActivityJMC.this);
         progress.show();
         Call<JMCResponse> responseCall = RetrofitClient.getInstance().getApi().add_jmc_details(USER.getReportingId(),USER.getUserId(),consumerDetailsItem.getConsumerNo(),USER.getDivision(),strVoltage.replace("KV","").trim(),pollType,
-                inlinePole,SingleCutPoint,doubleCutPoint,newTappingPole,ExistingTappingPole,studPole,Guarding,GourdingSpan,staySet,ItypeDTC,i_type_dtc_inline,spanInMtr,TappingFromDtc,remark);
+                inlinePole,SingleCutPoint,doubleCutPoint,newTappingPole,ExistingTappingPole,studPole,Guarding,GourdingSpan,staySet,ItypeDTC,i_type_dtc_inline,spanInMtr,TappingFromDtc,ab_switch_22kv,ab_switch_11kv,remark);
         responseCall.enqueue(new Callback<JMCResponse>() {
             @Override
             public void onResponse(Call<JMCResponse> call, Response<JMCResponse> response) {

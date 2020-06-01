@@ -26,6 +26,8 @@ public class SurveyDetailActivity extends AppCompatActivity {
     private TextView edtSoilStrata   ;
     private TextView edtRow          ;
     private TextView edtTreeCutting  ;
+    private TextView no_of_gaurding  ;
+    private TextView no_of_crossing  ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,8 @@ public class SurveyDetailActivity extends AppCompatActivity {
         edtSoilStrata = findViewById(R.id.edtSoilStrata);
         edtRow = findViewById(R.id.edtRow);
         edtTreeCutting = findViewById(R.id.edtTreeCutting);
+        no_of_crossing = findViewById(R.id.no_of_crossing);
+        no_of_gaurding = findViewById(R.id.no_of_gaurding);
 
 
 
@@ -90,6 +94,8 @@ public class SurveyDetailActivity extends AppCompatActivity {
         edtSoilStrata.setText(surveyDetailsItem.getSoilStrata());
         edtRow.setText(surveyDetailsItem.getRow());
         edtTreeCutting.setText(surveyDetailsItem.getTreeCutting());
+        no_of_crossing.setText(surveyDetailsItem.getNoOfCrossing());
+        no_of_gaurding.setText(surveyDetailsItem.getNoOfGaurding());
     }
 
     @Override

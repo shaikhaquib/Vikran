@@ -400,8 +400,9 @@
               android:gravity="center"
               android:padding="6dp"
               android:tag="16 KVA DTC"
-              android:inputType="text"
+              android:inputType="numberDecimal"
               android:singleLine="true"
+              android:maxLines="1"
               android:background="@drawable/borderdark"
               android:textColor="@color/grey_60"
               android:fontFamily="@font/roboto_medium" />
@@ -446,6 +447,7 @@
               android:gravity="center"
               android:padding="6dp"
               android:tag="16 KVA DTC"
+              android:maxLines="1"
               android:inputType="text"
               android:singleLine="true"
               android:background="@drawable/borderdark"
@@ -514,21 +516,34 @@
               android:layout_height="wrap_content"
               android:layout_marginLeft="10dp"
               android:textSize="16sp"
+              android:layout_gravity="center"
               android:layout_weight="5"
               android:text="Approach Road"
               android:textColor="@android:color/black"
               android:fontFamily="@font/roboto_medium" />
 
-          <com.google.android.material.textfield.TextInputEditText
+          <RadioGroup
               android:id="@+id/edtAproachRoad"
-              android:layout_width="fill_parent"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:layout_weight="5"
-              android:gravity="center"
-              android:padding="6dp"
-              android:background="@drawable/borderdark"
-              android:textColor="@color/grey_60"
-              android:fontFamily="@font/roboto_medium" />
+              android:layout_margin="6dp"
+              android:orientation="horizontal">
+
+              <RadioButton
+                  android:id="@+id/edtAproachRoadyes"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:checked="true"
+                  android:text="Yes" />
+
+              <RadioButton
+                  android:id="@+id/edtAproachRoadno"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="No" />
+
+
+          </RadioGroup>
       </LinearLayout>
       <LinearLayout
           android:layout_width="match_parent"
@@ -562,6 +577,81 @@
               android:textColor="@color/grey_60"
               android:fontFamily="@font/roboto_medium" />
       </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginRight="8dp"
+          android:layout_marginTop="16dp"
+          android:layout_marginBottom="6dp"
+          android:orientation="horizontal"
+          android:weightSum="10">
+
+          <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="10dp"
+              android:textSize="16sp"
+              android:layout_weight="4"
+              android:layout_gravity="center"
+              android:text="No of Crossing"
+              android:fontFamily="@font/roboto_medium"
+              android:textColor="@android:color/black" />
+
+          <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+              android:id="@+id/no_of_crossing"
+              android:theme="@style/AlertDiloge"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="6"
+              android:gravity="center"
+              android:singleLine="true"
+              app:initialNumber="0"
+              app:textColor="#000"
+              app:finalNumber="100"
+              android:textColor="@color/grey_60"
+              android:fontFamily="@font/roboto_light" />
+
+
+      </LinearLayout>
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginRight="8dp"
+          android:layout_marginTop="16dp"
+          android:layout_marginBottom="6dp"
+          android:orientation="horizontal"
+          android:weightSum="10">
+
+          <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="10dp"
+              android:textSize="16sp"
+              android:layout_weight="4"
+              android:layout_gravity="center"
+              android:text="No of Guarding"
+              android:textColor="@android:color/black"
+              android:fontFamily="@font/roboto_medium" />
+
+          <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+              android:id="@+id/no_of_gaurding"
+              android:theme="@style/AlertDiloge"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="6"
+              android:gravity="center"
+              android:singleLine="true"
+              app:initialNumber="0"
+              app:textColor="#000"
+              app:finalNumber="100"
+              android:textColor="@color/grey_60"
+              android:fontFamily="@font/roboto_medium" />
+
+
+      </LinearLayout>
+
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"

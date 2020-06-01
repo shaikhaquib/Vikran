@@ -90,6 +90,7 @@ public class NewSurveyActivity extends AppCompatActivity {
         PermissionandCommission = findViewById(R.id.PermissionandCommission);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Division : "+USER.getDivision());
+
         findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,6 +110,11 @@ public class NewSurveyActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        if (getIntent().hasExtra("ConsumerNo")){
+            edtconsumerNo.setText(getIntent().getStringExtra("ConsumerNo"));
+            findViewById(R.id.next).performClick();
+        }
 
     }
 
@@ -187,74 +193,80 @@ public class NewSurveyActivity extends AppCompatActivity {
 
 
         if(body.getConsumerDetails().getSurveyDetails().isEmpty()){
-            resultMessage.setText("Survey pending please add one");
+            resultMessage.setText("Status : Survey pending please add one");
             addSurvey.setVisibility(View.VISIBLE);
         }else if(body.getConsumerDetails().getRtcDetails().isEmpty()){
-            resultMessage.setText("Rtc is not completed");
+            resultMessage.setText("Status : Rtc is not completed");
             Survey.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
             Execute.setVisibility(View.VISIBLE);
             addSurvey.setVisibility(View.VISIBLE);
 
         }else if(body.getConsumerDetails().getExecutionDetails().isEmpty()){
-            resultMessage.setText("Execution is not taken");
+            resultMessage.setText("Status : Execution is not taken");
             Survey.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
             Execute.setVisibility(View.VISIBLE);
 
         }else if(body.getConsumerDetails().getExecutionDetails().get(0).getExecutionStatus().equals("not_approved")){
-            resultMessage.setText("Execution not approved");
+            resultMessage.setText("Status : Execution not approved");
             Survey.setVisibility(View.VISIBLE);
             Execute.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
         } else if(body.getConsumerDetails().getExecutionDetails().get(0).getExecutionStatus().equals("pending")){
-            resultMessage.setText("Execution is under review");
+            resultMessage.setText("Status : Execution is under review");
             Rtc.setVisibility(View.VISIBLE);
             Survey.setVisibility(View.VISIBLE);
         } else if(body.getConsumerDetails().getExecutionDetails().get(0).getExecutionStatus().equals("approved")  && body.getConsumerDetails().getJmcSectionADetails().isEmpty()){
-            resultMessage.setText("Execution is successfully approved");
+            resultMessage.setText("Status : Execution is successfully approved");
             Survey.setVisibility(View.VISIBLE);
             JMC.setVisibility(View.VISIBLE);
+            Execute.setVisibility(View.VISIBLE);
             //ExecutionPdf.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
         }else if(body.getConsumerDetails().getJmcSectionBDetails().isEmpty()){
-            resultMessage.setText("JMC Section A is completed .");
+            resultMessage.setText("Status : JMC Section A is completed .");
             Survey.setVisibility(View.VISIBLE);
             JMC.setVisibility(View.VISIBLE);
+            Execute.setVisibility(View.VISIBLE);
             //ExecutionPdf.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
         }else if(body.getConsumerDetails().getJmcSectionCDetails().isEmpty()){
-            resultMessage.setText("JMC Section B is completed.");
+            resultMessage.setText("Status : JMC Section B is completed.");
             Survey.setVisibility(View.VISIBLE);
             JMC.setVisibility(View.VISIBLE);
+            Execute.setVisibility(View.VISIBLE);
             //ExecutionPdf.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
         }else if(body.getConsumerDetails().getJmcSectionCDetails().isEmpty()){
-            resultMessage.setText("JMC Section C is completed.");
+            resultMessage.setText("Status : JMC Section C is completed.");
             Survey.setVisibility(View.VISIBLE);
             JMC.setVisibility(View.VISIBLE);
+            Execute.setVisibility(View.VISIBLE);
             //ExecutionPdf.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
         }else if(body.getConsumerDetails().getJmcSectionDDetails().isEmpty()){
-            resultMessage.setText("JMC Section D is completed.");
+            resultMessage.setText("Status : JMC Section D is completed.");
             Survey.setVisibility(View.VISIBLE);
             JMC.setVisibility(View.VISIBLE);
+            Execute.setVisibility(View.VISIBLE);
             //ExecutionPdf.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
         }else{
-            resultMessage.setText("JMC Completed ");
+            resultMessage.setText("Status : JMC Completed ");
             Survey.setVisibility(View.VISIBLE);
             JMC.setVisibility(View.VISIBLE);
+            Execute.setVisibility(View.VISIBLE);
             ExecutionPdf.setVisibility(View.VISIBLE);
             Rtc.setVisibility(View.VISIBLE);
             PermissionandCommission.setVisibility(View.VISIBLE);
             Billing.setVisibility(View.VISIBLE);
 
             if (!body.getConsumerDetails().getPerComDetails().isEmpty()){
-                resultMessage.setText("Permission and Commission is  Completed ");
+                resultMessage.setText("Status : Permission and Commission is  Completed ");
             }
             if (!body.getConsumerDetails().getBillingDetails().isEmpty()){
-                resultMessage.setText("Billing is Completed ");
+                resultMessage.setText("Status : Billing is Completed ");
             }
 
         }
@@ -376,10 +388,15 @@ public class NewSurveyActivity extends AppCompatActivity {
     }
 
     private void openExecutePage(){
-        Intent intent = new Intent(getApplicationContext(),ExecutionActivity.class);
-        intent.putExtra("Data", consumerDetailsItem);
-        intent.putExtra("surveyId", surveyDetailsItem.getSurveyId());
-        startActivity(intent);
+        if (consumerDetails.getExecutionDetails().isEmpty()) {
+            Intent intent = new Intent(getApplicationContext(), ExecutionActivity.class);
+            intent.putExtra("Data", consumerDetailsItem);
+            intent.putExtra("surveyId", surveyDetailsItem.getSurveyId());
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(getApplicationContext(), ExecutionDetails.class);
+            startActivity(intent);
+        }
     }
 
     private void openAddSurveyFragement(){

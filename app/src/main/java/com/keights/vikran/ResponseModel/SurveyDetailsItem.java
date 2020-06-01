@@ -9,6 +9,9 @@ public class SurveyDetailsItem implements Serializable {
 	@SerializedName("modified_id")
 	private String modifiedId;
 
+	@SerializedName("no_of_crossing")
+	private String noOfCrossing;
+
 	@SerializedName("tree_cutting")
 	private String treeCutting;
 
@@ -27,11 +30,17 @@ public class SurveyDetailsItem implements Serializable {
 	@SerializedName("survey_by")
 	private String surveyBy;
 
+	@SerializedName("division")
+	private String division;
+
 	@SerializedName("survey_id")
 	private String surveyId;
 
 	@SerializedName("created_id")
 	private String createdId;
+
+	@SerializedName("no_of_gaurding")
+	private String noOfGaurding;
 
 	@SerializedName("ht_line_in_km")
 	private String htLineInKm;
@@ -66,6 +75,14 @@ public class SurveyDetailsItem implements Serializable {
 
 	public String getModifiedId(){
 		return modifiedId;
+	}
+
+	public void setNoOfCrossing(String noOfCrossing){
+		this.noOfCrossing = noOfCrossing;
+	}
+
+	public String getNoOfCrossing(){
+		return noOfCrossing;
 	}
 
 	public void setTreeCutting(String treeCutting){
@@ -116,6 +133,14 @@ public class SurveyDetailsItem implements Serializable {
 		return surveyBy;
 	}
 
+	public void setDivision(String division){
+		this.division = division;
+	}
+
+	public String getDivision(){
+		return division;
+	}
+
 	public void setSurveyId(String surveyId){
 		this.surveyId = surveyId;
 	}
@@ -130,6 +155,14 @@ public class SurveyDetailsItem implements Serializable {
 
 	public String getCreatedId(){
 		return createdId;
+	}
+
+	public void setNoOfGaurding(String noOfGaurding){
+		this.noOfGaurding = noOfGaurding;
+	}
+
+	public String getNoOfGaurding(){
+		return noOfGaurding;
 	}
 
 	public void setHtLineInKm(String htLineInKm){
@@ -209,14 +242,17 @@ public class SurveyDetailsItem implements Serializable {
 		return 
 			"SurveyDetailsItem{" + 
 			"modified_id = '" + modifiedId + '\'' + 
+			",no_of_crossing = '" + noOfCrossing + '\'' + 
 			",tree_cutting = '" + treeCutting + '\'' + 
 			",rjs_pole_old_freezing = '" + rjsPoleOldFreezing + '\'' + 
 			",survey_pairing = '" + surveyPairing + '\'' + 
 			",date_of_survey = '" + dateOfSurvey + '\'' + 
 			",modified_date = '" + modifiedDate + '\'' + 
 			",survey_by = '" + surveyBy + '\'' + 
+			",division = '" + division + '\'' + 
 			",survey_id = '" + surveyId + '\'' + 
 			",created_id = '" + createdId + '\'' + 
+			",no_of_gaurding = '" + noOfGaurding + '\'' + 
 			",ht_line_in_km = '" + htLineInKm + '\'' + 
 			",soil_strata = '" + soilStrata + '\'' + 
 			",approach_road = '" + approachRoad + '\'' + 

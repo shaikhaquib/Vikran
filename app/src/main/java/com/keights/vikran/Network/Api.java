@@ -50,6 +50,8 @@ public interface Api {
             @Field("tree_cutting") String tree_cutting,
             @Field("remarks") String remarks,
             @Field("live_location") String live_location,
+            @Field("no_of_gaurding") String no_of_gaurding,
+            @Field("no_of_crossing") String no_of_crossing,
             @Field("division") String division
     );
 
@@ -109,6 +111,8 @@ public interface Api {
             @Field("i_type_dtc_inline") String i_type_dtc_inline,
             @Field("span_in_mtr") String span_in_mtr,
             @Field("tapping_from_existing_dtc") String tapping_from_existing_dtc,
+            @Field("ab_switch_22kv") String ab_switch_22kv,
+            @Field("ab_switch_11kv") String ab_switch_11kv,
             @Field("remarks") String remarks);
 
     @FormUrlEncoded
@@ -164,7 +168,8 @@ public interface Api {
             @Field("gps_live_north") String gps_live_north,
             @Field("gps_live_east") String gps_live_east,
             @Field("feeder_note") String feeder_note,
-            @Field("dtr_code") String dtr_code
+            @Field("dtr_code") String dtr_code,
+            @Field("live_consumer_name") String live_consumer_name
             );
     @FormUrlEncoded
     @POST("add_rtc_details")

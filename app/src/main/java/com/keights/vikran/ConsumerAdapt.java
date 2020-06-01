@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.keights.vikran.Activity.NewSurveyActivity;
 import com.keights.vikran.Activity.SurveyDetailActivity;
 import com.keights.vikran.Extras.Constants;
 import com.keights.vikran.Extras.Progress;
@@ -122,43 +123,13 @@ public class ConsumerAdapt extends RecyclerView.Adapter<ConsumerAdapt.ViewHolder
             cNo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    searchConsumer(consumerItem.getConsumerNo());
+                   // searchConsumer(consumerItem.getConsumerNo());
+                    activity.startActivity(new Intent(activity, NewSurveyActivity.class).putExtra("ConsumerNo",consumerItem.getConsumerNo()));
                 }
             });
 
         }
     }
 
-    private void searchConsumer(String consumerNo){
-        final Progress progress = new Progress(activity);
-        progress.show();
-        Call<SearchConsumerResponse> responseCall = RetrofitClient.getInstance().getApi().search_consumer(USER.getReportingId(),USER.getUserId(),consumerNo,USER.getDivision());
-        responseCall.enqueue(new Callback<SearchConsumerResponse>() {
-            @Override
-            public void onResponse(Call<SearchConsumerResponse> call, Response<SearchConsumerResponse> response) {
-                progress.dismiss();
-                if (response.isSuccessful())
-                    if (response.body().isLoggedIn())
-                    {
-                        if (response.body().getConsumerDetails().getSurveyDetails().size()  >0 ) {
-                            Intent intent = new Intent(activity, SurveyDetailActivity.class);
-                            intent.putExtra("Data", response.body().getConsumerDetails().getConsumerDetails().get(0));
-                            intent.putExtra("surveyDetailsItem", response.body().getConsumerDetails().getSurveyDetails().get(0));
-                            activity.startActivity(intent);
-                        }else
-                            Constants.Alert(activity,"No data available for the Consumer Number");
-                    }else {
-                        Constants.Alert(activity,response.body().getMsg());
-                    }
-
-            }
-
-            @Override
-            public void onFailure(Call<SearchConsumerResponse> call, Throwable t) {
-                progress.dismiss();
-            }
-        });
-
-    }
 
 }

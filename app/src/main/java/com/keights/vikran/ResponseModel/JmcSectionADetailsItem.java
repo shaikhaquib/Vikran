@@ -2,7 +2,9 @@ package com.keights.vikran.ResponseModel;
 
 import com.google.gson.annotations.SerializedName;
 
-public class JmcSectionADetailsItem{
+import java.io.Serializable;
+
+public class JmcSectionADetailsItem implements Serializable {
 
 	@SerializedName("span_in_mtr")
 	private String spanInMtr;

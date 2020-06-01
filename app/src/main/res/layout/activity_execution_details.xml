@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".Activity.ExecutionDetails">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:title="Execution"
+            app:titleTextAppearance="@style/toolbartext" />
+
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/borderdark"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/fragment_title_padding_10"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:layout_editor_absoluteX="97dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Consumer No."
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cNo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="2013000332341"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Consumer Name"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Shivaji Anna Awaghade"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Division"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cDivision"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Vaduj"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Taluka"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cTaluka"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Khatav"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Sub-Division"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cSubDivision"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Aundh"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Section"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cSection"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Pusesawali"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Village"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cVillage"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Chorade"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Survey Taken By"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cSurveyTakenBy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Chorade"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Voltage Level"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cVoltagelevel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="20"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="DTC Code"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/cDTCCode"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="H127557"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Sanction Load"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/sanctionedLoad"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="3"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Survey Date"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/surveyDate"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="3"
+                    android:textColor="@color/grey_60" />
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:background="@android:color/white"
+            android:padding="4dp"
+            android:text="Consumer Details"
+            android:textAppearance="@style/toolbartext"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/borderdark"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout"
+            tools:layout_editor_absoluteX="16dp">
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:text="No of Pole"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/num_of_pole"
+                    android:theme="@style/AlertDiloge"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:text="Pole Shifting"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/PoleShifting"
+                    android:theme="@style/AlertDiloge"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:text="DTR STR Fitting"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+
+                <TextView
+                    android:id="@+id/STRShiftinginnumbers"
+                    android:theme="@style/AlertDiloge"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:text="String Per Location"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/StringPerLocation"
+                    android:theme="@style/AlertDiloge"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:text="DTR Erection in numbers"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/DTRErectioninnumbers"
+                    android:theme="@style/AlertDiloge"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:text="Finishing Per Location"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/FinishingPerLocation"
+                    android:theme="@style/AlertDiloge"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:text="Pole Erection"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/PoleErection"
+                    android:theme="@style/AlertDiloge"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:padding="6dp"
+                    android:drawableTint="@color/blue_700"
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:background="@android:color/white"
+            android:padding="4dp"
+            android:text="Consumer Data Card"
+            android:textAppearance="@style/toolbartext"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout1"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout1"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout1" />
+
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="8dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/borderdark"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/fragment_title_padding_10"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout1"
+            tools:layout_editor_absoluteX="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="5"
+                    android:text="Transformer Make"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/transformer_make"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_marginRight="4dp"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:tag="16 KVA DTC"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="5"
+                    android:text="T/F Sl No"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/tf_sl_no"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_marginRight="4dp"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:tag="16 KVA DTC"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="5"
+                    android:text="Meter Make"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/meter_make"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_marginRight="4dp"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:tag="16 KVA DTC"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="4"
+                    android:text="Meter No"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/meter_no"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:tag="16 KVA DTC"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="4"
+                    android:text="T/F Capacity In KVA"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/tf_capacity_in_kva"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:drawableTint="@color/blue_700"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:text="9 Mtr PSC"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/mtr9_psc"
+                    android:theme="@style/AlertDiloge"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:text="9 Mtr RSJ"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/mtr9_rsj"
+                    android:theme="@style/AlertDiloge"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:text="11 Mtr RSJ"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/mtr11_rsj"
+                    android:theme="@style/AlertDiloge"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/grey_60"
+                    android:fontFamily="@font/roboto_medium" />
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:background="@android:color/white"
+            android:padding="4dp"
+            android:text="Activity Wise Quantity"
+            android:textAppearance="@style/toolbartext"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

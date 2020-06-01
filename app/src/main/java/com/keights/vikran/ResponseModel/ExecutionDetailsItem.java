@@ -2,7 +2,9 @@ package com.keights.vikran.ResponseModel;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ExecutionDetailsItem{
+import java.io.Serializable;
+
+public class ExecutionDetailsItem implements Serializable {
 
 	@SerializedName("dtr_erection")
 	private String dtrErection;

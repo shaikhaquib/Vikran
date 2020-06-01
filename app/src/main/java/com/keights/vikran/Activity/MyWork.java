@@ -7,7 +7,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,8 +17,6 @@ import com.keights.vikran.Extras.Progress;
 import com.keights.vikran.Fragment.MySurveyFragment;
 import com.keights.vikran.Network.RetrofitClient;
 import com.keights.vikran.R;
-import com.keights.vikran.ResponseModel.DaysFilterResponse;
-import com.keights.vikran.ResponseModel.FilterList;
 import com.keights.vikran.ResponseModel.MyBillingItem;
 import com.keights.vikran.ResponseModel.MyExecutionItem;
 import com.keights.vikran.ResponseModel.MyJmcAItem;
@@ -133,11 +130,15 @@ public class MyWork extends AppCompatActivity implements View.OnClickListener{
     private void setFilter(final String filter){
         final Progress progress = new Progress(MyWork.this);
         progress.show();
+        filterData = new ArrayList<>();
         Call<MyWorkFilterResponse> responseCall = RetrofitClient.getInstance().getApi().days_filter(USER.getReportingId(),USER.getUserId(),USER.getDivision(),filter);
         responseCall.enqueue(new Callback<MyWorkFilterResponse>() {
             @Override
             public void onResponse(Call<MyWorkFilterResponse> call, Response<MyWorkFilterResponse> response) {
                 progress.dismiss();
+
+
+
                 if (response.isSuccessful())
                     if (response.body().isLoggedIn())
                     {
@@ -327,6 +328,7 @@ public class MyWork extends AppCompatActivity implements View.OnClickListener{
 
 
 
+
                     }else {
                         Constants.Alert(MyWork.this,response.body().getMsg());
                     }
@@ -336,6 +338,17 @@ public class MyWork extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onFailure(Call<MyWorkFilterResponse> call, Throwable t) {
                 progress.dismiss();
+                MySurveyFragment mySurveyFragment = new MySurveyFragment();
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("filterList", (Serializable) filterData);
+                mySurveyFragment.setArguments(bundle);
+                frgTransaction(mySurveyFragment);
+
+                if (filterData.isEmpty()){
+                    errorLlist.setVisibility(View.VISIBLE);
+                    errorLlist.setText("No Data Available \n For "+Constants.capitalize(filter.split("_")[0])+"\n Try With Other Tab");
+                }
             }
         });
 

@@ -15,6 +15,9 @@ public class ConsumerDetailsItem implements Serializable {
 	@SerializedName("section")
 	private String section;
 
+	@SerializedName("complete_status")
+	private String completeStatus;
+
 	@SerializedName("voltage_level")
 	private String voltageLevel;
 
@@ -32,9 +35,6 @@ public class ConsumerDetailsItem implements Serializable {
 
 	@SerializedName("dtc_code")
 	private String dtcCode;
-
-	@SerializedName("survey")
-	private String survey;
 
 	@SerializedName("connection")
 	private String connection;
@@ -79,6 +79,14 @@ public class ConsumerDetailsItem implements Serializable {
 
 	public String getSection(){
 		return section;
+	}
+
+	public void setCompleteStatus(String completeStatus){
+		this.completeStatus = completeStatus;
+	}
+
+	public String getCompleteStatus(){
+		return completeStatus;
 	}
 
 	public void setVoltageLevel(String voltageLevel){
@@ -127,14 +135,6 @@ public class ConsumerDetailsItem implements Serializable {
 
 	public String getDtcCode(){
 		return dtcCode;
-	}
-
-	public void setSurvey(String survey){
-		this.survey = survey;
-	}
-
-	public String getSurvey(){
-		return survey;
 	}
 
 	public void setConnection(String connection){
@@ -200,13 +200,13 @@ public class ConsumerDetailsItem implements Serializable {
 			"created_name = '" + createdName + '\'' + 
 			",sanction_load = '" + sanctionLoad + '\'' + 
 			",section = '" + section + '\'' + 
+			",complete_status = '" + completeStatus + '\'' + 
 			",voltage_level = '" + voltageLevel + '\'' + 
 			",modified_date = '" + modifiedDate + '\'' + 
 			",division = '" + division + '\'' + 
 			",consumer_name = '" + consumerName + '\'' + 
 			",taluka = '" + taluka + '\'' + 
 			",dtc_code = '" + dtcCode + '\'' + 
-			",survey = '" + survey + '\'' + 
 			",connection = '" + connection + '\'' + 
 			",created_date = '" + createdDate + '\'' + 
 			",customer_id = '" + customerId + '\'' + 

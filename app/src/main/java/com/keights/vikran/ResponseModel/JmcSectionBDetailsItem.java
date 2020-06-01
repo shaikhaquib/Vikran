@@ -2,7 +2,9 @@ package com.keights.vikran.ResponseModel;
 
 import com.google.gson.annotations.SerializedName;
 
-public class JmcSectionBDetailsItem{
+import java.io.Serializable;
+
+public class JmcSectionBDetailsItem implements Serializable {
 
 	@SerializedName("created_id")
 	private String createdId;
