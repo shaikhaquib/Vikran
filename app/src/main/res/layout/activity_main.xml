@@ -532,24 +532,7 @@
         </LinearLayout>
 
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/Reports"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/purple"
-            android:text="Reports"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="@dimen/appbar_padding_top"
-            app:icon="@drawable/ic_result"
-            app:iconGravity="textStart"
-            app:iconSize="30dp"
-            app:layout_constraintEnd_toEndOf="@+id/Consumerlist"
-            app:layout_constraintStart_toStartOf="@+id/Consumerlist"
-            app:layout_constraintTop_toBottomOf="@+id/Consumerlist"
-            app:rippleColor="@color/blue_grey_100" />
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/Consumerlist"
@@ -571,7 +554,45 @@
             app:layout_constraintStart_toStartOf="@+id/Nscfeeding"
             app:layout_constraintTop_toBottomOf="@+id/Nscfeeding"
             app:rippleColor="@color/blue_grey_100" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Reports"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/purple"
+            android:text="Reports"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/appbar_padding_top"
+            app:icon="@drawable/ic_result"
+            app:iconGravity="textStart"
+            app:iconSize="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/Consumerlist"
+            app:layout_constraintStart_toStartOf="@+id/Consumerlist"
+            app:layout_constraintTop_toBottomOf="@+id/Consumerlist"
+            app:rippleColor="@color/blue_grey_100" />
 
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/PendingExecution"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/purple"
+            android:text="Pending Execution"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/appbar_padding_top"
+            app:icon="@drawable/ic_clipboard_1"
+            app:iconGravity="textStart"
+            app:iconSize="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/Reports"
+            app:layout_constraintStart_toStartOf="@+id/Reports"
+            app:layout_constraintTop_toBottomOf="@+id/Reports"
+            app:rippleColor="@color/blue_grey_100" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

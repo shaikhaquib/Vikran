@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.keights.vikran"
     android:versionCode="1"
-    android:versionName="1.1.8">
+    android:versionName="1.2.0">
 
     <dist:module dist:instant="true" />
 
@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".Activity.ExecutionDetails"></activity>
+        <activity android:name=".Activity.PendingExecutionActivity"></activity>
+        <activity android:name=".Activity.ExecutionDetails" />
         <activity android:name=".Activity.ActivityBilling" />
         <activity android:name=".Activity.ActivityPermissionandcommi" />
         <activity android:name=".Activity.ActivityRTC" />

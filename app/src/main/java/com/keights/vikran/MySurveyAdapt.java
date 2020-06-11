@@ -127,36 +127,4 @@ public class MySurveyAdapt extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    private void searchConsumer(String consumerNo){
-        final Progress progress = new Progress(activity);
-        progress.show();
-        Call<SearchConsumerResponse> responseCall = RetrofitClient.getInstance().getApi().search_consumer(USER.getReportingId(),USER.getUserId(),consumerNo,USER.getDivision());
-        responseCall.enqueue(new Callback<SearchConsumerResponse>() {
-            @Override
-            public void onResponse(Call<SearchConsumerResponse> call, Response<SearchConsumerResponse> response) {
-                progress.dismiss();
-                if (response.isSuccessful())
-                    if (response.body().isLoggedIn())
-                    {
-                        if (response.body().getConsumerDetails().getConsumerDetails().size()>0) {
-                            Intent intent = new Intent(activity, SurveyDetailActivity.class);
-                            intent.putExtra("Data", response.body().getConsumerDetails().getConsumerDetails().get(0));
-                            intent.putExtra("surveyDetailsItem", response.body().getConsumerDetails().getSurveyDetails().get(0));
-                            activity.startActivity(intent);
-                        }else
-                            Constants.Alert(activity,"No data available for the entered Consumer Number\n\nYou have Entered Invalid Consumer Number ");
-                    }else {
-                        Constants.Alert(activity,response.body().getMsg());
-                    }
-
-            }
-
-            @Override
-            public void onFailure(Call<SearchConsumerResponse> call, Throwable t) {
-                progress.dismiss();
-            }
-        });
-
-    }
-
 }

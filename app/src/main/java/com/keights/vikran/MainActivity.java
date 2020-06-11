@@ -25,6 +25,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.keights.vikran.Activity.ConsumerList;
 import com.keights.vikran.Activity.MyWork;
 import com.keights.vikran.Activity.NewSurveyActivity;
+import com.keights.vikran.Activity.PendingExecutionActivity;
 import com.keights.vikran.Activity.Reports;
 import com.keights.vikran.Extras.AppExecutor;
 import com.keights.vikran.Extras.Constants;
@@ -48,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
                 fallbackToDestructiveMigration().build();
         GetUsersAsyncTask();
         //Log.d(TAG, "onCreate: "+LoginActivity.USER.getUsername());
+
+        findViewById(R.id.PendingExecution).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PendingExecutionActivity.class));
+            }
+        });
+
 
 
     }
@@ -200,6 +209,12 @@ public class MainActivity extends AppCompatActivity {
                 ///Your data access task////
                 LoginActivity.USER  = userDatabase.dbAccess().getUserDetail();
                 initData(toolbar);
+
+                if (LoginActivity.USER.getLoginType().equals("Cluster Incharge") || LoginActivity.USER.getLoginType().equals("Manager")){
+                    findViewById(R.id.PendingExecution).setVisibility(View.VISIBLE);
+                }else {
+                    findViewById(R.id.PendingExecution).setVisibility(View.GONE);
+                }
 
             }
         });

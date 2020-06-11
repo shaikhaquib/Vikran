@@ -7,6 +7,7 @@ import com.keights.vikran.ResponseModel.BillingResponse;
 import com.keights.vikran.ResponseModel.DaysFilterResponse;
 import com.keights.vikran.ResponseModel.JMCResponse;
 import com.keights.vikran.ResponseModel.MyWorkFilterResponse;
+import com.keights.vikran.ResponseModel.PendingExecution;
 import com.keights.vikran.ResponseModel.PermcommResponse;
 import com.keights.vikran.ResponseModel.RTCResponse;
 import com.keights.vikran.ResponseModel.SearchConsumerResponse;
@@ -211,6 +212,21 @@ public interface Api {
             @Field("reporting_id") String reporting_id,
             @Field("user_id") String user_id,
             @Field("division") String division
+            );
+
+    @FormUrlEncoded
+    @POST("pending_execution_list")
+    Call<PendingExecution> pending_execution_list(
+            @Field("user_id") String user_id,
+            @Field("role") String role
+            );
+    @FormUrlEncoded
+    @POST("approved_execution")
+    Call<BillingResponse> approved_execution(
+            @Field("user_id") String user_id,
+            @Field("role") String role,
+            @Field("consumer_no") String consumer_no,
+            @Field("execution_status") String execution_status
             );
 
 

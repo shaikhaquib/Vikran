@@ -217,6 +217,7 @@ public class NewSurveyActivity extends AppCompatActivity {
             resultMessage.setText("Status : Execution is under review");
             Rtc.setVisibility(View.VISIBLE);
             Survey.setVisibility(View.VISIBLE);
+            Execute.setVisibility(View.VISIBLE);
         } else if(body.getConsumerDetails().getExecutionDetails().get(0).getExecutionStatus().equals("approved")  && body.getConsumerDetails().getJmcSectionADetails().isEmpty()){
             resultMessage.setText("Status : Execution is successfully approved");
             Survey.setVisibility(View.VISIBLE);
