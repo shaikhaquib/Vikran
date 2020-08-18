@@ -192,7 +192,24 @@ public class NewSurveyActivity extends AppCompatActivity {
         sanctionedLoad.setText(consumerDetailsItem.getSanctionLoad());
 
 
-        if(body.getConsumerDetails().getSurveyDetails().isEmpty()){
+
+        if (getIntent().hasExtra("upload")){
+            if (body.getConsumerDetails().getExecutionDetails().size() >0)
+                if (body.getConsumerDetails().getExecutionDetails().get(0).getExecutionStatus().equals("pending"))
+                    findViewById(R.id.uploadExecuton).setVisibility(View.VISIBLE);
+
+            if (!body.getConsumerDetails().getJmcSectionEDetails().isEmpty())
+                 findViewById(R.id.uploadJMC).setVisibility(View.VISIBLE);
+
+        findViewById(R.id.uploadExecuton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),ImagesUploadExeCution.class).putExtra("consumer_no",edtconsumerNo.getText().toString()));
+            }
+        });
+
+
+        }else if(body.getConsumerDetails().getSurveyDetails().isEmpty()){
             resultMessage.setText("Status : Survey pending please add one");
             addSurvey.setVisibility(View.VISIBLE);
         }else if(body.getConsumerDetails().getRtcDetails().isEmpty()){

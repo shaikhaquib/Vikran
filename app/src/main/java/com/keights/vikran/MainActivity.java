@@ -20,9 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.room.Room;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.keights.vikran.Activity.ConsumerList;
+import com.keights.vikran.Activity.MapsActivity;
 import com.keights.vikran.Activity.MyWork;
 import com.keights.vikran.Activity.NewSurveyActivity;
 import com.keights.vikran.Activity.PendingExecutionActivity;
@@ -56,6 +58,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), PendingExecutionActivity.class));
             }
         });
+        findViewById(R.id.NearBYSurveys).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+            }
+        });
+        findViewById(R.id.UploadImages).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), NewSurveyActivity.class).putExtra("upload","1"));
+            }
+        });
+
 
 
 

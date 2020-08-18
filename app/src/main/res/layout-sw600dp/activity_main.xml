@@ -189,7 +189,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_survey"
-                    android:tint="#2196F3" />
+                    app:tint="#2196F3" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -237,7 +237,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_clipboard"
-                    android:tint="#FF9800" />
+                    app:tint="#FF9800" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -283,7 +283,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_clipboard_1"
-                    android:tint="#2196F3" />
+                    app:tint="#2196F3" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -332,7 +332,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_measuring_tape"
-                    android:tint="#2196F3" />
+                    app:tint="#2196F3" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -379,7 +379,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_vending_machine_1"
-                    android:tint="#FF9800" />
+                    app:tint="#FF9800" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -425,7 +425,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_permission"
-                    android:tint="#FF9800" />
+                    app:tint="#FF9800" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -472,7 +472,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_microsoft_excel"
-                    android:tint="#FF9800" />
+                    app:tint="#FF9800" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -519,7 +519,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_tax"
-                    android:tint="#2196F3" />
+                    app:tint="#2196F3" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -592,6 +592,42 @@
             app:layout_constraintEnd_toEndOf="@+id/Consumerlist"
             app:layout_constraintStart_toStartOf="@+id/Consumerlist"
             app:layout_constraintTop_toBottomOf="@+id/Consumerlist"
+            app:rippleColor="@color/blue_grey_100" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/NearBYSurveys"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/purple"
+            android:text="Near By Surveys"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/appbar_padding_top"
+            app:icon="@drawable/ic_location"
+            app:iconGravity="textStart"
+            app:iconSize="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/PendingExecution"
+            app:layout_constraintStart_toStartOf="@+id/PendingExecution"
+            app:layout_constraintTop_toBottomOf="@+id/PendingExecution"
+            app:rippleColor="@color/blue_grey_100" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/UploadImages"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/purple"
+            android:text="Near By Surveys"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/appbar_padding_top"
+            app:icon="@drawable/ic_location"
+            app:iconGravity="textStart"
+            app:iconSize="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/NearBYSurveys"
+            app:layout_constraintStart_toStartOf="@+id/NearBYSurveys"
+            app:layout_constraintTop_toBottomOf="@+id/NearBYSurveys"
             app:rippleColor="@color/blue_grey_100" />
 
 

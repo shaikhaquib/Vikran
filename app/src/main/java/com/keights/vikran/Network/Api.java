@@ -5,7 +5,9 @@ import com.keights.vikran.ResponseModel.AddSurveyDetailsResponse;
 import com.keights.vikran.ResponseModel.AssignExecutionResponse;
 import com.keights.vikran.ResponseModel.BillingResponse;
 import com.keights.vikran.ResponseModel.DaysFilterResponse;
+import com.keights.vikran.ResponseModel.DivisionSurvayDetailsItem;
 import com.keights.vikran.ResponseModel.JMCResponse;
+import com.keights.vikran.ResponseModel.MapResponse;
 import com.keights.vikran.ResponseModel.MyWorkFilterResponse;
 import com.keights.vikran.ResponseModel.PendingExecution;
 import com.keights.vikran.ResponseModel.PermcommResponse;
@@ -14,6 +16,7 @@ import com.keights.vikran.ResponseModel.SearchConsumerResponse;
 import com.keights.vikran.ResponseModel.UserInfo;
 
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -229,5 +232,10 @@ public interface Api {
             @Field("execution_status") String execution_status
             );
 
-
+    @FormUrlEncoded
+    @POST("division_survey_details")
+    Call<MapResponse> division_survey_details(
+            @Field("user_id") String user_id,
+            @Field("division") String division
+            );
 }

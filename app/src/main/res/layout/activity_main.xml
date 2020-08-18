@@ -170,7 +170,7 @@
             android:background="?selectableItemBackground"
             android:orientation="vertical"
             app:layout_constraintEnd_toStartOf="@+id/MyWork"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="@+id/linearLayout6"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
@@ -194,7 +194,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_survey"
-                    android:tint="#2196F3" />
+                    app:tint="#2196F3" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -241,7 +241,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_clipboard"
-                    android:tint="#FF9800" />
+                    app:tint="#FF9800" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -287,7 +287,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_clipboard_1"
-                    android:tint="#2196F3" />
+                    app:tint="#2196F3" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -334,7 +334,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_measuring_tape"
-                    android:tint="#2196F3" />
+                    app:tint="#2196F3" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -380,7 +380,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_vending_machine_1"
-                    android:tint="#FF9800" />
+                    app:tint="#FF9800" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -425,7 +425,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_permission"
-                    android:tint="#FF9800" />
+                    app:tint="#FF9800" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -445,7 +445,7 @@
             android:id="@+id/Nscfeeding"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="26dp"
             android:layout_weight="1"
             android:background="?selectableItemBackground"
             android:orientation="vertical"
@@ -470,7 +470,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_microsoft_excel"
-                    android:tint="#FF9800" />
+                    app:tint="#FF9800" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -515,7 +515,7 @@
                     android:layout_margin="32dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_tax"
-                    android:tint="#2196F3" />
+                    app:tint="#2196F3" />
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -530,8 +530,6 @@
                 android:textSize="18sp" />
 
         </LinearLayout>
-
-
 
 
         <com.google.android.material.button.MaterialButton
@@ -554,6 +552,7 @@
             app:layout_constraintStart_toStartOf="@+id/Nscfeeding"
             app:layout_constraintTop_toBottomOf="@+id/Nscfeeding"
             app:rippleColor="@color/blue_grey_100" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/Reports"
             android:layout_width="0dp"
@@ -574,7 +573,6 @@
             app:rippleColor="@color/blue_grey_100" />
 
 
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/PendingExecution"
             android:layout_width="0dp"
@@ -592,6 +590,42 @@
             app:layout_constraintEnd_toEndOf="@+id/Reports"
             app:layout_constraintStart_toStartOf="@+id/Reports"
             app:layout_constraintTop_toBottomOf="@+id/Reports"
+            app:rippleColor="@color/blue_grey_100" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/NearBYSurveys"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/purple"
+            android:text="Near By Surveys"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/appbar_padding_top"
+            app:icon="@drawable/ic_location"
+            app:iconGravity="textStart"
+            app:iconSize="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/PendingExecution"
+            app:layout_constraintStart_toStartOf="@+id/PendingExecution"
+            app:layout_constraintTop_toBottomOf="@+id/PendingExecution"
+            app:rippleColor="@color/blue_grey_100" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/UploadImages"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/purple"
+            android:text="Near By Surveys"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/appbar_padding_top"
+            app:icon="@drawable/ic_location"
+            app:iconGravity="textStart"
+            app:iconSize="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/NearBYSurveys"
+            app:layout_constraintStart_toStartOf="@+id/NearBYSurveys"
+            app:layout_constraintTop_toBottomOf="@+id/NearBYSurveys"
             app:rippleColor="@color/blue_grey_100" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

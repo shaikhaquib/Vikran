@@ -5,9 +5,6 @@ import android.os.Looper;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-
-
-
 public class AppExecutor {
     private static final Object LOCK = new Object();
     private static AppExecutor sInstance;
