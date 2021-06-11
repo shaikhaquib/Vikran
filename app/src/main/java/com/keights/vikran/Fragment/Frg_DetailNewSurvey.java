@@ -394,4 +394,5 @@ public class Frg_DetailNewSurvey extends Fragment {
 
     }
 
+
 }

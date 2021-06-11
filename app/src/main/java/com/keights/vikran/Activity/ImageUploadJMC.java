@@ -1,5 +1,7 @@
 package com.keights.vikran.Activity;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -11,8 +13,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.keights.vikran.Extras.AndroidMultiPartEntity;
@@ -38,19 +38,15 @@ import java.io.IOException;
 
 import in.mayanknagwanshi.imagepicker.ImageSelectActivity;
 
-public class ImagesUploadExeCution extends AppCompatActivity {
-
+public class ImageUploadJMC extends AppCompatActivity {
     String DTCPAth ;
-    String MeterPath  ;
-    ImageView dtcimageView,meterImageView;
-    private static final String TAG = "ImagesUploadExeCution";
+    ImageView dtcimageView;
+    private static final String TAG = "ImageUploadJMC";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_images_upload);
-
+        setContentView(R.layout.activity_image_upload_j_m_c);
         dtcimageView = findViewById(R.id.imageView);
-        meterImageView = findViewById(R.id.imageView2);
 
         findViewById(R.id.openDTC).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,25 +58,15 @@ public class ImagesUploadExeCution extends AppCompatActivity {
                 startActivityForResult(intent, 1213);
             }
         });
-        findViewById(R.id.openMeter).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ImageSelectActivity.class);
-                intent.putExtra(ImageSelectActivity.FLAG_COMPRESS, false);//default is true
-                intent.putExtra(ImageSelectActivity.FLAG_CAMERA, true);//default is true
-                intent.putExtra(ImageSelectActivity.FLAG_GALLERY, true);//default is true
-                startActivityForResult(intent, 1214);
-            }
-        });
 
         findViewById(R.id.UploadImages).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MeterPath == null || MeterPath.isEmpty() || DTCPAth == null || DTCPAth.isEmpty() ){
-                    Constants.Alert(ImagesUploadExeCution.this, "Please Select Both Images");
+                if (DTCPAth == null || DTCPAth.isEmpty() ){
+                    Constants.Alert(ImageUploadJMC.this, "Please Select Images");
                 }else {
-                      //  postFile();
-                        new ImagesUploadExeCutionToServer().execute();
+                    //  postFile();
+                    new ImageUploadJMC.ImagesUploadExeCutionToServer().execute();
                 }
             }
         });
@@ -94,11 +80,6 @@ public class ImagesUploadExeCution extends AppCompatActivity {
             Bitmap selectedImage = BitmapFactory.decodeFile(filePath);
             dtcimageView.setImageBitmap(selectedImage);
             DTCPAth = filePath;
-        }else if (requestCode == 1214 && resultCode == Activity.RESULT_OK) {
-            String filePath = data.getStringExtra(ImageSelectActivity.RESULT_FILE_PATH);
-            Bitmap selectedImage = BitmapFactory.decodeFile(filePath);
-            meterImageView.setImageBitmap(selectedImage);
-            MeterPath = filePath;
         }
     }
 
@@ -110,7 +91,7 @@ public class ImagesUploadExeCution extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            progressBar = new ProgressDialog(ImagesUploadExeCution.this);
+            progressBar = new ProgressDialog(ImageUploadJMC.this);
             progressBar.setCancelable(false);
             progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressBar.setMessage("Uploading data to server (0 %)");
@@ -133,7 +114,7 @@ public class ImagesUploadExeCution extends AppCompatActivity {
             String responseString = null;
 
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost(RetrofitClient.BASE_URL + "execution_upload");
+            HttpPost httppost = new HttpPost(RetrofitClient.BASE_URL + "jmc_upload");
 
             try {
                 AndroidMultiPartEntity entity = new AndroidMultiPartEntity(
@@ -149,15 +130,10 @@ public class ImagesUploadExeCution extends AppCompatActivity {
                 entity.addPart("consumer_no", new StringBody(getIntent().getStringExtra("consumer_no")));
 
 
-                    File sourceFile1 = new File(DTCPAth);
-                    if (sourceFile1.exists()) {
-                        entity.addPart("dtc_file", new FileBody(sourceFile1));
-                    }
-
-                    File sourceFile2 = new File(MeterPath);
-                    if (sourceFile2.exists()) {
-                        entity.addPart("meter_file", new FileBody(sourceFile2));
-                    }
+                File sourceFile1 = new File(DTCPAth);
+                if (sourceFile1.exists()) {
+                    entity.addPart("jmc_file", new FileBody(sourceFile1));
+                }
 
 
                 totalSize = entity.getContentLength();
@@ -191,9 +167,9 @@ public class ImagesUploadExeCution extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(s);
                     if (!jsonObject.getBoolean("logged_in")) {
-                        Constants.Alert(ImagesUploadExeCution.this, jsonObject.getString("errormsg"));
+                        Constants.Alert(ImageUploadJMC.this, jsonObject.getString("errormsg"));
                     } else {
-                        new MaterialAlertDialogBuilder(ImagesUploadExeCution.this)
+                        new MaterialAlertDialogBuilder(ImageUploadJMC.this)
                                 .setTitle("Alert")
                                 .setMessage(jsonObject.getString("msg"))
                                 .setPositiveButton("Continue", new DialogInterface.OnClickListener() {

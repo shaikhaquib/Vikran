@@ -28,7 +28,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".Activity.ImagesUploadExeCution"></activity>
+        <activity android:name=".Activity.ImageUploadJMC"></activity>
+        <activity android:name=".Activity.ImagesUploadExeCution" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

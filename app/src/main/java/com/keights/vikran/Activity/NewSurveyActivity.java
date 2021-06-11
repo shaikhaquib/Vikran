@@ -207,6 +207,12 @@ public class NewSurveyActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),ImagesUploadExeCution.class).putExtra("consumer_no",edtconsumerNo.getText().toString()));
             }
         });
+        findViewById(R.id.uploadJMC).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),ImageUploadJMC.class).putExtra("consumer_no",edtconsumerNo.getText().toString()));
+            }
+        });
 
 
         }else if(body.getConsumerDetails().getSurveyDetails().isEmpty()){
